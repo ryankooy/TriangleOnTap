@@ -7,34 +7,34 @@ module.exports = {
     if (req.user) {
       db.User
         .find({ _id: req.user._id })
-        .populate({ path: "books", options: { sort: { 'date': -1 } } })
+        .populate({ path: "breweries", options: { sort: { 'date': -1 } } })
         .then(users => {
-          res.json({ books: users[0].books });
+          res.json({ breweries: users[0].breweries });
         })
         .catch(err => res.status(422).json(err));
     } else {
-      return res.json({ books: null });
+      return res.json({ breweries: null });
     }
   },
   findById: function(req, res) {
     if (req.user) {
       db.User
         .find({ _id: req.user._id })
-        .populate("books")
+        .populate("breweries")
         .then(users => {
-          const book = users[0].books.filter(b => b._id.toString() === req.params.id);
-          res.json({ book: book[0] });
+          const brewery = users[0].breweries.filter(b => b._id.toString() === req.params.id);
+          res.json({ brewery: brewery[0] });
         })
         .catch(err => res.status(422).json(err));
     } else {
-      return res.json({ book: null });
+      return res.json({ brewery: null });
     }
   },
   create: function(req, res) {
-    db.Book
+    db.brewery
       .create(req.body)
-      .then(dbBook => {
-        return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { books: dbBook._id } }, { new: true });
+      .then(dbBrewery => {
+        return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { breweries: dbBrewery._id } }, { new: true });
       })
       .then((dbUser) => {
         // If the User was updated successfully, send it back to the client
@@ -43,7 +43,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.Book
+    db.brewery
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => {
         console.log(dbModel);
@@ -52,11 +52,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.User.findOneAndUpdate({ _id: req.user._id }, { $pull: { books: new ObjectId(req.params.id) } }, { new: true })
+    db.User.findOneAndUpdate({ _id: req.user._id }, { $pull: { breweries: new ObjectId(req.params.id) } }, { new: true })
       .then(() => {
-        db.Book
+        db.Brewery
           .findOneAndDelete({ _id: req.params.id })
-          .then(dbBook => res.json(dbBook))
+          .then(dbBrewery => res.json(dbBrewery))
           .catch(err => res.status(422).json(err));
       });
   }

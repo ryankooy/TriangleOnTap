@@ -9,12 +9,13 @@ const userSchema = new Schema({
 	lastName: { type: String, unique: false },
   username: { type: String, unique: false, required: false },
   password: { type: String, unique: false, required: false },
-  books: [
+  breweries: [
     {
       // Store ObjectIds in the array
       type: Schema.Types.ObjectId,
-      // The ObjectIds will refer to the ids in the Book model
-      ref: "Book"
+	  // The ObjectIds will refer to the ids in the Book model
+	  // WILL NEED TO UPDATE THE REF FIELD ONCE WE SET UP THE BREWERY MODEL   
+      ref: "Brewery"
     }
   ]
 });
@@ -42,4 +43,7 @@ userSchema.pre('save', function(next) {
 
 // Create reference to User & export
 const User = mongoose.model('User', userSchema);
+User.hashPassword = function(pwd) {
+	return bcrypt.hashSync(pwd, 10);
+};
 module.exports = User;

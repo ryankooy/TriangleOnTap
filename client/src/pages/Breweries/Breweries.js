@@ -7,29 +7,29 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 
-class Books extends Component {
+class Breweries extends Component {
   state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: ""
+    breweries: [],
+    name: "",
+    city: "",
+    date: ""
   };
 
   componentDidMount() {
-    this.loadBooks();
+    this.loadBreweries();
   }
 
-  loadBooks = () => {
-    API.getBooks()
+  loadBreweries = () => {
+    API.getBreweries()
       .then(res =>
-        this.setState({ books: res.data.books, title: "", author: "", synopsis: "" })
+        this.setState({ breweries: res.data.breweries, name: "", city: "", date: "" })
       )
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
+  deleteBrewery = id => {
+    API.deleteBrewery(id)
+      .then(res => this.loadBreweries())
       .catch(err => console.log(err));
   };
 
@@ -42,13 +42,13 @@ class Books extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
+    if (this.state.name && this.state.city) {
+      API.saveBrewery({
+        name: this.state.name,
+        city: this.state.city,
+        date: this.state.date
       })
-        .then(res => this.loadBooks())
+        .then(res => this.loadBreweries())
         .catch(err => console.log(err));
     }
   };
@@ -59,49 +59,49 @@ class Books extends Component {
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h1>What Books Should I Read?</h1>
+              <h1>Breweries</h1>
             </Jumbotron>
             <form>
               <Input
-                value={this.state.title}
+                value={this.state.name}
                 onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
+                name="name"
+                placeholder="Name (required)"
               />
               <Input
-                value={this.state.author}
+                value={this.state.city}
                 onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
+                name="city"
+                placeholder="City (required)"
               />
               <TextArea
-                value={this.state.synopsis}
+                value={this.state.date}
                 onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
+                name="date"
+                placeholder="Date (Optional)"
               />
               <FormBtn
-                disabled={!(this.state.author && this.state.title)}
+                disabled={!(this.state.name && this.state.city)}
                 onClick={this.handleFormSubmit}
               >
-                Submit Book
+                Submit Brewery
               </FormBtn>
             </form>
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Books On My List</h1>
+              <h1>Breweries On My List</h1>
             </Jumbotron>
-            {this.state.books.length ? (
+            {this.state.breweries.length ? (
               <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
+                {this.state.breweries.map(brewery => (
+                  <ListItem key={brewery._id}>
+                    <Link to={"/breweries/" + brewery._id}>
                       <strong>
-                        {book.title} by {book.author}
+                        {brewery.name} by {brewery.city}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                    <DeleteBtn onClick={() => this.deleteBrewery(brewery._id)} />
                   </ListItem>
                 ))}
               </List>
@@ -115,4 +115,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default Breweries;
