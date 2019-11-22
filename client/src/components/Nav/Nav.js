@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
-import { Col } from '../Grid';
-import './Nav.css';
-
+import {AppBar, Toolbar, Typography, Button} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 const Nav = (props) => {
   let greeting;
 
@@ -21,19 +20,47 @@ const Nav = (props) => {
 			</Fragment>
 		)
   }
+
+  const useStyles = makeStyles(theme => ({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(7),
+    },
+    title: {
+      flexGrow: 1,
+    },
+  }));
+  
+  const classes = useStyles();
   
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <Col size="md-2">
-        <Link to="/" className="navbar-brand">React Reading List</Link>
-      </Col>
-      <Col size="md-7"></Col>
-      <Col size="md-3">
-        <div className="float-right">
-        {greeting} - <Link to="#" className="logout" onClick={props.logout}>Logout</Link>
-        </div>
-      </Col>
-    </nav>
+    <div className={classes.root}>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" className={classes.title}>
+          Triangle On Tap
+        </Typography>
+        <Typography className={classes.menuButton}>
+        {greeting}
+        </Typography>
+        <Button color="inherit" spacing={25}><Link to="#" className="logout" onClick={props.logout}>Logout</Link></Button>
+      </Toolbar>
+    </AppBar>
+    </div>
+
+    // <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    //   <Col size="md-2">
+    //     <Link to="/" className="navbar-brand">React Reading List</Link>
+    //   </Col>
+    //   <Col size="md-7"></Col>
+    //   <Col size="md-3">
+    //     <div className="float-right">
+    //     {greeting} - <Link to="#" className="logout" onClick={props.logout}>Logout</Link>
+    //     </div>
+    //   </Col>
+    // </nav>
   )
 };
 
