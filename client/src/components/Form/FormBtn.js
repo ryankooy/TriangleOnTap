@@ -1,7 +1,11 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
 
 export const FormBtn = props => (
-  <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+  <Button {...props} variant="contained" color="secondary" style={{ float: "right", marginBottom: 10 }}>
     {props.children}
-  </button>
+  </Button>
+  // <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+  //   {props.children}
+  // </button>
 );
