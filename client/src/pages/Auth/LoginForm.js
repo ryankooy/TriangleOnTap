@@ -4,6 +4,7 @@ import { Container, Row, Col } from '../../components/Grid';
 import { Cards } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 
+
 class LoginForm extends Component {
   
   constructor() {
@@ -39,7 +40,9 @@ class LoginForm extends Component {
           <Row>
             <Col size="md-3"></Col>
             <Col size="md-6">
-              <Cards title="Login to React Reading List">
+
+              <Cards title="Welcome to Triangle on Tap!">
+
                 <form style={{marginTop: 10}}>
                   <label htmlFor="username">Username: </label>
                   <Input
