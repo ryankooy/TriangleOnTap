@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col } from '../../components/Grid';
-import { Card } from '../../components/Card';
+import { Cards } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 
 
@@ -40,7 +40,9 @@ class LoginForm extends Component {
           <Row>
             <Col size="md-3"></Col>
             <Col size="md-6">
-              <Card title="Welcome to Triangle on Tap!">
+
+              <Cards title="Welcome to Triangle on Tap!">
+
                 <form style={{marginTop: 10}}>
                   <label htmlFor="username">Username: </label>
                   <Input
@@ -59,7 +61,7 @@ class LoginForm extends Component {
                   <Link to="/signup">Register</Link>
                   <FormBtn onClick={this.handleSubmit}>Login</FormBtn>
                 </form>
-              </Card>
+              </Cards>
             </Col>
             <Col size="md-3"></Col>
           </Row>
