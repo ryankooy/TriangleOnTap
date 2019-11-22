@@ -35,6 +35,7 @@ class Breweries extends Component {
 
   handleInputChange = event => {
     const { name, value } = event.target;
+    console.log(value);
     this.setState({
       [name]: value
     });
