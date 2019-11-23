@@ -31,7 +31,7 @@ module.exports = {
     }
   },
   create: function(req, res) {
-    db.brewery
+    db.Brewery
       .create(req.body)
       .then(dbBrewery => {
         return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { breweries: dbBrewery._id } }, { new: true });
@@ -43,7 +43,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.brewery
+    db.Brewery
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => {
         console.log(dbModel);
