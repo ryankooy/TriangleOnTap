@@ -1,6 +1,7 @@
 const axios = require("axios");
+const db = require("../models");
 
-// Defining methods for the booksController
+// Defining methods for the breweriesController
 module.exports = {
     searchBreweries: function(req, res) {
         console.log("body", req.body.city);
@@ -18,4 +19,13 @@ module.exports = {
         })
         .catch(err => console.log(err));
     }
+    // searchArea: function(req, res) {
+    //     console.log("distance", req.body);
+    //     const radius = parseFloat(req.body);
+    //     const radians = radius / 3963.2;
+
+    //     db.Brewery.find({
+    //         location: { $geoWithin: { $centerSphere: [ [ -88, 30 ], radians.toFixed(2) ] } }
+    //     })
+    // }
 };
