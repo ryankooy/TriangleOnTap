@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
+import MapContainer from '../../components/Map';
 import Wrapper from "../../components/Wrapper";
 import NestedList from "../../components/List";
 import { Col, Container } from "../../components/Grid";
@@ -84,9 +85,11 @@ class Breweries extends Component {
 
       <Container>
           <Col>
-          <Wrapper>
-            Map
-          </Wrapper>
+            <Wrapper>
+              <Col size="md-3">
+                <MapContainer /> 
+              </Col>
+            </Wrapper>
           </Col>
           <Col>
           <Wrapper>
