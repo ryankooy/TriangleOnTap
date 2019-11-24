@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
+import MapContainer from '../../components/Map';
 import Wrapper from "../../components/Wrapper";
 import { Col, Container } from "../../components/Grid";
 import { Input, FormBtn } from "../../components/Form";
@@ -83,9 +84,11 @@ class Breweries extends Component {
 
       <Container>
           <Col>
-          <Wrapper>
-            Map
-          </Wrapper>
+            <Wrapper>
+              <Col size="md-3">
+                <MapContainer /> 
+              </Col>
+            </Wrapper>
           </Col>
           <Col>
           <Wrapper>
