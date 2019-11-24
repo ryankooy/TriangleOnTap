@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import DeleteBtn from "../../components/DeleteBtn";
-import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
 import MapContainer from '../../components/Map';
+import Wrapper from "../../components/Wrapper";
+import { Col, Container } from "../../components/Grid";
+import { Input, FormBtn } from "../../components/Form";
+import CardBtn from "../../components/CardBtn";
+import "./style.css";
 
 class Breweries extends Component {
   state = {
@@ -57,67 +56,105 @@ class Breweries extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-6">
-            <Jumbotron>
-              <h1>Breweries</h1>
-            </Jumbotron>
-            <Col size="md-8">
-              <Jumbotron>
-                <MapContainer /> 
-              </Jumbotron>
-            </Col>
+      <div style={{margin: 30, padding: 30}}>
+      <Container>
+          <Col>
+            <h1 align="center">Beer Search</h1>
+            <div align="center">
+              <CardBtn style={{margin: 10}}>Cary</CardBtn>
+              <CardBtn style={{margin: 10}}>Apex</CardBtn>
+              <CardBtn style={{margin: 10}}>Raleigh</CardBtn>
+              <CardBtn style={{margin: 10}}>Durham</CardBtn>
+            </div>
             <form>
-              <Input
-                value={this.state.name}
-                onChange={this.handleInputChange}
-                name="name"
-                placeholder="Name (required)"
-              />
-              <Input
-                value={this.state.city}
-                onChange={this.handleInputChange}
-                name="city"
-                placeholder="City (required)"
-              />
-              <TextArea
-                value={this.state.date}
-                onChange={this.handleInputChange}
-                name="date"
-                placeholder="Date (Optional)"
+              <Input 
+              value = {this.state.name}
+              onChange={this.handleInputChange}
+              name="text"
+              placeholder="Search town or brewery name here"
               />
               <FormBtn
                 disabled={!(this.state.name && this.state.city)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Brewery
+                onClick={this.handleFormSubmit}>
+                Search
               </FormBtn>
             </form>
           </Col>
-          <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Breweries On My List</h1>
-            </Jumbotron>
-            {this.state.breweries.length ? (
-              <List>
-                {this.state.breweries.map(brewery => (
-                  <ListItem key={brewery._id}>
-                    <Link to={"/breweries/" + brewery._id}>
-                      <strong>
-                        {brewery.name} by {brewery.city}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteBrewery(brewery._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
-        </Row>
       </Container>
+
+      <Container>
+          <Col>
+            <Wrapper>
+              <Col size="md-3">
+                <MapContainer /> 
+              </Col>
+            </Wrapper>
+          </Col>
+          <Col>
+          <Wrapper>
+            Lists
+          </Wrapper>
+          </Col>
+      </Container>
+      </div>
+
+
+      // <Container fluid>
+      //   <Row>
+      //     <Col size="md-6">
+      //       <Jumbotron>
+      //         <h1>Breweries</h1>
+      //       </Jumbotron>
+      //       <form>
+      //         <Input
+      //           value={this.state.name}
+      //           onChange={this.handleInputChange}
+      //           name="name"
+      //           placeholder="Name (required)"
+      //         />
+      //         <Input
+      //           value={this.state.city}
+      //           onChange={this.handleInputChange}
+      //           name="city"
+      //           placeholder="City (required)"
+      //         />
+      //         <TextArea
+      //           value={this.state.date}
+      //           onChange={this.handleInputChange}
+      //           name="date"
+      //           placeholder="Date (Optional)"
+      //         />
+      //         <FormBtn
+      //           disabled={!(this.state.name && this.state.city)}
+      //           onClick={this.handleFormSubmit}
+      //         >
+      //           Submit Brewery
+      //         </FormBtn>
+      //       </form>
+      //     </Col>
+      //     <Col size="md-6 sm-12">
+      //       <Jumbotron>
+      //         <h1>Breweries On My List</h1>
+      //       </Jumbotron>
+      //       {this.state.breweries.length ? (
+      //         <List>
+      //           {this.state.breweries.map(brewery => (
+      //             <ListItem key={brewery._id}>
+      //               <Link to={"/breweries/" + brewery._id}>
+      //                 <strong>
+      //                   {brewery.name} by {brewery.city}
+      //                 </strong>
+      //               </Link>
+      //               <DeleteBtn onClick={() => this.deleteBrewery(brewery._id)} />
+      //             </ListItem>
+      //           ))}
+      //         </List>
+      //       ) : (
+      //         <h3>No Results to Display</h3>
+      //       )}
+      //     </Col>
+      //   </Row>
+      // </Container>
     );
   }
 }
