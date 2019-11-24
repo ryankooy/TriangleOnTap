@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+import MapContainer from '../../components/Map';
 
 class Breweries extends Component {
   state = {
@@ -62,6 +63,11 @@ class Breweries extends Component {
             <Jumbotron>
               <h1>Breweries</h1>
             </Jumbotron>
+            <Col size="md-8">
+              <Jumbotron>
+                <MapContainer /> 
+              </Jumbotron>
+            </Col>
             <form>
               <Input
                 value={this.state.name}
