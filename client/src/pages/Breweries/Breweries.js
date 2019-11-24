@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import Wrapper from "../../components/Wrapper";
+import NestedList from "../../components/List";
 import { Col, Container } from "../../components/Grid";
 import { Input, FormBtn } from "../../components/Form";
 import CardBtn from "../../components/CardBtn";
@@ -89,7 +90,9 @@ class Breweries extends Component {
           </Col>
           <Col>
           <Wrapper>
-            Lists
+            <NestedList>
+
+            </NestedList>
           </Wrapper>
           </Col>
       </Container>
