@@ -1,7 +1,16 @@
 import React from "react";
+import Grid from '@material-ui/core/Grid';
 
-export const Container = ({ fluid, children }) => (
-  <div className={`container${fluid ? "-fluid" : ""}`}>
+export const Container = ({children}) => (
+  <Grid container>
     {children}
-  </div>
+  </Grid>
 );
+
+
+ 
+// export const Container = ({ fluid, children }) => (
+//   <div className={`container${fluid ? "-fluid" : ""}`}>
+//     {children}
+//   </div>
+// );
