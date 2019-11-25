@@ -17,6 +17,7 @@ class Breweries extends Component {
 
   componentDidMount() {
     this.loadBreweries();
+    console.log(this.state);
   }
 
   loadBreweries = () => {
@@ -43,6 +44,7 @@ class Breweries extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log(this.state);
     if (this.state.name && this.state.city) {
       API.saveBrewery({
         name: this.state.name,
