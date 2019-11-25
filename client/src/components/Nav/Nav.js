@@ -1,7 +1,12 @@
 import React, { Fragment } from "react";
-import { Link } from 'react-router-dom';
-import {AppBar, Toolbar, Typography, Button} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+import {AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+
+
+
+
 const Nav = (props) => {
   let greeting;
 
@@ -34,11 +39,39 @@ const Nav = (props) => {
   }));
   
   const classes = useStyles();
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleMenuClick = event => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  }
   
   return (
     <div className={classes.root}>
     <AppBar position="static">
       <Toolbar>
+       <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+        <MenuIcon 
+        aria-controls="simple-menu" 
+        aria-haspopup="true" 
+        onClick={handleMenuClick}
+        />
+        <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleMenuClose}
+        >
+        <MenuItem onClick={handleMenuClose}>My Favorite</MenuItem>
+        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      </Menu>
+      </IconButton>
         <Typography variant="h6" className={classes.title}>
           Triangle On Tap
         </Typography>
