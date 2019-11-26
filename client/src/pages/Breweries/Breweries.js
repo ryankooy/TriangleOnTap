@@ -6,6 +6,7 @@ import {NestedList} from "../../components/List";
 import { Col, Container } from "../../components/Grid";
 import { Input, FormBtn } from "../../components/Form";
 import CardBtn from "../../components/CardBtn";
+import BrewSearch from "../../components/BrewSearch";
 import "./style.css";
 
 class Breweries extends Component {
@@ -96,16 +97,21 @@ class Breweries extends Component {
 
       <Container>
           <Col>
-          <Wrapper>
-            <MapContainer /> 
-          </Wrapper>
+            <Wrapper>
+              <MapContainer /> 
+            </Wrapper>
           </Col>
           <Col>
-          <Wrapper>
-            <NestedList>
-              list
-            </NestedList>
+            <Wrapper>
+              <NestedList>
+                list
+              </NestedList>
             </Wrapper>
+          </Col>
+          <Col>
+            <FormBtn>
+              <BrewSearch />
+            </FormBtn>
           </Col>
       </Container>
       </div>
