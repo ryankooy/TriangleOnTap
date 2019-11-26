@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import MapContainer from '../../components/Map';
 import Wrapper from "../../components/Wrapper";
-import NestedList from "../../components/List";
+import {NestedList} from "../../components/List";
 import { Col, Container } from "../../components/Grid";
 import { Input, FormBtn } from "../../components/Form";
 import CardBtn from "../../components/CardBtn";
@@ -85,18 +85,16 @@ class Breweries extends Component {
 
       <Container>
           <Col>
-            <Wrapper>
-              <Col size="md-3">
-                <MapContainer /> 
-              </Col>
-            </Wrapper>
+          <Wrapper>
+            <MapContainer /> 
+          </Wrapper>
           </Col>
           <Col>
           <Wrapper>
             <NestedList>
-
+              list
             </NestedList>
-          </Wrapper>
+            </Wrapper>
           </Col>
       </Container>
       </div>
