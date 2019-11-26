@@ -58,7 +58,10 @@ class Breweries extends Component {
   }
 
   handleSave = () => {
-    API.saveBrewery()
+    API.saveBrewery({
+      name: this.state.name,
+      city: this.state.city
+    })
       .then(res => this.loadBreweries())
       .catch(err => console.log(err));
   }
