@@ -53,6 +53,18 @@ export class MapContainer extends Component {
             <h4>{this.state.selectedPlace.name}</h4>
           </div>
         </InfoWindow>
+        {/* <Circle
+          radius={1200}
+          center={this.selectedPlace}
+          onMouseover={() => console.log('mouseover')}
+          onClick={() => console.log('click')}
+          onMouseout={() => console.log('mouseout')}
+          strokeColor='transparent'
+          strokeOpacity={0}
+          strokeWeight={5}
+          fillColor='#FF0000'
+          fillOpacity={0.2}
+        /> */}
       </Map>
     );
   }

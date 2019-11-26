@@ -4,12 +4,13 @@ const db = require("../models");
 // Defining methods for the breweriesController
 module.exports = {
     searchBreweries: function(req, res) {
-        console.log("body", req.body.city);
-        axios.get("https://api.openbrewerydb.org/breweries/search?query=" + req.body.city)
+        console.log("body", req.body);
+        axios.get("https://api.openbrewerydb.org/breweries?by_city=" + req.body)
         .then(results => {
            const filtered = results.data.filter(
                 result =>
                 result.name &&
+                result.street &&
                 result.city &&
                 result.longitude &&
                 result.latitude

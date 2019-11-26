@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import MapContainer from '../../components/Map';
 import Wrapper from "../../components/Wrapper";
-import NestedList from "../../components/List";
+// import NestedList from "../../components/List";
 import { Col, Container } from "../../components/Grid";
 import { Input, FormBtn } from "../../components/Form";
 import CardBtn from "../../components/CardBtn";
@@ -11,9 +11,12 @@ import "./style.css";
 class Breweries extends Component {
   state = {
     breweries: [],
+    search: "",
     name: "",
+    street: "",
     city: "",
-    date: ""
+    latitude: "",
+    longitude: ""
   };
 
   componentDidMount() {
@@ -23,7 +26,7 @@ class Breweries extends Component {
   loadBreweries = () => {
     API.getBreweries()
       .then(res =>
-        this.setState({ breweries: res.data.breweries, name: "", city: "", date: "" })
+        this.setState({ breweries: res.data.breweries, name: "", street: "", city: "", latitude: "", longitude: "" })
       )
       .catch(err => console.log(err));
   };
@@ -44,16 +47,21 @@ class Breweries extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.name && this.state.city) {
-      API.saveBrewery({
-        name: this.state.name,
-        city: this.state.city,
-        date: this.state.date
+
+    API.searchBreweries({ city: this.state.search })
+      .then(res => {
+        console.log(res);
+        
+        this.loadBreweries();
       })
-        .then(res => this.loadBreweries())
-        .catch(err => console.log(err));
-    }
-  };
+      .catch(err => console.log(err));
+  }
+
+  handleSave = () => {
+    API.saveBrewery()
+      .then(res => this.loadBreweries())
+      .catch(err => console.log(err));
+  }
 
   render() {
     return (
@@ -69,13 +77,13 @@ class Breweries extends Component {
             </div>
             <form>
               <Input 
-              value = {this.state.name}
+              value={this.state.search}
               onChange={this.handleInputChange}
-              name="text"
+              name="search"
               placeholder="Search town or brewery name here"
               />
               <FormBtn
-                disabled={!(this.state.name && this.state.city)}
+                disabled={!(this.state.search)}
                 onClick={this.handleFormSubmit}>
                 Search
               </FormBtn>
@@ -93,9 +101,9 @@ class Breweries extends Component {
           </Col>
           <Col>
           <Wrapper>
-            <NestedList>
+            {/* <NestedList>
 
-            </NestedList>
+            </NestedList> */}
           </Wrapper>
           </Col>
       </Container>
