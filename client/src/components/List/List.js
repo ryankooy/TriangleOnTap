@@ -14,9 +14,10 @@ const useStyles = makeStyles(theme => ({
   nested: {
     paddingLeft: theme.spacing(4),
   },
+  
 }));
 
-const NestedList = (props) => {
+export const NestedList = (props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
@@ -34,18 +35,18 @@ const NestedList = (props) => {
         <ListItemText primary={props.children} />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem button className={classes.nested}>
-            <ListItemText primary={props.children} />
-          </ListItem>
-        </List>
-      </Collapse>
+    <Collapse in={open} timeout="auto" unmountOnExit>      
+    <List component="div" disablePadding>
+        <ListItem button className={classes.nested}>
+          <ListItemText primary={props.children} />
+        </ListItem>
+    </List>
+    </Collapse>
     </List>
   )
 };
 
-export default NestedList;
+
 
 // export const List = ({ children }) => {
 //   return (
