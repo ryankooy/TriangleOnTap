@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Marriott Bar",
+    "city": "Cary",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+          -78.89,
+          35.85
+      ]
+    }
+  },
+  {
+    "name": "Unknown",
+    "city": "Mammoth Lakes",
+    "location": {
+      "type" : "Point",
+      "coordinates" : [
+          -118.9,
+          37.61
+      ]
+    }
+  }
+]

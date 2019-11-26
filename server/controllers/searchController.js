@@ -10,6 +10,7 @@ module.exports = {
            const filtered = results.data.filter(
                 result =>
                 result.name &&
+                result.street &&
                 result.city &&
                 result.longitude &&
                 result.latitude
