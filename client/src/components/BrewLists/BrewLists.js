@@ -37,8 +37,8 @@ const BrewLists = (props) => {
           <ListItemText primary={brew.name} />
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>      
-      <List component="div" disablePadding>
+        <Collapse in={open} timeout="auto" unmountOnExit>      
+        <List component="div" disablePadding>
             <ListItem button className={classes.nested}>
             <ListItemText 
             primary="Contact Info" 

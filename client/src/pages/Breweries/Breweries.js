@@ -103,7 +103,7 @@ class Breweries extends Component {
           </Col>
 
           <Col>        
-          {/* <BrewLists />   */}
+          <BrewLists />  
       </Col>
           
       </Container>
