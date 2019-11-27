@@ -68,6 +68,54 @@ class Breweries extends Component {
       .catch(err => console.log(err));
   }
 
+  handleCary = event => {
+    event.preventDefault();
+    console.log("cary");
+    API.searchBreweries({ city: "Cary" })
+    .then(res => {
+      console.log(res.data);
+
+      this.loadBreweries();
+    })
+    .catch(err => console.log(err))
+  }
+
+  handleChapelHill = event => {
+    event.preventDefault();
+    console.log("chapel hill");
+    API.searchBreweries({ city: "Chapel Hill" })
+    .then(res => {
+      console.log(res.data);
+
+      this.loadBreweries();
+    })
+    .catch(err => console.log(err))
+  }
+
+  handleRaleigh = event => {
+    event.preventDefault();
+    console.log("raleigh");
+    API.searchBreweries({ city: "Raleigh" })
+    .then(res => {
+      console.log(res.data);
+
+      this.loadBreweries();
+    })
+    .catch(err => console.log(err))
+  }
+
+  handleDurham = event => {
+    event.preventDefault();
+    console.log("durham");
+    API.searchBreweries({ city: "Durham" })
+    .then(res => {
+      console.log(res.data);
+
+      this.loadBreweries();
+    })
+    .catch(err => console.log(err))
+  }
+
   render() {
     return (
       <div style={{margin: 30, padding: 30}}>
@@ -75,10 +123,10 @@ class Breweries extends Component {
           <Col>
             <h1 align="center">Beer Search</h1>
             <div align="center">
-              <CardBtn style={{margin: 10}}>Cary</CardBtn>
-              <CardBtn style={{margin: 10}}>Apex</CardBtn>
-              <CardBtn style={{margin: 10}}>Raleigh</CardBtn>
-              <CardBtn style={{margin: 10}}>Durham</CardBtn>
+              <CardBtn style={{margin: 10}} onClick={this.handleRaleigh}>Raleigh</CardBtn>
+              <CardBtn style={{margin: 10}} onClick={this.handleDurham}>Durham</CardBtn>
+              <CardBtn style={{margin: 10}} onClick={this.handleCary}>Cary</CardBtn>
+              <CardBtn style={{margin: 10}} onClick={this.handleChapelHill}>Chapel Hill</CardBtn>
             </div>
             <form>
               <Input 
@@ -110,9 +158,9 @@ class Breweries extends Component {
             </Wrapper>
           </Col>
           <Col>
-            <FormBtn>
+            {/* <FormBtn> */}
               <BrewSearch />
-            </FormBtn>
+            {/* </FormBtn> */}
           </Col>
       </Container>
       </div>
