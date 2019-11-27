@@ -20,5 +20,8 @@ export default {
   // Saves a book to the database
   saveBrewery: function(breweryData) {
     return axios.post("/api/breweries", breweryData);
+  },
+  saveCoordinates: function(cData) {
+    return axios.post("/api/breweries", cData);
   }
 };

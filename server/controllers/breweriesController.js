@@ -44,6 +44,18 @@ module.exports = {
       })
       .catch(err => res.status(422).json(err));
   },
+  createCoordinates: function(req, res) {
+    console.log(req.body);
+    db.Coordinates
+      .create(req.body)
+      // .then(dbBrewery => {
+      //   return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { breweries: dbBrewery._id } }, { new: true });
+      // })
+      .then((dbCoordinates) => {
+        res.json(dbCoordinates);
+      })
+      .catch(err => res.status(422).json(err));
+  },
   update: function(req, res) {
     db.Brewery
       .findOneAndUpdate({ _id: req.params.id }, req.body)

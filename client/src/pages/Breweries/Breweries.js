@@ -74,6 +74,15 @@ class Breweries extends Component {
     .then(res => {
       console.log(res.data);
 
+      for (let i = 0; i < res.data.length; i++) {
+        this.convertGeoJson(
+          res.data[i].name,
+          res.data[i].city,
+          res.data[i].latitude,
+          res.data[i].longitude,
+        );
+      }
+
       this.loadBreweries();
     })
     .catch(err => console.log(err))
@@ -85,6 +94,15 @@ class Breweries extends Component {
     API.searchBreweries({ city: "Chapel Hill" })
     .then(res => {
       console.log(res.data);
+
+      for (let i = 0; i < res.data.length; i++) {
+        this.convertGeoJson(
+          res.data[i].name,
+          res.data[i].city,
+          res.data[i].latitude,
+          res.data[i].longitude,
+        );
+      }
 
       this.loadBreweries();
     })
@@ -98,6 +116,15 @@ class Breweries extends Component {
     .then(res => {
       console.log(res.data);
 
+      for (let i = 0; i < res.data.length; i++) {
+        this.convertGeoJson(
+          res.data[i].name,
+          res.data[i].city,
+          res.data[i].latitude,
+          res.data[i].longitude,
+        );
+      }
+
       this.loadBreweries();
     })
     .catch(err => console.log(err))
@@ -110,9 +137,40 @@ class Breweries extends Component {
     .then(res => {
       console.log(res.data);
 
+      for (let i = 0; i < res.data.length; i++) {
+        this.convertGeoJson(
+          res.data[i].name,
+          res.data[i].city,
+          res.data[i].latitude,
+          res.data[i].longitude,
+        );
+      }
+
       this.loadBreweries();
     })
     .catch(err => console.log(err))
+  }
+
+  convertGeoJson = (brewery, town, lat, long) => {
+    // console.log(lat + " | " + long);
+
+    const geoJ = {
+      name: brewery,
+      city: town,
+      location: {
+          "type": "Point",
+          "coordinates": [
+              long,
+              lat
+          ]
+      }
+    }
+
+    console.log(geoJ);
+
+    // API.saveCoordinates(geoJ)
+    //   .then(res => console.log(res))
+    //   .catch(err => console.log(err));
   }
 
   render() {
