@@ -43,7 +43,7 @@ class Brewery extends PureComponent {
         { (Object.keys(brewery).length !== 0) ?
           <div>
             <address className="roman">
-              <div className="text-lg mb-2">s
+              <div className="text-lg mb-2">
                 <span className="font-bold">{name}</span>
                 <span> ({brewery_type})</span>
               </div>
