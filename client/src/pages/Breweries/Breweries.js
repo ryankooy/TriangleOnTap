@@ -22,6 +22,7 @@ class Breweries extends Component {
 
   componentDidMount() {
     this.loadBreweries();
+    console.log(this.state);
   }
 
   loadBreweries = () => {
