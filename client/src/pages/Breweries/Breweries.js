@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import MapContainer from '../../components/Map';
-// import BrewLists from '../../components/BrewLists';
+import BrewLists from '../../components/BrewLists';
 import { Col, Container } from "../../components/Grid";
 import { FormBtn } from "../../components/Form";
 import CardBtn from "../../components/CardBtn";
@@ -16,19 +16,23 @@ class Breweries extends Component {
     street: "",
     city: "",
     latitude: "",
-    longitude: ""
+    longitude: "",
+    phone: ""
   };
 
   componentDidMount() {
     this.loadBreweries();
-    console.log(this.state);
   }
 
   loadBreweries = () => {
     API.getBreweries()
-      .then(res =>
-        this.setState({ breweries: res.data.breweries, name: "", street: "", city: "", latitude: "", longitude: "" })
-      )
+      .then(res => {
+        console.log(res.data);
+        this.setState({ breweries: res.data })
+        res.data.forEach(element => {
+          this.convertGeoJson(element);
+        })
+      })
       .catch(err => console.log(err));
   };
 
@@ -151,17 +155,17 @@ class Breweries extends Component {
     .catch(err => console.log(err))
   }
 
-  convertGeoJson = (brewery, town, lat, long) => {
+  convertGeoJson = brewery => {
     // console.log(lat + " | " + long);
 
     const geoJ = {
-      name: brewery,
-      city: town,
+      name: brewery.name,
+      city: brewery.city,
       location: {
           "type": "Point",
           "coordinates": [
-              long,
-              lat
+              parseFloat(brewery.longitude),
+              parseFloat(brewery.latitude)
           ]
       }
     }
@@ -200,7 +204,7 @@ class Breweries extends Component {
           </Col>
 
           <Col>        
-          {/* <BrewLists />   */}
+          <BrewLists breweries={this.state.breweries}/>  
       </Col>
           
       </Container>
