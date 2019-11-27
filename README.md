@@ -14,14 +14,14 @@ Build status of continuous integration i.e. travis, appveyor etc. Ex. -
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/akashnimare/foco?branch=master&svg=true)](https://ci.appveyor.com/project/akashnimare/foco/branch/master)
 
  
-## Screenshots
-![](images/TriangleOnTap_Logo_Transparent)
+## Logo
+![TriangleOnTap Logo_Transparent](https://user-images.githubusercontent.com/50469825/69683479-faef4880-1082-11ea-9f1d-ccf5cb5b99fb.png)
 
 ## Technologies Used
-React - (https://reactjs.org/)
-Material-UI - (https://material-ui.com/)
-Google Map React
-React AutoSuggest
+* **React** - [https://reactjs.org/]
+* **Material-UI** - [https://material-ui.com/]
+* **Google Maps React** - [https://www.npmjs.com/package/google-maps-react]
+* **React AutoSuggest** - [https://react-autosuggest.js.org/]
 
 
 ## Features
@@ -47,11 +47,11 @@ Sign in and create a profile! Afterwards, search for the Triangle's hidden brewe
 If you would like to contribute to the project please reach out via GitHub!
 
 ## Credits
-Miran Jang - (https://github.com/mjfonke)
-Ryan Kooy - (https://github.com/ryankooy)
-Jason Whited - (https://github.com/jsnwhited) 
-Frank Zachary - (https://github.com/fzachary)
-Matthew Parks - (https://github.com/MPA120)
+* **Miran Jang** - [https://github.com/mjfonke]
+* **Ryan Kooy** - [https://github.com/ryankooy]
+* **Jason Whited** - [https://github.com/jsnwhited] 
+* **Frank Zachary** - [https://github.com/fzachary]
+* **Matthew Parks** - [https://github.com/MPA120]
 
 Thank you to the Coding Bootcamp at the University of North Carolina at Chapel Hill!
 
