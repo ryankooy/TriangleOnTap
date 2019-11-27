@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem, Collapse, ListItemText, Typography} from "@material-ui/core";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -32,11 +31,10 @@ const BrewLists = (props) => {
         className={classes.root}
       >
         {props.breweries.map(brew => {
-           <div>
-        <ListItem button onClick={handleClick}>
-          <ListItemText primary={brew.name} />
-          {open ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
+          <div>
+            <ListItemText primary={brew.name} />
+              {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItemText>
       <Collapse in={open} timeout="auto" unmountOnExit>      
       <List component="div" disablePadding>
             <ListItem button className={classes.nested}>
