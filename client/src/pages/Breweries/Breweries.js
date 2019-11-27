@@ -109,9 +109,7 @@ class Breweries extends Component {
             </Wrapper>
           </Col>
           <Col>
-            <FormBtn>
-              <BrewSearch />
-            </FormBtn>
+            <BrewSearch />
           </Col>
       </Container>
       </div>

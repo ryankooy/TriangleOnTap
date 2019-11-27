@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { ListItem } from "@material-ui/core";
 import PropTypes from 'prop-types';
+import { Card } from '@material-ui/core';
 // import API from "../../utils/API";
 
 class Brewery extends PureComponent {
@@ -10,21 +10,16 @@ class Brewery extends PureComponent {
       name,
       street,
       city,
-      state,
-      postal_code,
-      country,
-      longitude,
-      latitude,
       brewery_type
     } = brewery
     let bgColor;
     let address;
 
-    if (city !== '' && state !== '') {
+    if (city !== '') {
       if (street === '')
-        address = encodeURIComponent(`${name}, ${city}, ${state}`)
+        address = encodeURIComponent(`${name}, ${city}`)
       else {
-        address = encodeURIComponent(`${name}, ${street}, ${city}, ${state}`)
+        address = encodeURIComponent(`${name}, ${street}, ${city}`)
       }
     } else {
       address = null;
@@ -44,20 +39,17 @@ class Brewery extends PureComponent {
     }
 
     return (
-      <div className={`p-4 mb-2 rounded ${bgColor}`}>
+      <Card className={`p-4 mb-2 rounded ${bgColor}`}>
         { (Object.keys(brewery).length !== 0) ?
-          <ListItem>
+          <div>
             <address className="roman">
-              <div className="text-lg mb-2">
+              <div className="text-lg mb-2">s
                 <span className="font-bold">{name}</span>
                 <span> ({brewery_type})</span>
               </div>
               { street !== '' ? <div>{street}</div> : '' }
               <div>
                 { city !== '' ? <span>{city}, </span> : '' }
-                { state !== '' ? <span>{state}, </span> : '' }
-                { postal_code !== '' ? <span>{postal_code}, </span> : '' }
-                { country !== '' ? <span>{country} </span> : '' }
               </div>
             </address>
             {/* { address ?
@@ -73,11 +65,11 @@ class Brewery extends PureComponent {
               </div>
               : ''
             } */}
-          </ListItem>
+          </div>
           :
           <span>No brewery selected.</span>
         }
-      </div>
+      </Card>
     )
   }
 }
