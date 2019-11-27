@@ -6,6 +6,13 @@ const mapStyles = {
   height: '50%'
 };
 
+// const map = new Map(document.getElementById('map'), {
+//   zoom: 4,
+//   center: {lat: -28, lng: 137}
+// });
+// map.data.loadGeoJson(
+//     'https://storage.googleapis.com/mapsdevsite/json/google.json');
+
 export class MapContainer extends Component {
   state = {
     showingInfoWindow: false,  //Hides or the shows the infoWindow

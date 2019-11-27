@@ -4,7 +4,8 @@ const breweriesController = require("../../controllers/breweriesController");
 // Matches with "/api/breweries"
 router.route("/")
   .get(breweriesController.findAll)
-  .post(breweriesController.create);
+  .post(breweriesController.create)
+  .post(breweriesController.createCoordinates);
 
 // Matches with "/api/breweries/:id"
 router
