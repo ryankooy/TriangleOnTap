@@ -31,6 +31,8 @@ module.exports = {
     }
   },
   create: function(req, res) {
+    console.log(req.body);
+    console.log(req.user._id);
     db.Brewery
       .create(req.body)
       .then(dbBrewery => {

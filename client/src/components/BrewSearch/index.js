@@ -3,16 +3,21 @@ import axios from 'axios';
 import { debounce } from 'throttle-debounce';
 import Autosuggest from 'react-autosuggest';
 import Brewery from './brewery';
+import { Button } from "@material-ui/core";
 
 const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST || "https://api.openbrewerydb.org";
 
-const getSuggestionValue = suggestion => suggestion.name;
+function getSuggestionValue(suggestion) {
+  return suggestion.name;
+};
 
-const renderSuggestion = suggestion => (
-  <div className="text-lg p-4">
-    {suggestion.name}
-  </div>
-);
+function renderSuggestion(suggestion) {
+  return (
+      <Button className="text-lg p-4">
+        {suggestion.name}
+      </Button>
+  );
+};
 
 class BrewerySearch extends Component {
   constructor() {
@@ -32,7 +37,7 @@ class BrewerySearch extends Component {
 
     axios.get(`${API_SERVER_HOST}/breweries/autocomplete`, { params: params })
       .then(res => {
-        this.setState({ suggestions: res.data })
+        this.setState({ suggestions: res.data });
       })
       .catch(error => {
         this.setState({ suggestions: [] })
@@ -55,7 +60,7 @@ class BrewerySearch extends Component {
     });
   };
 
-  onSuggestionSelected = (_event, { suggestion }) => {
+  onSuggestionSelected = (event, { suggestion }) => {
     const brewery = suggestion;
 
     axios.get(`${API_SERVER_HOST}/breweries/${brewery.id}`)

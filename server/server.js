@@ -12,9 +12,12 @@ const MongoStore = require('connect-mongo')(session);
 const dbConnection = require('./db'); // loads our connection to the mongo database
 const routes = require('./routes');
 const passport = require('./passport');
+const mongoose = require('mongoose');
 const app = express();
 
-const PORT = process.env.PORT || 3007;
+const PORT = process.env.PORT || 3001;
+
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 // Middlewares
 app.use(morgan('dev'));

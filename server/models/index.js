@@ -1,4 +1,4 @@
 module.exports = {
-  brewery: require("./brewery"),
+  Brewery: require("./brewery"),
   User: require("./user")
 };
