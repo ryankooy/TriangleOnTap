@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import MapContainer from '../../components/Map';
-import Wrapper from "../../components/Wrapper";
-import {NestedList} from "../../components/List";
+import BrewLists from '../../components/BrewLists'
 import { Col, Container } from "../../components/Grid";
 import { Input, FormBtn } from "../../components/Form";
 import CardBtn from "../../components/CardBtn";
@@ -68,6 +67,15 @@ class Breweries extends Component {
       .catch(err => console.log(err));
   }
 
+  // handleCaryBtn = event => {
+  //   event.preventDefault();
+  //   API.searchBreweries({ city: "cary"})
+  //   .then(res => {
+  //     console.log(res);
+  //     this.loadBreweries()
+  //   })
+  // }
+
   render() {
     return (
       <div style={{margin: 30, padding: 30}}>
@@ -80,38 +88,24 @@ class Breweries extends Component {
               <CardBtn style={{margin: 10}}>Raleigh</CardBtn>
               <CardBtn style={{margin: 10}}>Durham</CardBtn>
             </div>
-            <form>
-              <Input 
-              value={this.state.search}
-              onChange={this.handleInputChange}
-              name="search"
-              placeholder="Search town or brewery name here"
-              />
-              <FormBtn
-                disabled={!(this.state.search)}
-                onClick={this.handleFormSubmit}>
-                Search
-              </FormBtn>
-            </form>
+            <Col>
+            <FormBtn>
+              <BrewSearch />
+            </FormBtn>
+          </Col>
           </Col>
       </Container>
 
       <Container>
-          <Col>
-            <Wrapper>
-              <MapContainer /> 
-            </Wrapper>
+          <Col>            
+              <MapContainer />             
+
           </Col>
-          <Col>
-            <Wrapper>
-              <NestedList>
-                list
-              </NestedList>
-            </Wrapper>
-          </Col>
-          <Col>
-            <BrewSearch />
-          </Col>
+
+          <Col>        
+          {/* <BrewLists />   */}
+      </Col>
+          
       </Container>
       </div>
 

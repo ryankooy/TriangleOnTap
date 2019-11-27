@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import { Container, Row, Col } from '../../components/Grid';
+import { Container, Col } from '../../components/Grid';
 import { Cards } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 import AUTH from '../../utils/AUTH';
@@ -53,7 +53,6 @@ class SignupForm extends Component {
     
 		return (
       <Container>
-        <Row>
           <Col size="md-3"></Col>
           <Col size="md-6">
             <Cards title="Sign Up, you'll be done in no time.">
@@ -99,7 +98,6 @@ class SignupForm extends Component {
             </Cards>
           </Col>
           <Col size="md-3"></Col>
-        </Row>
       </Container>
 		)
 	}

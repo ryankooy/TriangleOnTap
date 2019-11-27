@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import { Container, Row, Col } from '../../components/Grid';
+import { Container, Col } from '../../components/Grid';
 import { Cards } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 
@@ -37,9 +37,8 @@ class LoginForm extends Component {
 		} else {
 			return (
 				<Container>
-          <Row>
-            <Col size="md-3"></Col>
-            <Col size="md-6">
+            <Col></Col>
+            <Col>
 
               <Cards title="Welcome to Triangle on Tap!">
 
@@ -64,7 +63,7 @@ class LoginForm extends Component {
               </Cards>
             </Col>
             <Col size="md-3"></Col>
-          </Row>
+
 				</Container>
 			)
 		}
