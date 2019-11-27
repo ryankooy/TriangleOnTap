@@ -17,8 +17,8 @@ const app = express();
 
 const PORT = process.env.PORT || 3007;
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/triangleontap';
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+// const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/triangleontap';
+// mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Middlewares
 app.use(morgan('dev'));
