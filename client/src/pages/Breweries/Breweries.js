@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import MapContainer from '../../components/Map';
-import Wrapper from "../../components/Wrapper";
-import {NestedList} from "../../components/List";
+// import BrewLists from '../../components/BrewLists';
 import { Col, Container } from "../../components/Grid";
-import { Input, FormBtn } from "../../components/Form";
+import { FormBtn } from "../../components/Form";
 import CardBtn from "../../components/CardBtn";
 import BrewSearch from "../../components/BrewSearch";
 import "./style.css";
@@ -128,38 +127,24 @@ class Breweries extends Component {
               <CardBtn style={{margin: 10}} onClick={this.handleCary}>Cary</CardBtn>
               <CardBtn style={{margin: 10}} onClick={this.handleChapelHill}>Chapel Hill</CardBtn>
             </div>
-            <form>
-              <Input 
-              value={this.state.search}
-              onChange={this.handleInputChange}
-              name="search"
-              placeholder="Search town or brewery name here"
-              />
-              <FormBtn
-                disabled={!(this.state.search)}
-                onClick={this.handleFormSubmit}>
-                Search
-              </FormBtn>
-            </form>
+            <Col>
+            <FormBtn>
+              <BrewSearch />
+            </FormBtn>
+          </Col>
           </Col>
       </Container>
 
       <Container>
-          <Col>
-            <Wrapper>
-              <MapContainer /> 
-            </Wrapper>
+          <Col>            
+              <MapContainer />             
+
           </Col>
-          <Col>
-            <Wrapper>
-              <NestedList>
-                list
-              </NestedList>
-            </Wrapper>
-          </Col>
-          <Col>
-            <BrewSearch />
-          </Col>
+
+          <Col>        
+          {/* <BrewLists />   */}
+      </Col>
+          
       </Container>
       </div>
 
