@@ -14,7 +14,7 @@
     "react-autosuggest": "^9.4.3",
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.0.14",
+    "react-scripts": "3.0.0",
     "throttle-debounce": "^2.1.0"
   },
   "scripts": {
