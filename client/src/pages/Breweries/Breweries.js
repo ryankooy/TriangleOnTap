@@ -29,7 +29,7 @@ class Breweries extends Component {
       .then(res => {
         console.log(res.data);
         this.setState({ breweries: res.data })
-        res.data.forEach(element => {
+        res.data.map(element => {
           this.convertGeoJson(element);
         })
       })
@@ -77,19 +77,14 @@ class Breweries extends Component {
     API.searchBreweries({ city: "Cary" })
     .then(res => {
       console.log(res.data);
-
-      for (let i = 0; i < res.data.length; i++) {
-        this.convertGeoJson(
-          res.data[i].name,
-          res.data[i].city,
-          res.data[i].latitude,
-          res.data[i].longitude,
-        );
-      }
-
-      this.loadBreweries();
+      this.setState({
+        breweries: res.data
+      });
+      res.data.map(element => 
+        this.convertGeoJson(element)
+      );
     })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
   }
 
   handleChapelHill = event => {
@@ -98,17 +93,12 @@ class Breweries extends Component {
     API.searchBreweries({ city: "Chapel Hill" })
     .then(res => {
       console.log(res.data);
-
-      for (let i = 0; i < res.data.length; i++) {
-        this.convertGeoJson(
-          res.data[i].name,
-          res.data[i].city,
-          res.data[i].latitude,
-          res.data[i].longitude,
-        );
-      }
-
-      this.loadBreweries();
+      this.setState({
+        breweries: res.data
+      });
+      res.data.map(element =>
+        this.convertGeoJson(element)
+      );
     })
     .catch(err => console.log(err))
   }
@@ -119,19 +109,14 @@ class Breweries extends Component {
     API.searchBreweries({ city: "Raleigh" })
     .then(res => {
       console.log(res.data);
-
-      for (let i = 0; i < res.data.length; i++) {
-        this.convertGeoJson(
-          res.data[i].name,
-          res.data[i].city,
-          res.data[i].latitude,
-          res.data[i].longitude,
-        );
-      }
-
-      this.loadBreweries();
+      this.setState({
+        breweries: res.data
+      });
+      res.data.map(element => 
+        this.convertGeoJson(element)
+      );
     })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }
 
   handleDurham = event => {
@@ -140,19 +125,14 @@ class Breweries extends Component {
     API.searchBreweries({ city: "Durham" })
     .then(res => {
       console.log(res.data);
-
-      for (let i = 0; i < res.data.length; i++) {
-        this.convertGeoJson(
-          res.data[i].name,
-          res.data[i].city,
-          res.data[i].latitude,
-          res.data[i].longitude,
-        );
-      }
-
-      this.loadBreweries();
+      this.setState({
+        breweries: res.data
+      });
+      res.data.map(element => 
+        this.convertGeoJson(element)
+      );
     })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }
 
   convertGeoJson = brewery => {
@@ -178,6 +158,7 @@ class Breweries extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div style={{margin: 30, padding: 30}}>
       <Container>

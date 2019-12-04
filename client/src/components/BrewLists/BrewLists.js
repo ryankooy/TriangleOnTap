@@ -30,41 +30,40 @@ const BrewLists = (props) => {
         aria-labelledby="nested-list-subheader"
         className={classes.root}
       >
-        {breweries.map(brew => (
-          <div>
-            <ListItemText primary={brew.name} />
-              {open ? <ExpandLess /> : <ExpandMore />}
-            <ListItemText />
-      <Collapse in={open} timeout="auto" unmountOnExit>      
-      <List component="div" disablePadding>
-            <ListItem button className={classes.nested}>
-            <ListItemText
-            primary="Contact Info" 
-            secondary={
-                <React.Fragment>
-                    <Typography
-                    component="span"
-                    variant="body2"
-                    >
-                    {`Address: ${brew.street}, ${brew.city}, ${brew.state}`}
-                    <br></br>
-                    {`Website: ${brew.website_url}`}
-                    <br></br>
-                    {"Phone: " + brew.phone.match(/\d{3}(?=\d{2,3})|\d+/g).join("-")}
-                    </Typography>
-                </React.Fragment>
-            }
-      
-               />
-             </ListItem>
+        {props.breweries.map(brew =>
 
-         </List>
-         </Collapse>
-          </div>
-         
-      ))}
-      </List>
-  )
+          <div>
+            <ListItemText primary={brew.name}
+              {...open ? <ExpandLess /> : <ExpandMore />}
+            />
+            <Collapse in={open} timeout="auto" unmountOnExit>      
+            <List component="div" disablePadding>
+            <ListItem button className={classes.nested}>
+              <ListItemText
+                primary="Contact Info" 
+                secondary={
+                  <React.Fragment>
+                      <Typography
+                      component="span"
+                      variant="body2"
+                      >
+                      {`Address: ${brew.street}, ${brew.city}, ${brew.state}`}
+                      <br></br>
+                      {`Website: ${brew.website_url}`}
+                      <br></br>
+                      {"Phone: " + brew.phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")}
+                      </Typography>
+                  </React.Fragment>
+                } />
+            </ListItem>
+            </List>
+            </Collapse>
+            </div>
+        )}
+
+        </List>
+        
+  );
 };
 
 export default BrewLists;

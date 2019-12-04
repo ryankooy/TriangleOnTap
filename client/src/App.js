@@ -22,7 +22,7 @@ class App extends Component {
   
 	componentDidMount() {
 		AUTH.getUser().then(response => {
-			// console.log(response.data);
+			console.log(response.data);
 			if (!!response.data.user) {
 				this.setState({
 					loggedIn: true,
@@ -41,7 +41,7 @@ class App extends Component {
     event.preventDefault();
     
 		AUTH.logout().then(response => {
-			// console.log(response.data);
+			console.log(response.data);
 			if (response.status === 200) {
 				this.setState({
 					loggedIn: false,
@@ -53,7 +53,7 @@ class App extends Component {
 
 	login = (username, password) => {
 		AUTH.login(username, password).then(response => {
-      // console.log(response);
+      console.log(response);
       if (response.status === 200) {
         // update the state
         this.setState({
