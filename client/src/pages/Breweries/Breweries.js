@@ -185,7 +185,7 @@ class Breweries extends Component {
           </Col>
 
           <Col>        
-          {/* <BrewLists breweries={this.state.breweries}/>   */}
+          <BrewLists />  
       </Col>
           
       </Container>
