@@ -30,7 +30,7 @@ const BrewLists = (props) => {
         aria-labelledby="nested-list-subheader"
         className={classes.root}
       >
-        {props.breweries.map(brew => (
+        {breweries.map(brew => (
           <div>
             <ListItemText primary={brew.name} />
               {open ? <ExpandLess /> : <ExpandMore />}
