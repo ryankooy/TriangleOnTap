@@ -20,21 +20,22 @@ class Breweries extends Component {
     phone: ""
   };
 
-  componentDidMount() {
-    this.loadBreweries();
-  }
+  // componentDidMount() {
+  //   this.loadBreweries();
+  // }
 
-  loadBreweries = () => {
-    API.getBreweries()
-      .then(res => {
-        console.log(res.data);
-        this.setState({ breweries: res.data })
-        res.data.forEach(element => {
-          this.convertGeoJson(element);
-        })
-      })
-      .catch(err => console.log(err));
-  };
+  // loadBreweries = () => {
+  //   API.getBreweries()
+  //     .then(res => {
+  //       const brew = res.data;
+  //       console.log(brew);
+  //       this.setState({ breweries: brew });
+  //       // brew.map(element => (
+  //       //   this.convertGeoJson(element)
+  //       // ))
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
   deleteBrewery = id => {
     API.deleteBrewery(id)
@@ -65,9 +66,12 @@ class Breweries extends Component {
   handleSave = () => {
     API.saveBrewery({
       name: this.state.name,
-      city: this.state.city
+      street: this.state.street,
+      city: this.state.city,
+      latitude: this.state.latitude,
+      longitude: this.state.longitude
     })
-      .then(res => this.loadBreweries())
+      .then(res => res.json())
       .catch(err => console.log(err));
   }
 
@@ -87,7 +91,7 @@ class Breweries extends Component {
         );
       }
 
-      this.loadBreweries();
+      // this.loadBreweries();
     })
     .catch(err => console.log(err))
   }
@@ -98,6 +102,7 @@ class Breweries extends Component {
     API.searchBreweries({ city: "Chapel Hill" })
     .then(res => {
       console.log(res.data);
+      this.setState({ breweries: res.data});
 
       for (let i = 0; i < res.data.length; i++) {
         this.convertGeoJson(
@@ -106,9 +111,11 @@ class Breweries extends Component {
           res.data[i].latitude,
           res.data[i].longitude,
         );
+        // this.setState({ name: res.data[i].name, city: res.data[i].city, latitude: res.data[i].latitude, longitude: res.data[i].longitude });
+        // console.log(this.state.breweries);
       }
-
-      this.loadBreweries();
+      console.log(this.state.breweries);
+      // this.loadBreweries();
     })
     .catch(err => console.log(err))
   }
@@ -159,9 +166,9 @@ class Breweries extends Component {
     // console.log(lat + " | " + long);
 
     const geoJ = {
-      name: brewery.name,
-      city: brewery.city,
-      location: {
+      "name": brewery.name,
+      "city": brewery.city,
+      "location": {
           "type": "Point",
           "coordinates": [
               parseFloat(brewery.longitude),
@@ -169,7 +176,6 @@ class Breweries extends Component {
           ]
       }
     }
-
     console.log(geoJ);
 
     // API.saveCoordinates(geoJ)
@@ -198,15 +204,12 @@ class Breweries extends Component {
       </Container>
 
       <Container>
-          <Col>            
-              <MapContainer />             
-
-          </Col>
-
-          <Col>        
-          <BrewLists breweries={this.state.breweries}/>  
-      </Col>
-          
+        <Col>            
+          <MapContainer />             
+        </Col>
+        <Col>        
+          <BrewLists breweries={this.state.breweries}/>
+        </Col>
       </Container>
       </div>
 

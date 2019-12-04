@@ -22,7 +22,7 @@ class App extends Component {
 	componentDidMount() {
 		AUTH.getUser().then(response => {
 			// console.log(response.data);
-			if (!!response.data.user) {
+			if (!response.data.user) {
 				this.setState({
 					loggedIn: true,
 					user: response.data.user

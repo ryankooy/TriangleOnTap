@@ -17,31 +17,31 @@ const useStyles = makeStyles(theme => ({
 
 const BrewLists = (props) => {
   const classes = useStyles();
-  const [open, setOpen] = useState(true);
-  const [breweries, setBreweries] = useState([]);
+  const [open] = useState(true);
+  const [breweries] = useState([]);
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+  // const handleClick = () => {
+  //   setOpen(!open);
+  // };
 
   return (      
-        <List
-        component="nav"
-        aria-labelledby="nested-list-subheader"
-        className={classes.root}
+      <List
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+      className={classes.root}
       >
-        {props.breweries.map(brew => (
+        {breweries.map(brew => (
           <div>
             <ListItemText primary={brew.name} />
               {open ? <ExpandLess /> : <ExpandMore />}
             <ListItemText />
-      <Collapse in={open} timeout="auto" unmountOnExit>      
-      <List component="div" disablePadding>
-            <ListItem button className={classes.nested}>
-            <ListItemText
-            primary="Contact Info" 
-            secondary={
-                <React.Fragment>
+            <Collapse in={open} timeout="auto" unmountOnExit>      
+            <List component="div" disablePadding>
+              <ListItem button className={classes.nested}>
+                <ListItemText
+                primary="Contact Info" 
+                secondary={
+                  <React.Fragment>
                     <Typography
                     component="span"
                     variant="body2"
@@ -52,16 +52,13 @@ const BrewLists = (props) => {
                     <br></br>
                     {"Phone: " + brew.phone.match(/\d{3}(?=\d{2,3})|\d+/g).join("-")}
                     </Typography>
-                </React.Fragment>
-            }
-      
-               />
-             </ListItem>
-
-         </List>
-         </Collapse>
+                  </React.Fragment>
+                }
+                />
+              </ListItem>
+            </List>
+            </Collapse>
           </div>
-         
       ))}
       </List>
   )
