@@ -31,6 +31,7 @@ const BrewLists = (props) => {
         className={classes.root}
       >
         {props.breweries.map(brew =>
+
           <div>
             <ListItemText primary={brew.name}
               {...open ? <ExpandLess /> : <ExpandMore />}
