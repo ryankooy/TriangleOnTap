@@ -6,16 +6,12 @@ Whenever we travel to new cities we want to know the top attractions we should s
 a definitive reference guide to the best brewery experiences the region has to offer. No more searching through pages of reviews to find results that
 are tailored to your interests. Triangle OnTap makes finding the location of your next night out in the Triangle easy!
 
-
-## Build status
-Build status of continuous integration i.e. travis, appveyor etc. Ex. - 
-
-[![Build Status](https://travis-ci.org/akashnimare/foco.svg?branch=master)](https://travis-ci.org/akashnimare/foco)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/akashnimare/foco?branch=master&svg=true)](https://ci.appveyor.com/project/akashnimare/foco/branch/master)
-
- 
 ## Logo
 ![TriangleOnTap Logo_Transparent](https://user-images.githubusercontent.com/50469825/69683479-faef4880-1082-11ea-9f1d-ccf5cb5b99fb.png)
+
+## Screenshots
+
+To be added. 
 
 ## Technologies Used
 * **React** - [https://reactjs.org/]
@@ -29,12 +25,6 @@ Search for, and save, the best local breweries in the Triangle. Show off your pa
 
 Our interactive map will allow you to quickly see how far away each brewery is from your location. 
 
-
-## Code Example
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
-
-## Installation
-Provide step by step series of examples and explanations about how to get a development env running.
 
 ## API References
 OpenBreweryDB (https://www.openbrewerydb.org/)
@@ -56,4 +46,4 @@ If you would like to contribute to the project please reach out via GitHub!
 Thank you to the Coding Bootcamp at the University of North Carolina at Chapel Hill!
 
 ## License
-Copyright GROUP 1
+Copyright Matthew Parks, Jason Whited, Ryan Kooy, Frank Zachary, and Miran Jang
