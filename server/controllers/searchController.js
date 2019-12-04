@@ -79,7 +79,7 @@ module.exports = {
             .catch(err => res.status(422).json(err))
         }
     },
-    searchChapelHill: function(req, res) {
+    searchRaleigh: function(req, res) {
         if(req.user) {
             axios.get("https://api.openbrewerydb.org/breweries/search?query=raleigh")
             .then(results => {

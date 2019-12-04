@@ -30,7 +30,40 @@ const BrewLists = (props) => {
         aria-labelledby="nested-list-subheader"
         className={classes.root}
       >
-        {props.breweries.map(brew =>
+        {props.breweries.map(brew => {
+           <div>
+        <ListItem button onClick={handleClick}>
+          <ListItemText primary={brew.name} />
+          {open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={open} timeout="auto" unmountOnExit>      
+        <List component="div" disablePadding>
+            <ListItem button className={classes.nested}>
+            <ListItemText 
+            primary="Contact Info" 
+            secondary={
+                <React.Fragment>
+                    <Typography
+                    component="span"
+                    variant="body2"
+                    >
+                    {`Address: ${brew.street}, ${brew.city}, ${brew.state} ${brew.postal_code}`}
+                    <br></br>
+                    {`Website: ${brew.website_url}`}
+                    <br></br>
+                    {`Phone: ${brew.phone.match(/\d{3}(?=\d{2,3})|\d+/g).join("-")}`}
+                    </Typography>
+                </React.Fragment>
+               }
+               />
+             </ListItem>
+
+         </List>
+         </Collapse>
+          </div>
+         
+            })}
+      </List>
 
           <div>
             <ListItemText primary={brew.name}
