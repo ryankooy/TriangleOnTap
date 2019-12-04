@@ -7,6 +7,7 @@ import Breweries from './pages/Breweries';
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
+import Favorites from './pages/Favorites/Favorites';
 
 class App extends Component {
   
@@ -21,7 +22,7 @@ class App extends Component {
   
 	componentDidMount() {
 		AUTH.getUser().then(response => {
-			// console.log(response.data);
+			console.log(response.data);
 			if (!!response.data.user) {
 				this.setState({
 					loggedIn: true,
@@ -40,7 +41,7 @@ class App extends Component {
     event.preventDefault();
     
 		AUTH.logout().then(response => {
-			// console.log(response.data);
+			console.log(response.data);
 			if (response.status === 200) {
 				this.setState({
 					loggedIn: false,
@@ -52,7 +53,7 @@ class App extends Component {
 
 	login = (username, password) => {
 		AUTH.login(username, password).then(response => {
-      // console.log(response);
+      console.log(response);
       if (response.status === 200) {
         // update the state
         this.setState({
@@ -74,6 +75,7 @@ class App extends Component {
                 <Route exact path="/" component={() => <Breweries user={this.state.user}/>} />
 				<Route exact path="/breweries" component={() => <Breweries user={this.state.user}/>} />
                 <Route exact path="/breweries/:id" component={Detail} />
+				<Route exact path="/favorites" component={() => <Favorites user={this.state.user}/>} />
                 <Route component={NoMatch} />
               </Switch>
             </div>
