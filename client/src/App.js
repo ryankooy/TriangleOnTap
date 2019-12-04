@@ -5,6 +5,7 @@ import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
 import Breweries from './pages/Breweries';
 import Detail from "./pages/Detail";
+import MyProfile from "./pages/Auth/MyProfile";
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
 
@@ -74,6 +75,7 @@ class App extends Component {
                 <Route exact path="/" component={() => <Breweries user={this.state.user}/>} />
 				<Route exact path="/breweries" component={() => <Breweries user={this.state.user}/>} />
                 <Route exact path="/breweries/:id" component={Detail} />
+				<Route exact path="/myprofile" component={() => <MyProfile user={this.state.user}/>} />
                 <Route component={NoMatch} />
               </Switch>
             </div>
