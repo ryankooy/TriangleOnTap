@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Container, Col } from '../../components/Grid';
 import { Cards } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 import AUTH from '../../utils/AUTH';
-import API from '../../utils/API';
 
 class MyProfile extends Component {
 
@@ -14,8 +13,8 @@ class MyProfile extends Component {
 		this.state = {
     firstName: this.props.user.firstName,
     lastName: this.props.user.lastName,
-    username: this.props.user.username,
-    password: this.props.user.password
+    username: this.props.user.username
+    // password: this.props.user.password
 		};
   }
 
@@ -47,6 +46,7 @@ class MyProfile extends Component {
     }).then(response => {
       // console.log(response);
       this.loadProfile()
+      console.log(AUTH.update())
       window.location.reload();
     });
   }
@@ -87,7 +87,7 @@ class MyProfile extends Component {
                   onChange={this.handleChange}
                   
                 />
-                <label htmlFor="password">Password: </label>
+                {/* <label htmlFor="password">Password: </label>
                 <Input
                   type="password"
                   name="password"
@@ -100,7 +100,7 @@ class MyProfile extends Component {
                   name="confirmPassword"
                   value={this.state.confirmPassword}
                   onChange={this.handleChange}
-                />
+                /> */}
                 <FormBtn onClick={this.handleSubmit}>Save</FormBtn>
               </form>
             </Cards>

@@ -42,12 +42,11 @@ module.exports = {
   },
   update: function(req, res) {
     db.User
-    .findOneAndUpdate({_id: req.params.id }, 
+    .findOneAndReplace({_id: req.params.id }, 
       {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        username: req.body.userName,
-        password: req.body.password
+        username: req.body.userName
       })
     .then(dbUser => res.json(dbUser))
     .catch(err => res.status(422).json(err));

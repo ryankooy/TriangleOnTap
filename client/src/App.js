@@ -76,11 +76,8 @@ class App extends Component {
                 <Route exact path="/" component={() => <Breweries user={this.state.user}/>} />
 				<Route exact path="/breweries" component={() => <Breweries user={this.state.user}/>} />
                 <Route exact path="/breweries/:id" component={Detail} />
-<<<<<<< HEAD
 				<Route exact path="/myprofile" component={() => <MyProfile user={this.state.user}/>} />
-=======
 				<Route exact path="/favorites" component={() => <Favorites user={this.state.user}/>} />
->>>>>>> cd1b0b3c8faa9fa7cf73fd9ce9abd782b82b0ea0
                 <Route component={NoMatch} />
               </Switch>
             </div>
