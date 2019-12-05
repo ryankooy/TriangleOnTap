@@ -66,7 +66,7 @@ const Nav = (props) => {
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
         >
-        <MenuItem onClick={handleMenuClose}><Link to = "/favorite">My Favorite</Link></MenuItem>
+        <MenuItem onClick={handleMenuClose}><Link to = "/favorites">My Favorite</Link></MenuItem>
         <MenuItem onClick={handleMenuClose}><Link to = "/myprofile">My Profile</Link></MenuItem>
         <MenuItem onClick={handleMenuClose}><Link to="#" className="logout" onClick={props.logout}>Logout</Link></MenuItem>
       </Menu>

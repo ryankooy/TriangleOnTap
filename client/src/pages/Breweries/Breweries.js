@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import MapContainer from '../../components/Map';
 import BrewLists from '../../components/BrewLists';
 import { Col, Container } from "../../components/Grid";
-import { FormBtn } from "../../components/Form";
+import { FormBtn, Input } from "../../components/Form";
 import CardBtn from "../../components/CardBtn";
 import BrewSearch from "../../components/BrewSearch";
 import "./style.css";
@@ -171,9 +171,9 @@ class Breweries extends Component {
               <CardBtn style={{margin: 10}} onClick={this.handleChapelHill}>Chapel Hill</CardBtn>
             </div>
             <Col>
-            <FormBtn>
+            <div>
               <BrewSearch />
-            </FormBtn>
+            </div>
           </Col>
           </Col>
       </Container>
@@ -185,7 +185,7 @@ class Breweries extends Component {
           </Col>
 
           <Col>        
-          <BrewLists />  
+          {/* <BrewLists />   */}
       </Col>
           
       </Container>
