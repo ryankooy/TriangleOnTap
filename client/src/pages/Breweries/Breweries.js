@@ -24,20 +24,6 @@ class Breweries extends Component {
   //   this.loadBreweries();
   // }
 
-<<<<<<< HEAD
-  // loadBreweries = () => {
-  //   API.getBreweries()
-  //     .then(res => {
-  //       const brew = res.data;
-  //       console.log(brew);
-  //       this.setState({ breweries: brew });
-  //       // brew.map(element => (
-  //       //   this.convertGeoJson(element)
-  //       // ))
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-=======
   loadBreweries = () => {
     API.getBreweries()
       .then(res => {
@@ -49,7 +35,6 @@ class Breweries extends Component {
       })
       .catch(err => console.log(err));
   };
->>>>>>> cd1b0b3c8faa9fa7cf73fd9ce9abd782b82b0ea0
 
   deleteBrewery = id => {
     API.deleteBrewery(id)
@@ -95,26 +80,12 @@ class Breweries extends Component {
     API.searchBreweries({ city: "Cary" })
     .then(res => {
       console.log(res.data);
-<<<<<<< HEAD
-
-      for (let i = 0; i < res.data.length; i++) {
-        this.convertGeoJson(
-          res.data[i].name,
-          res.data[i].city,
-          res.data[i].latitude,
-          res.data[i].longitude,
-        );
-      }
-
-      // this.loadBreweries();
-=======
       this.setState({
         breweries: res.data
       });
       res.data.map(element => 
         this.convertGeoJson(element)
       );
->>>>>>> cd1b0b3c8faa9fa7cf73fd9ce9abd782b82b0ea0
     })
       .catch(err => console.log(err))
   }
@@ -125,29 +96,12 @@ class Breweries extends Component {
     API.searchBreweries({ city: "Chapel Hill" })
     .then(res => {
       console.log(res.data);
-<<<<<<< HEAD
-      this.setState({ breweries: res.data});
-
-      for (let i = 0; i < res.data.length; i++) {
-        this.convertGeoJson(
-          res.data[i].name,
-          res.data[i].city,
-          res.data[i].latitude,
-          res.data[i].longitude,
-        );
-        // this.setState({ name: res.data[i].name, city: res.data[i].city, latitude: res.data[i].latitude, longitude: res.data[i].longitude });
-        // console.log(this.state.breweries);
-      }
-      console.log(this.state.breweries);
-      // this.loadBreweries();
-=======
       this.setState({
         breweries: res.data
       });
       res.data.map(element =>
         this.convertGeoJson(element)
       );
->>>>>>> cd1b0b3c8faa9fa7cf73fd9ce9abd782b82b0ea0
     })
     .catch(err => console.log(err))
   }

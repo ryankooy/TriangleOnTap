@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import API from '../../utils/API';
 
 const mapStyles = {
@@ -8,45 +8,56 @@ const mapStyles = {
 };
 
 export class MapContainer extends Component {
-  // constructor(props) {
-  //   super(props);
+  constructor(props) {
+    super(props);
 
-  //   this.state = {
-  //     stores: [{lat: 47.49855629475769, lng: -122.14184416996333},
-  //             {latitude: 47.359423, longitude: -122.021071},
-  //             {latitude: 47.2052192687988, longitude: -121.988426208496},
-  //             {latitude: 47.6307081, longitude: -122.1434325},
-  //             {latitude: 47.3084488, longitude: -122.2140121},
-  //             {latitude: 47.5524695, longitude: -122.0425407}]
-  //   }
-  // }
-
-  state = {
-    latitude: "",
-    longitude: "",
-    stores: []
-  //   showingInfoWindow: false,  //Hides or the shows the infoWindow
-  //   activeMarker: {},          //Shows the active marker upon click
-  //   selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
-  };
-
-  handleCary = () => {
-    console.log("cary");
-    API.searchBreweries({ city: "Cary" })
-    .then(res => {
-      console.log(res.data);
-      let arr = [];
-
-      res.data.map(co => {
-        arr.push(co.latitude, co.longitude);
-      })
-
-      this.setState({ stores: arr });
-    })
-    .catch(err => console.log(err))
+    this.state = {
+      stores: [{lat: 35, lng: -78},
+              {latitude: 35, longitude: -122.021071}]
+    }
   }
 
+  state = {
+    showingInfoWindow: false,  //Hides or the shows the infoWindow
+    activeMarker: {},          //Shows the active marker upon click
+    selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
+  };
+
+  // handleCary = () => {
+  //   console.log("cary");
+  //   API.searchBreweries({ city: "Cary" })
+  //   .then(res => {
+  //     console.log(res.data[0].latitude);
+
+  //     this.setState({
+  //       stores: res.data
+  //     });
+  //     // this.state.stores.map(element => 
+  //     //   console.log(element)
+  //     //   return element
+      
+  //     // );
+  //     // let arr = [];
+
+  //     // res.data.map(co => {
+  //     //   arr.push(co.latitude, co.longitude);
+  //     // })
+
+  //     // this.setState({ stores: arr });
+  //   })
+  //   .catch(err => console.log(err))
+  // }
+
   displayMarkers = () => {
+    // API.getBreweries()
+    // .then(res => {
+    //   this.setState({ stores: res.data })
+    //   // res.data.map(element => {
+    //   //   this.convertGeoJson(element);
+    //   // })
+    // })
+    // .catch(err => console.log(err));
+
     return this.state.stores.map((store, index) => {
       return <Marker key={index} id={index} position={{
        lat: store.latitude,
@@ -56,21 +67,21 @@ export class MapContainer extends Component {
     })
   }
 
-  // onMarkerClick = (props, marker, e) =>
-  // this.setState({
-  //   selectedPlace: props,
-  //   activeMarker: marker,
-  //   showingInfoWindow: true
-  // });
+  onMarkerClick = (props, marker, e) =>
+  this.setState({
+    selectedPlace: props,
+    activeMarker: marker,
+    showingInfoWindow: true
+  });
 
-  // onClose = props => {
-  //   if (this.state.showingInfoWindow) {
-  //     this.setState({
-  //       showingInfoWindow: false,
-  //       activeMarker: null
-  //     });
-  //   }
-  // };
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
 
   render() {
     return (
@@ -83,21 +94,20 @@ export class MapContainer extends Component {
          lng: -78.89
         }}
       > 
-        {this.handleCary()}
         {this.displayMarkers()}
         {/* <Marker
           onClick={this.onMarkerClick}
           name={'Cary, NC'}
-        />
+        /> */}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
-        > */}
+        >
           {/* <div>
             <h4>{this.state.selectedPlace.name}</h4>
           </div> */}
-        {/* </InfoWindow> */}
+        </InfoWindow>
         {/* <Circle
           radius={1200}
           center={this.selectedPlace}
