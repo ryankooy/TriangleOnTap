@@ -61,19 +61,26 @@ class Breweries extends Component {
         this.loadBreweries();
       })
       .catch(err => console.log(err));
-  }
+  };
 
-  handleSave = () => {
+  handleSaveClick = event => {
+    event.preventDefault();
+    console.log
+    const selectedButton = event.target;
+    const updatedElement = selectedButton != "button" ? selectedButton.closest("button") : selectedButton
+    
+    const selectedBreweryId = parseInt(updatedElement.getAttribute("data-id"));
+    console.log(selectedBreweryId, updatedElement);
+    
     API.saveBrewery({
-      name: this.state.name,
-      street: this.state.street,
-      city: this.state.city,
-      latitude: this.state.latitude,
-      longitude: this.state.longitude
+      name: this.state.breweries[selectedBreweryId].name,
+      street: this.state.breweries[selectedBreweryId].street,
+      city: this.state.breweries[selectedBreweryId].city,
+      state: this.state.breweries[selectedBreweryId].state,
+      phone: this.state.breweries[selectedBreweryId].phone,
+      website_url: this.state.breweries[selectedBreweryId].website_url,
     })
-      .then(res => res.json())
-      .catch(err => console.log(err));
-  }
+  };
 
   handleCary = event => {
     event.preventDefault();
@@ -183,69 +190,70 @@ class Breweries extends Component {
           </Col>
 
           <Col>        
-          {/* <BrewLists />   */}
+          <BrewLists breweries={this.state.breweries} 
+                     onClick={this.handleSaveClick} />
       </Col>
           
       </Container>
       </div>
 
 
-      // <Container fluid>
-      //   <Row>
-      //     <Col size="md-6">
-      //       <Jumbotron>
-      //         <h1>Breweries</h1>
-      //       </Jumbotron>
-      //       <form>
-      //         <Input
-      //           value={this.state.name}
-      //           onChange={this.handleInputChange}
-      //           name="name"
-      //           placeholder="Name (required)"
-      //         />
-      //         <Input
-      //           value={this.state.city}
-      //           onChange={this.handleInputChange}
-      //           name="city"
-      //           placeholder="City (required)"
-      //         />
-      //         <TextArea
-      //           value={this.state.date}
-      //           onChange={this.handleInputChange}
-      //           name="date"
-      //           placeholder="Date (Optional)"
-      //         />
-      //         <FormBtn
-      //           disabled={!(this.state.name && this.state.city)}
-      //           onClick={this.handleFormSubmit}
-      //         >
-      //           Submit Brewery
-      //         </FormBtn>
-      //       </form>
-      //     </Col>
-      //     <Col size="md-6 sm-12">
-      //       <Jumbotron>
-      //         <h1>Breweries On My List</h1>
-      //       </Jumbotron>
-      //       {this.state.breweries.length ? (
-      //         <List>
-      //           {this.state.breweries.map(brewery => (
-      //             <ListItem key={brewery._id}>
-      //               <Link to={"/breweries/" + brewery._id}>
-      //                 <strong>
-      //                   {brewery.name} by {brewery.city}
-      //                 </strong>
-      //               </Link>
-      //               <DeleteBtn onClick={() => this.deleteBrewery(brewery._id)} />
-      //             </ListItem>
-      //           ))}
-      //         </List>
-      //       ) : (
-      //         <h3>No Results to Display</h3>
-      //       )}
-      //     </Col>
-      //   </Row>
-      // </Container>
+      // {/* // <Container fluid>
+      // //   <Row>
+      // //     <Col size="md-6">
+      // //       <Jumbotron>
+      // //         <h1>Breweries</h1>
+      // //       </Jumbotron>
+      // //       <form>
+      // //         <Input
+      // //           value={this.state.name}
+      // //           onChange={this.handleInputChange}
+      // //           name="name"
+      // //           placeholder="Name (required)"
+      // //         />
+      // //         <Input
+      // //           value={this.state.city}
+      // //           onChange={this.handleInputChange}
+      // //           name="city"
+      // //           placeholder="City (required)"
+      // //         />
+      // //         <TextArea
+      // //           value={this.state.date}
+      // //           onChange={this.handleInputChange}
+      // //           name="date"
+      // //           placeholder="Date (Optional)"
+      // //         />
+      // //         <FormBtn
+      // //           disabled={!(this.state.name && this.state.city)}
+      // //           onClick={this.handleFormSubmit}
+      // //         >
+      // //           Submit Brewery
+      // //         </FormBtn>
+      // //       </form>
+      // //     </Col>
+      // //     <Col size="md-6 sm-12">
+      // //       <Jumbotron>
+      // //         <h1>Breweries On My List</h1>
+      // //       </Jumbotron>
+      // //       {this.state.breweries.length ? (
+      // //         <List>
+      // //           {this.state.breweries.map(brewery => (
+      // //             <ListItem key={brewery._id}>
+      // //               <Link to={"/breweries/" + brewery._id}>
+      // //                 <strong>
+      // //                   {brewery.name} by {brewery.city}
+      // //                 </strong>
+      // //               </Link>
+      // //               <DeleteBtn onClick={() => this.deleteBrewery(brewery._id)} />
+      // //             </ListItem>
+      // //           ))}
+      // //         </List>
+      // //       ) : (
+      // //         <h3>No Results to Display</h3>
+      // //       )}
+      // //     </Col>
+      // //   </Row>
+      // // </Container> */}
     );
   }
 }

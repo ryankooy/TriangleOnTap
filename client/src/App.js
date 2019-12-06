@@ -68,28 +68,28 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-        { this.state.loggedIn && (
-          <div>
-            <Nav user={this.state.user} logout={this.logout}/>
-            <div className="main-view">
-              <Switch>
-                <Route exact path="/" component={() => <Breweries user={this.state.user}/>} />
-				<Route exact path="/breweries" component={() => <Breweries user={this.state.user}/>} />
-                <Route exact path="/breweries/:id" component={Detail} />
-				<Route exact path="/myprofile" component={() => <MyProfile user={this.state.user}/>} />
-				<Route exact path="/favorites" component={() => <Favorites user={this.state.user}/>} />
-                <Route component={NoMatch} />
-              </Switch>
-            </div>
-          </div>
-        )}
-        { !this.state.loggedIn && (
-          <div className="auth-wrapper" style={{paddingTop:40}}>
-            <Route exact path="/" component={() => <LoginForm login={this.login}/>} />
-            <Route exact path="/breweries" component={() => <LoginForm user={this.login}/>} />
-            <Route exact path="/signup" component={SignupForm} />
-          </div>
-        )}
+				{ this.state.loggedIn && (
+				<div>
+					<Nav user={this.state.user} logout={this.logout}/>
+					<div className="main-view">
+					<Switch>
+						<Route exact path="/" component={() => <Breweries user={this.state.user}/>} />
+						<Route exact path="/breweries" component={() => <Breweries user={this.state.user}/>} />
+						<Route exact path="/breweries/:id" component={Detail} />
+						<Route exact path="/myprofile" component={() => <MyProfile user={this.state.user}/>} />
+						<Route exact path="/favorites" component={() => <Favorites user={this.state.user}/>} />
+						<Route component={NoMatch} />
+					</Switch>
+					</div>
+				</div>
+				)}
+				{ !this.state.loggedIn && (
+				<div className="auth-wrapper" style={{paddingTop:40}}>
+					<Route exact path="/" component={() => <LoginForm login={this.login}/>} />
+					<Route exact path="/breweries" component={() => <LoginForm user={this.login}/>} />
+					<Route exact path="/signup" component={SignupForm} />
+				</div>
+				)}
 			</div>
 		)
 	}

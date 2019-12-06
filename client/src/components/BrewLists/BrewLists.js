@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { List, ListItem, Collapse, ListItemText, Typography} from "@material-ui/core";
+import { List, ListItem, Collapse, ListItemText, Typography } from "@material-ui/core";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
+import SaveBtn from '../BrewLists/SaveBtn';
+import API from '../../utils/API';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,14 +32,14 @@ const BrewLists = (props) => {
       aria-labelledby="nested-list-subheader"
       className={classes.root}
       >
-        {props.breweries.map(brew =>
+        {props.breweries.map((brew, index) =>
           <div>
             <ListItemText primary={brew.name}
               {...open ? <ExpandLess /> : <ExpandMore />}
             />
             <Collapse in={open} timeout="auto" unmountOnExit>      
             <List component="div" disablePadding>
-            <ListItem button className={classes.nested}>
+            <ListItem button className={classes.nested} >
               <ListItemText
                 primary="Contact Info" 
                 secondary={
@@ -54,6 +56,8 @@ const BrewLists = (props) => {
                       </Typography>
                   </React.Fragment>
                 } />
+                <SaveBtn onClick={props.onClick}
+                          dataId={index}/>
             </ListItem>
             </List>
             </Collapse>

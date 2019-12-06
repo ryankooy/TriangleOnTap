@@ -3,9 +3,11 @@ const db = require("../models");
 // Defining methods for the userController
 module.exports = {
   getUser: (req, res, next) => {
-    // console.log(req.user);
     if (req.user) {
-      return res.json({ user: req.user });
+      db.User.findOne({_id: req.user._id}).then(user => {
+        console.log(user);
+        return res.json({ user });
+      });
     } else {
       return res.json({ user: null });
     }
@@ -41,12 +43,13 @@ module.exports = {
     }
   },
   update: function(req, res) {
+    console.log(req.params.id);
     db.User
-    .findOneAndReplace({_id: req.params.id }, 
+    .findOneAndUpdate({_id: req.params.id }, 
       {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        username: req.body.userName
+        username: req.body.username
       })
     .then(dbUser => res.json(dbUser))
     .catch(err => res.status(422).json(err));
