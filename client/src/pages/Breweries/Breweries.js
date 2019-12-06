@@ -65,7 +65,6 @@ class Breweries extends Component {
 
   handleSaveClick = event => {
     event.preventDefault();
-    console.log
     const selectedButton = event.target;
     const updatedElement = selectedButton != "button" ? selectedButton.closest("button") : selectedButton
     
