@@ -11,22 +11,33 @@ class MyProfile extends Component {
     super(props);
     
 		this.state = {
-    firstName: this.props.user.firstName,
-    lastName: this.props.user.lastName,
-    username: this.props.user.username
-    // password: this.props.user.password
+      id: this.props.user._id,
+      firstName: this.props.user.firstName,
+      lastName: this.props.user.lastName,
+      username: this.props.user.username
+      // password: this.props.user.password
 		};
   }
 
-  // componentDidMount () {
-  //   this.loadProfile();
-  // }
+  componentDidMount () {
+    console.log(this.state);
+    if(!this.props.id) {
+      this.loadProfile();
+    }
+  }
 
   loadProfile = () => {
     AUTH.getUser()
-    .then(res => 
-      this.setState({ firstName: res.data.user.firstName, lastName: "", username: "", password: ""}))
-    .catch(err => console.log(err));
+    .then(res => {
+      console.log('res:', res);
+      this.setState({
+        id: res.data.user._id,
+        firstName: res.data.user.firstName,
+        lastName: res.data.user.lastName,
+        username: res.data.user.username,
+        // password: ""
+      });
+    }).catch(err => console.log(err));
   }
   
 	handleChange = (event) => {
@@ -39,17 +50,16 @@ class MyProfile extends Component {
 		event.preventDefault();
     // TODO - validate!
     if (this.state.firstName && this.state.lastName && this.state.username) {
-		AUTH.update({
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      username: this.state.username
-    }).then(response => {
-      // console.log(response);
-      this.loadProfile()
-      console.log(AUTH.update())
-      window.location.reload();
-    });
-  }
+      const profileData = {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        username: this.state.username
+      };
+      AUTH.update(this.state.id, profileData).then(response => {
+        // this.loadProfile();
+        console.log(response);
+      });
+    }
   }
   
 	render() {
