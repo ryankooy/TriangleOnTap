@@ -17,7 +17,7 @@ export default {
   signup: function(userData) {
     return axios.post('/auth/signup', userData);
   },
-  update: function(userData) {
-    return axios.post('/auth/myprofile', userData);
+  update: function(id, userData) {
+    return axios.post(`/auth/myprofile/${id}`, userData);
   }
 };
