@@ -56,45 +56,48 @@ class SignupForm extends Component {
           <Col size="md-3"></Col>
           <Col size="md-6">
             <Cards title="Sign Up, you'll be done in no time.">
-              <form style={{marginTop: 10}}>
-                <label htmlFor="username">First name: </label>
                 <Input
                   type="text"
                   name="firstName"
                   value={this.state.firstName}
                   onChange={this.handleChange}
+                  label="First Name"
+                  variant="outlined"
                 />
-                <label htmlFor="username">Last name: </label>
                 <Input
                   type="text"
                   name="lastName"
                   value={this.state.lastName}
                   onChange={this.handleChange}
+                  label="Last Name"
+                  variant="outlined"
                 />
-                <label htmlFor="username">Username: </label>
                 <Input
                   type="text"
                   name="username"
                   value={this.state.username}
                   onChange={this.handleChange}
+                  label="username"
+                  variant="outlined"
                 />
-                <label htmlFor="password">Password: </label>
                 <Input
                   type="password"
                   name="password"
                   value={this.state.password}
                   onChange={this.handleChange}
+                  label="Password"
+                  variant="outlined"
                 />
-                <label htmlFor="confirmPassword">Confirm Password: </label>
                 <Input
                   type="password"
                   name="confirmPassword"
                   value={this.state.confirmPassword}
                   onChange={this.handleChange}
+                  label="Confirm Password"
+                  variant="outlined"
                 />
                 <Link to="/">Login</Link>
                 <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
-              </form>
             </Cards>
           </Col>
           <Col size="md-3"></Col>
