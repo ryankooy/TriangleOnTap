@@ -66,13 +66,13 @@ const Nav = (props) => {
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
         >
-        <MenuItem onClick={handleMenuClose}>My Favorite</MenuItem>
-        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+        <MenuItem onClick={handleMenuClose}><Link to = "/favorites">My Favorite</Link></MenuItem>
+        <MenuItem onClick={handleMenuClose}><Link to = "/myprofile">My Profile</Link></MenuItem>
+        <MenuItem onClick={handleMenuClose}><Link to="#" className="logout" onClick={props.logout}>Logout</Link></MenuItem>
       </Menu>
       </IconButton>
         <Typography variant="h6" className={classes.title}>
-          Triangle On Tap
+          <Link to = "/">Triangle On Tap</Link>
         </Typography>
         <Typography className={classes.menuButton}>
         {greeting}

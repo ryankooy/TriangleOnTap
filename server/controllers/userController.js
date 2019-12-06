@@ -40,6 +40,18 @@ module.exports = {
       return res.json({ msg: 'no user to log out!' });
     }
   },
+  update: function(req, res) {
+    db.User
+    .findOneAndReplace({_id: req.params.id }, 
+      {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.userName
+      })
+    .then(dbUser => res.json(dbUser))
+    .catch(err => res.status(422).json(err));
+    
+  },
   auth: function(req, res, next) {
 		// console.log(req.body);
 		next();

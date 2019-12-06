@@ -16,5 +16,8 @@ export default {
   // New user registration
   signup: function(userData) {
     return axios.post('/auth/signup', userData);
+  },
+  update: function(userData) {
+    return axios.post('/auth/myprofile', userData);
   }
 };
