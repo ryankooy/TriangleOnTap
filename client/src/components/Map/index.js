@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
-import { data } from '../../pages/Breweries';
 
 const mapStyles = {
   width: '40%',
