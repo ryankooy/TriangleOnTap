@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import MapContainer from '../../components/Map';
 import BrewLists from '../../components/BrewLists';
@@ -153,10 +154,6 @@ class Breweries extends Component {
       }
     }
     console.log(geoJ);
-
-    // API.saveCoordinates(geoJ)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err));
   }
 
   render() {
@@ -182,8 +179,7 @@ class Breweries extends Component {
 
       <Container>
           <Col>            
-              <MapContainer />             
-
+            <MapContainer />            
           </Col>
 
           <Col>        
