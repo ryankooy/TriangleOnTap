@@ -1,11 +1,14 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Card } from '@material-ui/core';
+import { Card, Paper } from '@material-ui/core';
 // import API from "../../utils/API";
 
-class Brewery extends PureComponent {
-  render() {
-    const { brewery } = this.props;
+function Brewery(props) {
+// class Brewery extends PureComponent {
+  // render() {
+    // const { brewery } = this.props;
+    const { brewery } = props;
+
     const {
       name,
       street,
@@ -29,16 +32,20 @@ class Brewery extends PureComponent {
       case 'micro':
       case 'regional':
       case 'large':
-        bgColor = 'bg-green text-white'
+        // Changed text color to "dark"
+        bgColor = 'bg-green text-dark'
         break
       case 'brewpub':
-        bgColor = 'bg-orange text-white'
+        // Changed text color to "dark"
+        bgColor = 'bg-orange text-dark'
         break
       default:
         bgColor = 'bg-grey-light text-grey'
     }
 
     return (
+      // Wrapped in a "div" tag
+      // <Paper>
       <Card className={`p-4 mb-2 rounded ${bgColor}`}>
         { (Object.keys(brewery).length !== 0) ?
           <div>
@@ -70,9 +77,10 @@ class Brewery extends PureComponent {
           <span>No brewery selected.</span>
         }
       </Card>
+      // </Paper>
     )
   }
-}
+// }
 
 Brewery.propTypes = {
   brewery: PropTypes.object.isRequired

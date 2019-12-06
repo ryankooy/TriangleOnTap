@@ -3,7 +3,7 @@ import axios from 'axios';
 import { debounce } from 'throttle-debounce';
 import Autosuggest from 'react-autosuggest';
 import Brewery from './brewery';
-import { Button } from "@material-ui/core";
+import { Button } from "@material-ui/core/button";
 
 const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST || "https://api.openbrewerydb.org";
 
@@ -13,9 +13,10 @@ function getSuggestionValue(suggestion) {
 
 function renderSuggestion(suggestion) {
   return (
-      <Button className="text-lg p-4">
+      // Changed from "Button" to "div"
+      <div className="text-lg p-4">
         {suggestion.name}
-      </Button>
+      </div>
   );
 };
 

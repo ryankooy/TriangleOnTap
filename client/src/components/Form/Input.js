@@ -6,15 +6,15 @@ import TextField from "@material-ui/core/TextField";
 
 export const Input = props => (
   <form>
-  <TextField 
-  id="outlined-multiline-flexible"
-  fullWidth
-  {...props}
-  margin="normal"
-  rows="6"
-  variant="outlined"
-  sm={6}
-  />
+      <TextField 
+      id="standard-basic"
+      fullWidth
+      {...props}
+      margin="normal"
+      rows="6"
+      // variant="outlined"
+      sm={6}
+      />
   </form>
   // <div className="form-group">
   //   <input className="form-control" {...props} />
