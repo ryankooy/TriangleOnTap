@@ -72,29 +72,30 @@ class MyProfile extends Component {
           <Col size="md-3"></Col>
           <Col size="md-6">
             <Cards title="Edit your profile">
-              <form style={{marginTop: 10}}>
-                <label htmlFor="username">First name: </label>
+              {/* <form style={{marginTop: 10}}> */}
                 <Input
                   type="text"
                   name="firstName"
                   value={this.state.firstName}
                   onChange={this.handleChange}
-                  
+                  label="First Name"
+                  variant="outlined"
                 />
-                <label htmlFor="username">Last name: </label>
                 <Input
                   type="text"
                   name="lastName"
                   value={this.state.lastName}
                   onChange={this.handleChange}
-                  
+                  label="Last Name"
+                  variant="outlined"
                 />
-                <label htmlFor="username">Username: </label>
                 <Input
                   type="text"
                   name="username"
                   value={this.state.username}
                   onChange={this.handleChange}
+                  label="Username"
+                  variant="outlined"
                   
                 />
                 {/* <label htmlFor="password">Password: </label>
@@ -112,7 +113,7 @@ class MyProfile extends Component {
                   onChange={this.handleChange}
                 /> */}
                 <FormBtn onClick={this.handleSubmit}>Save</FormBtn>
-              </form>
+              {/* </form> */}
             </Cards>
           </Col>
           <Col size="md-3"></Col>

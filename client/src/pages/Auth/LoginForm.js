@@ -36,13 +36,12 @@ class LoginForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
-				<Container>
+			<Container>
             <Col></Col>
             <Col>
 
               <Cards title="Welcome to Triangle on Tap!">
 
-                <form style={{marginTop: 10}}>
                   <label htmlFor="username">Username: </label>
                   <Input
                     type="text"
@@ -59,12 +58,11 @@ class LoginForm extends Component {
                   />
                   <Link to="/signup">Register</Link>
                   <FormBtn onClick={this.handleSubmit}>Login</FormBtn>
-                </form>
               </Cards>
             </Col>
             <Col size="md-3"></Col>
 
-				</Container>
+		</Container>
 			)
 		}
 	}
