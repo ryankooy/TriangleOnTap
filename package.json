@@ -8,12 +8,12 @@
     "start:prod": "node server/server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "install": "cd client && yarn install",
-    "build": "cd client && npm run build",
+    "install": "cd client && npm install",
+    "build": "cd client --ignore-engines && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "engines": {
-    "node": "8.9.4",
+    "node": "10.16.3",
     "npm": "5.6.x",
     "yarn": "1.4.0"
   },
