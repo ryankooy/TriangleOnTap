@@ -19,16 +19,15 @@ class Breweries extends Component {
     phone: ""
   };
 
-  // componentDidMount() {
-  //   this.loadBreweries();
-  // }
+  componentDidMount() {
+    this.loadBreweries();
+  }
 
   loadBreweries = () => {
     API.getBreweries()
       .then(res => {
-        console.log(res.data);
-        this.setState({ breweries: res.data })
-        res.data.map(element => {
+        this.setState({ breweries: res.data.breweries })
+        res.data.breweries.map(element => {
           this.convertGeoJson(element);
         })
       })
@@ -76,6 +75,8 @@ class Breweries extends Component {
       state: this.state.breweries[selectedBreweryId].state,
       phone: this.state.breweries[selectedBreweryId].phone,
       website_url: this.state.breweries[selectedBreweryId].website_url,
+      latitude: parseFloat(this.state.breweries[selectedBreweryId].latitude),
+      longitude: parseFloat(this.state.breweries[selectedBreweryId].longitude)
     })
   };
 
@@ -89,7 +90,16 @@ class Breweries extends Component {
         breweries: res.data
       });
       res.data.map(element => 
-        this.convertGeoJson(element)
+        API.saveBrewery({ 
+          name: element.name,
+          street: element.street,
+          city: element.city,
+          state: element.state,
+          phone: element.phone,
+          website_url: element.website_url,
+          latitude: element.latitude,
+          longitude: element.longitude
+        })
       );
     })
       .catch(err => console.log(err))
