@@ -88,6 +88,8 @@ class App extends Component {
 					<Route exact path="/" component={() => <LoginForm login={this.login}/>} />
 					<Route exact path="/breweries" component={() => <LoginForm user={this.login}/>} />
 					<Route exact path="/signup" component={SignupForm} />
+					<Route exact path="/myprofile" component={() => <LoginForm user={this.login} />} />
+					<Route exact path="/favorites" component={() => <LoginForm user={this.login} />} />
 				</div>
 				)}
 			</div>
