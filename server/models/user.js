@@ -13,9 +13,8 @@ const userSchema = new Schema({
     	{
       		// Store ObjectIds in the array
       		type: Schema.Types.ObjectId,
-	  		// The ObjectIds will refer to the ids in the Book model
-	  		// WILL NEED TO UPDATE THE REF FIELD ONCE WE SET UP THE BREWERY MODEL   
-      		ref: "Brewery"
+	  		// The ObjectIds will refer to the ids in the Brewery model 
+      		ref: 'Brewery'
     	}
   	]
 });
@@ -46,4 +45,5 @@ const User = mongoose.model('User', userSchema);
 User.hashPassword = function(pwd) {
 	return bcrypt.hashSync(pwd, 10);
 };
+
 module.exports = User;

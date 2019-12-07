@@ -4,15 +4,16 @@ const db = require("../models");
 
 // Empty the user DB and insert the information below
 mongoose.connect(
-    process.env.MONGODB_URI ||
-
-    "mongodb://user:admin1@ds037155.mlab.com:37155/heroku_trz1rz2v"
+process.env.MONGODB_URI || 
+// "mongodb://localhost/triangleontap"
+"mongodb://user:admin1@ds037155.mlab.com:37155/heroku_trz1rz2v"
 );
 
 const brewerySeed = [
     {
         name: "Marriott Bar",
         city: "Cary",
+        state: "North Carolina",
         // location: {
         //     "type": "Point",
         //     "coordinates": [
@@ -23,11 +24,13 @@ const brewerySeed = [
         street: "1229 Perry Rd Ste 101",
         latitude: "35.85",
         longitude: "-78.89",
-        phone: "8455679643"
+        phone: "8455679643",
+        website_url: "www.google.com",
     },
     {
         name: "Unknown",
         city: "Mammoth Lakes",
+        state: "North Carolina",
         // location: {
         //     "type" : "Point",
         //     "coordinates" : [
@@ -38,7 +41,8 @@ const brewerySeed = [
         street: "1234 Street Rd",
         latitude: "37.34",
         longitude: "-77.99",
-        phone: "1234567890"
+        phone: "1234567890",
+        website_url: "www.yahoo.com"
     }
 ];
 
