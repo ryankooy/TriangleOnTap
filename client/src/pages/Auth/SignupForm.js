@@ -46,6 +46,8 @@ class SignupForm extends Component {
       }
     });
   }
+
+  
   
 	render() {
 		if (this.state.redirectTo) {
@@ -64,6 +66,7 @@ class SignupForm extends Component {
                   onChange={this.handleChange}
                   label="First Name"
                   variant="outlined"
+                  required
                 />
                 <Input
                   type="text"
@@ -72,6 +75,17 @@ class SignupForm extends Component {
                   onChange={this.handleChange}
                   label="Last Name"
                   variant="outlined"
+                  required
+                />
+                <Input
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
                 />
                 <Input
                   type="text"
@@ -80,6 +94,7 @@ class SignupForm extends Component {
                   onChange={this.handleChange}
                   label="username"
                   variant="outlined"
+                  required
                 />
                 <Input
                   type="password"
@@ -88,6 +103,7 @@ class SignupForm extends Component {
                   onChange={this.handleChange}
                   label="Password"
                   variant="outlined"
+                  required
                 />
                 <Input
                   type="password"
@@ -96,6 +112,7 @@ class SignupForm extends Component {
                   onChange={this.handleChange}
                   label="Confirm Password"
                   variant="outlined"
+                  required
                 />
                 <Link to="/">Login</Link>
                 <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
