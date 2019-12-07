@@ -10,7 +10,6 @@ const newStyle = {
   fontFamily: "Fjalla One",
 }
 
-
 const Nav = (props) => {
   let greeting;
 
@@ -40,6 +39,7 @@ const Nav = (props) => {
     title: {
       flexGrow: 1,
     },
+
   }));
   
   const classes = useStyles();
@@ -56,7 +56,7 @@ const Nav = (props) => {
   
   return (
     <div className={classes.root}>
-    <AppBar position="static">
+    <AppBar>
       <Toolbar>
        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
         <MenuIcon 
@@ -87,17 +87,6 @@ const Nav = (props) => {
     </AppBar>
     </div>
 
-    // <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-    //   <Col size="md-2">
-    //     <Link to="/" className="navbar-brand">React Reading List</Link>
-    //   </Col>
-    //   <Col size="md-7"></Col>
-    //   <Col size="md-3">
-    //     <div className="float-right">
-    //     {greeting} - <Link to="#" className="logout" onClick={props.logout}>Logout</Link>
-    //     </div>
-    //   </Col>
-    // </nav>
   )
 };
 
