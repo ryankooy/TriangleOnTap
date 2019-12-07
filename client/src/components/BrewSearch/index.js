@@ -3,7 +3,6 @@ import axios from 'axios';
 import { debounce } from 'throttle-debounce';
 import Autosuggest from 'react-autosuggest';
 import Brewery from './brewery';
-import { Button } from "@material-ui/core/button";
 
 const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST || "https://api.openbrewerydb.org";
 
