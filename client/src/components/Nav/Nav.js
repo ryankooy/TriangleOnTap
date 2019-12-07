@@ -3,7 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import {AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { fontFamily } from "@material-ui/system";
 
+const newStyle = {
+  color: 'black',
+  fontFamily: "Fjalla One",
+}
 
 
 const Nav = (props) => {
@@ -66,18 +71,18 @@ const Nav = (props) => {
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
         >
-        <MenuItem onClick={handleMenuClose}><Link to = "/favorites">My Favorite</Link></MenuItem>
+        <MenuItem onClick={handleMenuClose}><Link to = "/favorites" >My Favorite</Link></MenuItem>
         <MenuItem onClick={handleMenuClose}><Link to = "/myprofile">My Profile</Link></MenuItem>
         <MenuItem onClick={handleMenuClose}><Link to="#" className="logout" onClick={props.logout}>Logout</Link></MenuItem>
       </Menu>
       </IconButton>
         <Typography variant="h6" className={classes.title}>
-          <Link to = "/">Triangle On Tap</Link>
+          <Link style={newStyle} to = "/">Triangle On Tap</Link>
         </Typography>
         <Typography className={classes.menuButton}>
         {greeting}
         </Typography>
-        <Button color="inherit" spacing={25}><Link to="#" className="logout" onClick={props.logout}>Logout</Link></Button>
+        <Button color="inherit" spacing={25}><Link to="#" className="logout" style = {newStyle} onClick={props.logout}>Logout</Link></Button>
       </Toolbar>
     </AppBar>
     </div>
