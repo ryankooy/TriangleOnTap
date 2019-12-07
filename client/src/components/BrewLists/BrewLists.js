@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem, Collapse, ListItemText, Typography } from "@material-ui/core";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import SaveBtn from '../BrewLists/SaveBtn';
-import API from '../../utils/API';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 const BrewLists = (props) => {
   const classes = useStyles();
   const [open] = useState(true);
-  const [breweries] = useState([]);
+  // const [breweries] = useState([]);
 
   // const handleClick = () => {
   //   setOpen(!open);

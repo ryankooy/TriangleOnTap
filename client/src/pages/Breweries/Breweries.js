@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import MapContainer from '../../components/Map';
 import BrewLists from '../../components/BrewLists';
 import { Col, Container } from "../../components/Grid";
-import { FormBtn, Input } from "../../components/Form";
 import CardBtn from "../../components/CardBtn";
 import BrewSearch from "../../components/BrewSearch";
 import "./style.css";
@@ -66,7 +64,7 @@ class Breweries extends Component {
   handleSaveClick = event => {
     event.preventDefault();
     const selectedButton = event.target;
-    const updatedElement = selectedButton != "button" ? selectedButton.closest("button") : selectedButton
+    const updatedElement = selectedButton !== "button" ? selectedButton.closest("button") : selectedButton
     
     const selectedBreweryId = parseInt(updatedElement.getAttribute("data-id"));
     console.log(selectedBreweryId, updatedElement);
