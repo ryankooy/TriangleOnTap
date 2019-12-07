@@ -71,9 +71,9 @@ const Nav = (props) => {
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
         >
-        <MenuItem onClick={handleMenuClose}><Link to = "/favorites" >My Favorite</Link></MenuItem>
-        <MenuItem onClick={handleMenuClose}><Link to = "/myprofile">My Profile</Link></MenuItem>
-        <MenuItem onClick={handleMenuClose}><Link to="#" className="logout" onClick={props.logout}>Logout</Link></MenuItem>
+        <MenuItem onClick={handleMenuClose}><Link style = {newStyle} to = "/favorites" >My Favorite</Link></MenuItem>
+        <MenuItem onClick={handleMenuClose}><Link style = {newStyle} to = "/myprofile">My Profile</Link></MenuItem>
+        <MenuItem onClick={handleMenuClose}><Link to="#" style = {newStyle}className="logout" onClick={props.logout}>Logout</Link></MenuItem>
       </Menu>
       </IconButton>
         <Typography variant="h6" className={classes.title}>
