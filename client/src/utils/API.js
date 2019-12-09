@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-  // Search breweries on the Openbrewerydb API
+  // Search breweries on the OpenBreweryDB API
   searchBreweries: function(query) {
     return axios.post("/api/search", query)
   },

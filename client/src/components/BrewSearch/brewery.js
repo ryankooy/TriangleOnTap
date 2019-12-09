@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Card } from '@material-ui/core';
+import { Box } from '@material-ui/core';
+import { palette } from '@material-ui/system';
+import SaveBtn from '../BrewLists/SaveBtn';
 
 function Brewery(props) {
 // class Brewery extends PureComponent {
@@ -12,16 +14,21 @@ function Brewery(props) {
       name,
       street,
       city,
-      brewery_type
+      state,
+      phone,
+      latitude,
+      longitude,
+      brewery_type,
+      website_url
     } = brewery
     let bgColor;
     let address;
 
     if (city !== '') {
       if (street === '')
-        address = encodeURIComponent(`${name}, ${city}`)
+        address = encodeURIComponent(`${name}, ${city}, ${state}`)
       else {
-        address = encodeURIComponent(`${name}, ${street}, ${city}`)
+        address = encodeURIComponent(`${name}, ${street}, ${city}, ${state}`)
       }
     } else {
       address = null;
@@ -32,20 +39,23 @@ function Brewery(props) {
       case 'regional':
       case 'large':
         // Changed text color to "dark"
-        bgColor = 'bg-green text-dark'
+        bgColor = 'secondary.main'
         break
       case 'brewpub':
         // Changed text color to "dark"
-        bgColor = 'bg-orange text-dark'
+        bgColor = 'secondary.main'
         break
       default:
-        bgColor = 'bg-grey-light text-grey'
+        bgColor = 'white'
     }
+
+    console.log(props.brewery);
 
     return (
       // Wrapped in a "div" tag
       // <Paper>
-      <Card className={`p-4 mb-2 rounded ${bgColor}`}>
+      <Box className='p-4 mb-2 rounded text-light' 
+            bgcolor={`${bgColor}`}>
         { (Object.keys(brewery).length !== 0) ?
           <div>
             <address className="roman">
@@ -55,8 +65,13 @@ function Brewery(props) {
               </div>
               { street !== '' ? <div>{street}</div> : '' }
               <div>
-                { city !== '' ? <span>{city}, </span> : '' }
+                { city !== '' ? <span>{city}, {state} </span> : '' }
               </div>
+              <div>
+                { website_url != '' ? <a href={website_url}>{website_url}</a> : '' }
+              </div>
+              <SaveBtn onClick={props.onClick}
+                       dataId={props.brewery.id}/>
             </address>
             {/* { address ?
               <div>
@@ -75,7 +90,7 @@ function Brewery(props) {
           :
           <span>No brewery selected.</span>
         }
-      </Card>
+      </Box>
       // </Paper>
     )
   }
