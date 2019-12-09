@@ -7,6 +7,8 @@ import CardBtn from "../../components/CardBtn";
 import BrewerySearch from "../../components/BrewSearch";
 import { Marker, InfoWindow } from 'google-maps-react';
 import "./style.css";
+import beer from '../../assets/images/beer.svg';
+
 
 class Breweries extends Component {
   state = {
@@ -20,12 +22,13 @@ class Breweries extends Component {
     phone: "",
     showingInfoWindow: false,  //Hides or the shows the infoWindow
     activeMarker: {},          //Shows the active marker upon click
-    selectedPlace: {}
+    selectedPlace: {},
+    selected: false
   };
 
-  // componentDidMount() {
-  //   this.loadBreweries();
-  // }
+  componentDidMount() {
+    this.loadBreweries();
+  }
 
   loadBreweries = () => {
     API.getBreweries()
@@ -56,11 +59,11 @@ class Breweries extends Component {
       return <Marker
         key={i}
         id={i}
-        onMouseOver={this.onMarkerHover}
         position={{
           lat: element.latitude,
           lng: element.longitude
         }}
+        icon={beer}
       />
     })
   }
@@ -100,6 +103,8 @@ class Breweries extends Component {
     console.log(selectedBreweryId, updatedElement);
     console.log(event.target);
     console.log(this.state.breweries);
+
+    this.setState({ selected: true });
     
     API.saveBrewery({
       name: this.state.breweries[selectedBreweryId].name,
@@ -127,6 +132,7 @@ class Breweries extends Component {
 
   render() {
     console.log(this.state);
+
     return (
       <div style={{margin: 30, padding: 30}}>
       <Container>
