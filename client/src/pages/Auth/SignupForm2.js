@@ -140,10 +140,7 @@ export default function SignupForm() {
               id="confirmPassword"
               autoComplete="confirm-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+
             <Button
               type="submit"
               fullWidth

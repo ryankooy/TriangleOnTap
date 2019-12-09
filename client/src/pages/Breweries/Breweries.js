@@ -23,9 +23,9 @@ class Breweries extends Component {
     selectedPlace: {}
   };
 
-  componentDidMount() {
-    this.loadBreweries();
-  }
+  // componentDidMount() {
+  //   this.loadBreweries();
+  // }
 
   loadBreweries = () => {
     API.getBreweries()
