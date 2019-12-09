@@ -33,15 +33,28 @@ class Breweries extends Component {
   };
 
   displayMarkers = () => {
+    // var points = [
+    //   { lat: 42.02, lng: -77.01 },
+    //   { lat: 42.03, lng: -77.02 },
+    //   { lat: 41.03, lng: -77.04 },
+    //   { lat: 42.05, lng: -77.02 }
+    // ]
+
+    // let bounds = new this.props.google.maps.LatLngBounds();
+    // for (var i = 0; i < points.length; i++) {
+    //   bounds.extend(points[i]);
+    // }
+
     return this.state.breweries.map((element, i) => {
       return <Marker
         key={i}
         id={i}
+        name={element.name}
         position={{
           lat: element.latitude,
           lng: element.longitude
         }}
-        onClick={() => console.log("You clicked me!")}
+        // onClick={() => }
       />
     })
   }

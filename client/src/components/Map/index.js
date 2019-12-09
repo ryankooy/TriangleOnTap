@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
 
 const mapStyles = {
   width: '40%',
@@ -10,11 +10,11 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      stores: [{latitude: 35.769929, longitude: -78.856209},
-        {latitude: 35.837034, longitude: -78.850716},
-        {latitude: 35.832581, longitude: -78.723343}]
-    }
+    // this.state = {
+    //   stores: [{latitude: 35.769929, longitude: -78.856209},
+    //     {latitude: 35.837034, longitude: -78.850716},
+    //     {latitude: 35.832581, longitude: -78.723343}]
+    // }
   }
 
   state = {
@@ -25,28 +25,14 @@ export class MapContainer extends Component {
     city: ""
   };
 
-  // displayMarkers = () => {
-  //   return this.state.stores.map((store, index) => {
-  //     return <Marker
-  //       key={index}
-  //       id={index}
-  //       position={{
-  //         lat: store.latitude,
-  //         lng: store.longitude
-  //       }}
-  //       onClick={() => console.log("You clicked me!")}
-  //     />
-  //   })
-  // }
-
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker) =>
   this.setState({
     selectedPlace: props,
     activeMarker: marker,
     showingInfoWindow: true
   });
 
-  onClose = props => {
+  onClose = () => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -67,20 +53,11 @@ export class MapContainer extends Component {
       }}
       > 
         { this.props.children }
-        {/* {this.displayMarkers()} */}
-        {/* <Marker
-          onClick={this.onMarkerClick}
-          name={'Cary, NC'}
-        /> */}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
-        >
-          {/* <div>
-            <h4>{this.state.selectedPlace.name}</h4>
-          </div> */}
-        </InfoWindow>
+        />
       </Map>
     );
   }
