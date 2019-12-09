@@ -5,20 +5,20 @@ const db = require("../models");
 module.exports = {
   findAll: function(req, res) {
     db.Brewery
-      .find({})
-      .then(data => res.json(data))
-      .catch(err => res.status(422).json(err))
-    // if (req.user) {
-    //   db.User
-    //     .find({ _id: req.user._id })
-    //     .populate({ path: "breweries", options: { sort: { 'date': -1 } } })
-    //     .then(users => {
-    //       res.json({ breweries: users[0].breweries });
-    //     })
-    //     .catch(err => res.status(422).json(err));
-    // } else {
-    //   return res.json({ breweries: null });
-    // }
+      // .find({})
+      // .then(data => res.json(data))
+      // .catch(err => res.status(422).json(err))
+    if (req.user) {
+      db.User
+        .find({ _id: req.user._id })
+        .populate({ path: "breweries", options: { sort: { 'date': -1 } } })
+        .then(users => {
+          res.json({ breweries: users[0].breweries });
+        })
+        .catch(err => res.status(422).json(err));
+    } else {
+      return res.json({ breweries: null });
+    }
   },
   findById: function(req, res) {
     if (req.user) {

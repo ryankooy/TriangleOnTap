@@ -3,7 +3,6 @@ import API from "../../utils/API";
 import MapContainer from '../../components/Map';
 import BrewLists from '../../components/BrewLists';
 import { Col, Container } from "../../components/Grid";
-import { FormBtn, Input } from "../../components/Form";
 import CardBtn from "../../components/CardBtn";
 import BrewSearch from "../../components/BrewSearch";
 import "./style.css";
@@ -20,9 +19,9 @@ class Breweries extends Component {
     phone: ""
   };
 
-  componentDidMount() {
-    this.loadBreweries();
-  }
+  // componentDidMount() {
+  //   this.loadBreweries();
+  // }
 
   loadBreweries = () => {
     API.getBreweries()
@@ -64,9 +63,8 @@ class Breweries extends Component {
 
   handleSaveClick = event => {
     event.preventDefault();
-    console.log
     const selectedButton = event.target;
-    const updatedElement = selectedButton != "button" ? selectedButton.closest("button") : selectedButton
+    const updatedElement = selectedButton !== "button" ? selectedButton.closest("button") : selectedButton
     
     const selectedBreweryId = parseInt(updatedElement.getAttribute("data-id"));
     console.log(selectedBreweryId, updatedElement);
@@ -149,9 +147,9 @@ class Breweries extends Component {
     // console.log(lat + " | " + long);
 
     const geoJ = {
-      name: brewery.name,
-      city: brewery.city,
-      location: {
+      "name": brewery.name,
+      "city": brewery.city,
+      "location": {
           "type": "Point",
           "coordinates": [
               parseFloat(brewery.longitude),
@@ -159,12 +157,7 @@ class Breweries extends Component {
           ]
       }
     }
-
     console.log(geoJ);
-
-    // API.saveCoordinates(geoJ)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err));
   }
 
   render() {
@@ -190,8 +183,7 @@ class Breweries extends Component {
 
       <Container>
           <Col>            
-              <MapContainer />             
-
+            <MapContainer />            
           </Col>
 
           <Col>        

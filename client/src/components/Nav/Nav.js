@@ -51,7 +51,7 @@ const Nav = (props) => {
   
   return (
     <div className={classes.root}>
-    <AppBar position="static">
+    <AppBar>
       <Toolbar>
        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
         <MenuIcon 
