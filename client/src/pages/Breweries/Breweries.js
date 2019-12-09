@@ -5,7 +5,7 @@ import BrewLists from '../../components/BrewLists';
 import { Col, Container } from "../../components/Grid";
 import CardBtn from "../../components/CardBtn";
 import BrewerySearch from "../../components/BrewSearch";
-import { Marker } from 'google-maps-react';
+import { Marker, InfoWindow } from 'google-maps-react';
 import "./style.css";
 
 class Breweries extends Component {
@@ -17,7 +17,10 @@ class Breweries extends Component {
     city: "",
     latitude: "",
     longitude: "",
-    phone: ""
+    phone: "",
+    showingInfoWindow: false,  //Hides or the shows the infoWindow
+    activeMarker: {},          //Shows the active marker upon click
+    selectedPlace: {}
   };
 
   componentDidMount() {
@@ -32,29 +35,32 @@ class Breweries extends Component {
       .catch(err => console.log(err));
   };
 
+  onMarkerHover = (props, marker) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+
+  onClose = () => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
+
   displayMarkers = () => {
-    // var points = [
-    //   { lat: 42.02, lng: -77.01 },
-    //   { lat: 42.03, lng: -77.02 },
-    //   { lat: 41.03, lng: -77.04 },
-    //   { lat: 42.05, lng: -77.02 }
-    // ]
-
-    // let bounds = new this.props.google.maps.LatLngBounds();
-    // for (var i = 0; i < points.length; i++) {
-    //   bounds.extend(points[i]);
-    // }
-
     return this.state.breweries.map((element, i) => {
       return <Marker
         key={i}
         id={i}
-        name={element.name}
+        onMouseOver={this.onMarkerHover}
         position={{
           lat: element.latitude,
           lng: element.longitude
         }}
-        // onClick={() => }
       />
     })
   }
@@ -115,19 +121,6 @@ class Breweries extends Component {
         this.setState({
           breweries: res.data
         });
-        // res.data.map(element => 
-
-        //   // API.saveBrewery({ 
-        //   //   name: element.name,
-        //   //   street: element.street,
-        //   //   city: element.city,
-        //   //   state: element.state,
-        //   //   phone: element.phone,
-        //   //   website_url: element.website_url,
-        //   //   latitude: element.latitude,
-        //   //   longitude: element.longitude
-        //   // })
-        // );
       })
       .catch(err => console.log(err))
   }
@@ -157,6 +150,11 @@ class Breweries extends Component {
           <Col>            
             <MapContainer>
               {this.displayMarkers()}
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              />
             </MapContainer>            
           </Col>
 
