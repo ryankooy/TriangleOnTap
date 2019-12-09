@@ -20,9 +20,9 @@ class Breweries extends Component {
     phone: ""
   };
 
-  componentDidMount() {
-    this.loadBreweries();
-  }
+  // componentDidMount() {
+  //   this.loadBreweries();
+  // }
 
   loadBreweries = () => {
     API.getBreweries()

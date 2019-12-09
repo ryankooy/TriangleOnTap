@@ -39,6 +39,7 @@ export class MapContainer extends Component {
   //   })
   // }
 
+
   onMarkerClick = (props, marker, e) =>
   this.setState({
     selectedPlace: props,

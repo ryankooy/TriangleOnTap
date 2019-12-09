@@ -4,10 +4,10 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
-    // db.Brewery
-    //   .find({})
-    //   .then(data => res.json(data))
-    //   .catch(err => res.status(422).json(err))
+    db.Brewery
+      // .find({})
+      // .then(data => res.json(data))
+      // .catch(err => res.status(422).json(err))
     if (req.user) {
       db.User
         .find({ _id: req.user._id })
