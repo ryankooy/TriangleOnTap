@@ -4,7 +4,9 @@ import { Container, Col } from '../../components/Grid';
 import { Cards } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 
-
+const newStyle = {
+	color: "black",
+}
 class LoginForm extends Component {
   
   constructor() {
@@ -56,7 +58,7 @@ class LoginForm extends Component {
                     value={this.state.password}
                     onChange={this.handleChange}
                   />
-                  <Link to="/signup">Register</Link>
+                  <Link style = {newStyle} to="/signup">Register</Link>
                   <FormBtn onClick={this.handleSubmit}>Login</FormBtn>
               </Cards>
             </Col>

@@ -3,8 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import {AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { fontFamily } from "@material-ui/system";
 
-
+const newStyle = {
+  color: 'black',
+  fontFamily: "Fjalla One",
+}
 
 const Nav = (props) => {
   let greeting;
@@ -35,6 +39,7 @@ const Nav = (props) => {
     title: {
       flexGrow: 1,
     },
+
   }));
   
   const classes = useStyles();
@@ -66,33 +71,22 @@ const Nav = (props) => {
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
         >
-        <MenuItem onClick={handleMenuClose}><Link to = "/favorites">My Favorite</Link></MenuItem>
-        <MenuItem onClick={handleMenuClose}><Link to = "/myprofile">My Profile</Link></MenuItem>
-        <MenuItem onClick={handleMenuClose}><Link to="#" className="logout" onClick={props.logout}>Logout</Link></MenuItem>
+        <MenuItem onClick={handleMenuClose}><Link style = {newStyle} to = "/favorites" >My Favorite</Link></MenuItem>
+        <MenuItem onClick={handleMenuClose}><Link style = {newStyle} to = "/myprofile">My Profile</Link></MenuItem>
+        <MenuItem onClick={handleMenuClose}><Link to="#" style = {newStyle}className="logout" onClick={props.logout}>Logout</Link></MenuItem>
       </Menu>
       </IconButton>
         <Typography variant="h6" className={classes.title}>
-          <Link to = "/">Triangle On Tap</Link>
+          <Link style={newStyle} to = "/">Triangle On Tap</Link>
         </Typography>
         <Typography className={classes.menuButton}>
         {greeting}
         </Typography>
-        <Button color="inherit" spacing={25}><Link to="#" className="logout" onClick={props.logout}>Logout</Link></Button>
+        <Button color="inherit" spacing={25}><Link to="#" className="logout" style = {newStyle} onClick={props.logout}>Logout</Link></Button>
       </Toolbar>
     </AppBar>
     </div>
 
-    // <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-    //   <Col size="md-2">
-    //     <Link to="/" className="navbar-brand">React Reading List</Link>
-    //   </Col>
-    //   <Col size="md-7"></Col>
-    //   <Col size="md-3">
-    //     <div className="float-right">
-    //     {greeting} - <Link to="#" className="logout" onClick={props.logout}>Logout</Link>
-    //     </div>
-    //   </Col>
-    // </nav>
   )
 };
 

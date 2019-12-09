@@ -17,7 +17,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3001;
 
-const MONGODB_URI = process.env.MONGODB_URI || 
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://rkooy:admin123@ds353378.mlab.com:53378/heroku_rd8s9dcd' || 
 'mongodb://user:admin1@ds037155.mlab.com:37155/heroku_trz1rz2v';
 // "mongodb://localhost/triangleontap";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });

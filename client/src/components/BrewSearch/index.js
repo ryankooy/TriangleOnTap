@@ -3,6 +3,8 @@ import axios from 'axios';
 import { debounce } from 'throttle-debounce';
 import Autosuggest from 'react-autosuggest';
 import Brewery from './brewery';
+import { Button } from '@material-ui/core';
+import API from '../../utils/API';
 
 const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST || "https://api.openbrewerydb.org";
 
@@ -12,10 +14,9 @@ function getSuggestionValue(suggestion) {
 
 function renderSuggestion(suggestion) {
   return (
-      // Changed from "Button" to "div"
-      <div className="text-lg p-4">
+      <Button className="text-lg p-4">
         {suggestion.name}
-      </div>
+      </Button>
   );
 };
 
@@ -34,10 +35,20 @@ class BrewerySearch extends Component {
 
   getSuggestions = value => {
     const params = { query: value }
-
-    axios.get(`${API_SERVER_HOST}/breweries/autocomplete`, { params: params })
+    
+    axios.get(`${API_SERVER_HOST}/breweries/search?query=`, { params: params })
       .then(res => {
-        this.setState({ suggestions: res.data });
+        console.log(res.data);
+        const filtered = res.data.filter(
+          res =>
+                    res.name &&
+                    res.city &&
+                    res.longitude &&
+                    res.latitude &&
+                    res.state === "North Carolina"
+        );
+        
+        this.setState({ suggestions: filtered });
       })
       .catch(error => {
         this.setState({ suggestions: [] })
@@ -68,7 +79,29 @@ class BrewerySearch extends Component {
         this.setState({ brewery: res.data })
       })
       .catch(error => {})
-  }
+  };
+
+  handleSaveClick = event => {
+    event.preventDefault();
+    const selectedButton = event.target;
+    const updatedElement = selectedButton !== "button" ? selectedButton.closest("button") : selectedButton
+    
+    const selectedBreweryId = parseInt(updatedElement.getAttribute("data-id"));
+    console.log(selectedBreweryId, updatedElement);
+    console.log(event.target);
+    console.log(this.state.brewery);
+    
+    API.saveBrewery({
+      name: this.state.brewery.name,
+      street: this.state.brewery.street,
+      city: this.state.brewery.city,
+      state: this.state.brewery.state,
+      phone: this.state.brewery.phone,
+      website_url: this.state.brewery.website_url,
+      latitude: parseFloat(this.state.brewery.latitude),
+      longitude: parseFloat(this.state.brewery.longitude)
+    })
+  };
 
   render() {
     const { brewery, suggestions, value } = this.state
@@ -81,7 +114,7 @@ class BrewerySearch extends Component {
     };
 
     return (
-      <div className="mb-4">
+      <div className="mb-4" align="center">
         <Autosuggest
           suggestions={suggestions}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -91,7 +124,8 @@ class BrewerySearch extends Component {
           inputProps={inputProps}
           onSuggestionSelected={this.onSuggestionSelected}
         />
-        <Brewery brewery={brewery} />
+        <Brewery brewery={this.state.brewery}
+                 onClick={this.handleSaveClick} />
       </div>
     )
   }

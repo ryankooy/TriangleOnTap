@@ -25,19 +25,20 @@ export class MapContainer extends Component {
     city: ""
   };
 
-  displayMarkers = () => {
-    return this.state.stores.map((store, index) => {
-      return <Marker
-        key={index}
-        id={index}
-        position={{
-          lat: store.latitude,
-          lng: store.longitude
-        }}
-        onClick={() => console.log("You clicked me!")}
-      />
-    })
-  }
+  // displayMarkers = () => {
+  //   return this.state.stores.map((store, index) => {
+  //     return <Marker
+  //       key={index}
+  //       id={index}
+  //       position={{
+  //         lat: store.latitude,
+  //         lng: store.longitude
+  //       }}
+  //       onClick={() => console.log("You clicked me!")}
+  //     />
+  //   })
+  // }
+
 
   onMarkerClick = (props, marker, e) =>
   this.setState({
@@ -66,7 +67,8 @@ export class MapContainer extends Component {
         lng: -78.89
       }}
       > 
-        {this.displayMarkers()}
+        { this.props.children }
+        {/* {this.displayMarkers()} */}
         {/* <Marker
           onClick={this.onMarkerClick}
           name={'Cary, NC'}
