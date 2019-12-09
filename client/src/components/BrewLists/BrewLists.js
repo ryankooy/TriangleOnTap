@@ -19,17 +19,19 @@ const useStyles = makeStyles(theme => ({
 const BrewLists = (props) => {
   const classes = useStyles();
   const [open] = useState(true);
-  // const [breweries] = useState([]);
+  const [breweries] = useState([]);
 
   // const handleClick = () => {
   //   setOpen(!open);
   // };
 
-  return (      
-      <List
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-      className={classes.root}
+  console.log(props);
+
+  return (
+        <List
+        component="nav"
+        aria-labelledby="nested-list-subheader"
+        className={classes.root}
       >
         {props.breweries.map((brew, index) =>
           <div>

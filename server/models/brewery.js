@@ -11,7 +11,7 @@ const brewerySchema = new Schema({
   phone: { type: String },
   website_url: { type: String },
   // location: { any: { type: String, coordinates: [Number] } },
-  // date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now }
 });
 
 const Brewery = mongoose.model("Brewery", brewerySchema);
