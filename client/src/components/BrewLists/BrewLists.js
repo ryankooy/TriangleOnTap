@@ -51,7 +51,8 @@ const BrewLists = (props) => {
                       >
                       {`Address: ${brew.street}, ${brew.city}, ${brew.state}`}
                       <br></br>
-                      {`Website: ${brew.website_url}`}
+                      <a href={brew.website_url}>{`${brew.website_url}`}
+                      </a>
                       <br></br>
                       {"Phone: " + brew.phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")}
                       </Typography>

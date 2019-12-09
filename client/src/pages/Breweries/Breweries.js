@@ -4,7 +4,7 @@ import MapContainer from '../../components/Map';
 import BrewLists from '../../components/BrewLists';
 import { Col, Container } from "../../components/Grid";
 import CardBtn from "../../components/CardBtn";
-import BrewSearch from "../../components/BrewSearch";
+import BrewerySearch from "../../components/BrewSearch";
 import { Marker } from 'google-maps-react';
 import "./style.css";
 
@@ -92,6 +92,8 @@ class Breweries extends Component {
     
     const selectedBreweryId = parseInt(updatedElement.getAttribute("data-id"));
     console.log(selectedBreweryId, updatedElement);
+    console.log(event.target);
+    console.log(this.state.breweries);
     
     API.saveBrewery({
       name: this.state.breweries[selectedBreweryId].name,
@@ -145,7 +147,7 @@ class Breweries extends Component {
             </div>
             <Col>
             <div>
-              <BrewSearch />
+              <BrewerySearch onClick={this.handleSaveClick}/>
             </div>
           </Col>
           </Col>
