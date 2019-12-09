@@ -5,6 +5,7 @@ import BrewLists from '../../components/BrewLists';
 import { Col, Container } from "../../components/Grid";
 import CardBtn from "../../components/CardBtn";
 import BrewSearch from "../../components/BrewSearch";
+import { Marker } from 'google-maps-react';
 import "./style.css";
 
 class Breweries extends Component {
@@ -27,16 +28,27 @@ class Breweries extends Component {
     API.getBreweries()
       .then(res => {
         this.setState({ breweries: res.data.breweries })
-        res.data.breweries.map(element => {
-          this.convertGeoJson(element);
-        })
       })
       .catch(err => console.log(err));
   };
 
+  displayMarkers = () => {
+    return this.state.breweries.map((element, i) => {
+      return <Marker
+        key={i}
+        id={i}
+        position={{
+          lat: element.latitude,
+          lng: element.longitude
+        }}
+        onClick={() => console.log("You clicked me!")}
+      />
+    })
+  }
+
   deleteBrewery = id => {
     API.deleteBrewery(id)
-      .then(res => this.loadBreweries())
+      .then(() => this.loadBreweries())
       .catch(err => console.log(err));
   };
 
@@ -80,94 +92,29 @@ class Breweries extends Component {
     })
   };
 
-  handleCary = event => {
-    event.preventDefault();
-    console.log("cary");
-    API.searchBreweries({ city: "Cary" })
-    .then(res => {
-      console.log(res.data);
-      this.setState({
-        breweries: res.data
-      });
-      res.data.map(element => 
-        API.saveBrewery({ 
-          name: element.name,
-          street: element.street,
-          city: element.city,
-          state: element.state,
-          phone: element.phone,
-          website_url: element.website_url,
-          latitude: element.latitude,
-          longitude: element.longitude
-        })
-      );
-    })
+  citySearch = thisCity => {
+    console.log(thisCity);
+    API.searchBreweries({ city: thisCity })
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          breweries: res.data
+        });
+        // res.data.map(element => 
+
+        //   // API.saveBrewery({ 
+        //   //   name: element.name,
+        //   //   street: element.street,
+        //   //   city: element.city,
+        //   //   state: element.state,
+        //   //   phone: element.phone,
+        //   //   website_url: element.website_url,
+        //   //   latitude: element.latitude,
+        //   //   longitude: element.longitude
+        //   // })
+        // );
+      })
       .catch(err => console.log(err))
-  }
-
-  handleChapelHill = event => {
-    event.preventDefault();
-    console.log("chapel hill");
-    API.searchBreweries({ city: "Chapel Hill" })
-    .then(res => {
-      console.log(res.data);
-      this.setState({
-        breweries: res.data
-      });
-      res.data.map(element =>
-        this.convertGeoJson(element)
-      );
-    })
-    .catch(err => console.log(err))
-  }
-
-  handleRaleigh = event => {
-    event.preventDefault();
-    console.log("raleigh");
-    API.searchBreweries({ city: "Raleigh" })
-    .then(res => {
-      console.log(res.data);
-      this.setState({
-        breweries: res.data
-      });
-      res.data.map(element => 
-        this.convertGeoJson(element)
-      );
-    })
-      .catch(err => console.log(err));
-  }
-
-  handleDurham = event => {
-    event.preventDefault();
-    console.log("durham");
-    API.searchBreweries({ city: "Durham" })
-    .then(res => {
-      console.log(res.data);
-      this.setState({
-        breweries: res.data
-      });
-      res.data.map(element => 
-        this.convertGeoJson(element)
-      );
-    })
-      .catch(err => console.log(err));
-  }
-
-  convertGeoJson = brewery => {
-    // console.log(lat + " | " + long);
-
-    const geoJ = {
-      "name": brewery.name,
-      "city": brewery.city,
-      "location": {
-          "type": "Point",
-          "coordinates": [
-              parseFloat(brewery.longitude),
-              parseFloat(brewery.latitude)
-          ]
-      }
-    }
-    console.log(geoJ);
   }
 
   render() {
@@ -178,10 +125,10 @@ class Breweries extends Component {
           <Col>
             <h1 align="center">Beer Search</h1>
             <div align="center">
-              <CardBtn style={{margin: 10}} onClick={this.handleRaleigh}>Raleigh</CardBtn>
-              <CardBtn style={{margin: 10}} onClick={this.handleDurham}>Durham</CardBtn>
-              <CardBtn style={{margin: 10}} onClick={this.handleCary}>Cary</CardBtn>
-              <CardBtn style={{margin: 10}} onClick={this.handleChapelHill}>Chapel Hill</CardBtn>
+              <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Raleigh")}>Raleigh</CardBtn>
+              <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Durham")}>Durham</CardBtn>
+              <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Cary")}>Cary</CardBtn>
+              <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Chapel Hill")}>Chapel Hill</CardBtn>
             </div>
             <Col>
             <div>
@@ -193,7 +140,9 @@ class Breweries extends Component {
 
       <Container>
           <Col>            
-            <MapContainer />            
+            <MapContainer>
+              {this.displayMarkers()}
+            </MapContainer>            
           </Col>
 
           <Col>        
