@@ -1,17 +1,14 @@
 const axios = require("axios");
-const db = require("../models");
+// const db = require("../models");
 
 // Defining methods for the breweriesController
 module.exports = {
     searchBreweries: function(req, res) {
-        
         // If the user is logged in
         if(req.user) {
-            
             // Use axios to query the Openbrewerydb API by city
             axios.get("https://api.openbrewerydb.org/breweries/search?query=" + req.body.city)
             .then(results => {
-                
                 // Filter the results into a new array and send that array back to the client
                 const filtered = results.data.filter(
                     result =>
@@ -21,8 +18,8 @@ module.exports = {
                     result.latitude &&
                     result.state === "North Carolina"
                 );
-                console.log(filtered),
-                res.json(filtered)
+                console.log(filtered);
+                res.json(filtered);
                 
                 // db.Brewery.insertMany({ filtered })
                 // .then(dbBrewery => {
@@ -35,7 +32,7 @@ module.exports = {
             })
             .catch(err => res.status(422).json(err))
         }
-    },
+    }
     // searchChapelHill: function(req, res) {
     //     if(req.user) {
     //         axios.get("https://api.openbrewerydb.org/breweries/search?query=chapel%20hill")
