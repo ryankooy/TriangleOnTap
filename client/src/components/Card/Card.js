@@ -9,7 +9,7 @@ export const Cards = (props) => (
     title={props.title}
     />
     <CardContent>
-      <Typography component="div">
+      <Typography component="div"  color="primary">
         {props.children}
       </Typography>
     </CardContent>

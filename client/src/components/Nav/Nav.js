@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import {AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import { fontFamily } from "@material-ui/system";
 
 const newStyle = {
   color: 'black',
@@ -82,11 +81,10 @@ const Nav = (props) => {
         <Typography className={classes.menuButton}>
         {greeting}
         </Typography>
-        <Button color="inherit" spacing={25}><Link to="#" className="logout" style = {newStyle} onClick={props.logout}>Logout</Link></Button>
+          <Button color="inherit" spacing={25}><Link to="#" className="logout" style = {newStyle} onClick={props.logout}>Logout</Link></Button>       
       </Toolbar>
     </AppBar>
     </div>
-
   )
 };
 

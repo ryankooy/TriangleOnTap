@@ -8,6 +8,7 @@ import Detail from "./pages/Detail";
 import MyProfile from "./pages/Auth/MyProfile";
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
+import Start from './pages/Start';
 import Favorites from './pages/Favorites/Favorites';
 
 class App extends Component {
@@ -84,12 +85,16 @@ class App extends Component {
 				</div>
 				)}
 				{ !this.state.loggedIn && (
-				<div className="auth-wrapper" style={{paddingTop:40}}>
-					<Route exact path="/" component={() => <LoginForm login={this.login}/>} />
+				<div>
+					<Switch>
+					<Route exact path="/" component={() => <Start/>} />
+					<Route exact path="/login" component={() => <LoginForm login={this.login} />} />
 					<Route exact path="/breweries" component={() => <LoginForm user={this.login}/>} />
 					<Route exact path="/signup" component={SignupForm} />
 					<Route exact path="/myprofile" component={() => <LoginForm user={this.login} />} />
 					<Route exact path="/favorites" component={() => <LoginForm user={this.login} />} />
+					</Switch>
+					
 				</div>
 				)}
 			</div>

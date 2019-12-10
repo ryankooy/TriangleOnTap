@@ -3,9 +3,10 @@ import { Redirect, Link } from 'react-router-dom';
 import { Container, Col } from '../../components/Grid';
 import { Cards } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
+import Nav from '../../components/Nav';
 
 const newStyle = {
-	color: "black",
+	color: "#7D3F20",
 }
 class LoginForm extends Component {
   

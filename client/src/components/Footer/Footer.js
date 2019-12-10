@@ -1,5 +1,5 @@
 import React from "react";
-import {Typography, Link} from '@material-ui/core';
+import {Typography, Link, Grid} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 function Copyright() {
@@ -27,6 +27,7 @@ export default function Footer() {
     const classes = useStyles();
 
     return(
+    <Grid container alignItems="center" justify="center" >
     <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
           Triangle On Tap
@@ -36,6 +37,7 @@ export default function Footer() {
         </Typography>
         <Copyright />
     </footer>
+    </Grid>
     )
 }
 

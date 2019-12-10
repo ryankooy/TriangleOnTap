@@ -24,10 +24,16 @@ class Favorites extends Component {
         .catch(err => console.log(err));
     };
 
+    handleDelete = id => {
+        API.deleteBrewery(id)
+        .then(res => this.componentDidMount())
+        .catch(err => console.log(err));
+    }
+
     render() {
         return (
-            <div>
-                <main>
+            <Container>
+            
                 <Container>
                 <Col>
                 <h1 align="center">Favorite breweries</h1>
@@ -40,16 +46,17 @@ class Favorites extends Component {
                 
                 <FavoriteCards
                 breweries={this.state.breweries}
+                onClick={this.handleDelete}
                 >
                 </FavoriteCards>
                 
                 </Container>
                 </Wrapper>
-                </main>
 
+                
                 <Footer />
-            
-            </div>
+               
+            </Container>
         )
     }
 

@@ -1,23 +1,23 @@
 import axios from "axios";
 
 export default {
-  // Search breweries on the OpenBreweryDB API
+  // Search  on the OpenBreweryDB API
   searchBreweries: function(query) {
     return axios.post("/api/search", query)
   },
-  // Gets all books
+  // Gets all breweries
   getBreweries: function() {
     return axios.get("/api/breweries");
   },
-  // Gets the book with the given id
+  // Gets the brewery with the given id
   getBrewery: function(id) {
     return axios.get("/api/breweries/" + id);
   },
-  // Deletes the book with the given id
+  // Deletes the brewery with the given id
   deleteBrewery: function(id) {
     return axios.delete("/api/breweries/" + id);
   },
-  // Saves a book to the database
+  // Saves a brewery  to the database
   saveBrewery: function(breweryData) {
     return axios.post("/api/breweries", breweryData);
   },
