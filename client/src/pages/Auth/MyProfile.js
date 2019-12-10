@@ -69,6 +69,7 @@ class MyProfile extends Component {
     
 		return (
       <Container>
+        <Container>
           <Col size="md-3"></Col>
           <Col size="md-6">
             <Cards title="Edit your profile">
@@ -117,6 +118,7 @@ class MyProfile extends Component {
             </Cards>
           </Col>
           <Col size="md-3"></Col>
+          </Container>
       </Container>
 		)
 	}

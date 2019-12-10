@@ -5,8 +5,8 @@ const db = require("../models");
 // Empty the user DB and insert the information below
 mongoose.connect(
 process.env.MONGODB_URI || 
-// "mongodb://localhost/triangleontap"
-"mongodb://user:admin1@ds037155.mlab.com:37155/heroku_trz1rz2v"
+"mongodb://localhost/triangleontap"
+
 );
 
 const brewerySeed = [

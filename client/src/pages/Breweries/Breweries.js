@@ -134,7 +134,7 @@ class Breweries extends Component {
     console.log(this.state);
 
     return (
-      <div style={{margin: 30, padding: 30}}>
+      <div className="Breweries" style={{margin: 30, padding: 30}}>
       <Container>
           <Col>
             <h1 align="center">Beer Search</h1>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {Grid, Card, CardContent, Typography, CardActions, Button} from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
+
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -12,7 +14,11 @@ const useStyles = makeStyles(theme => ({
       cardContent: {
         flexGrow: 1,
       }
-}))
+}));
+
+const newStyle = {
+    color: '#7D3F20',
+  }
 
 const FavoriteCards = (props) => {
     const classes = useStyles();
@@ -24,7 +30,7 @@ const FavoriteCards = (props) => {
         <Grid container spacing={8}> 
         {props.breweries.map(brew =>    
         <Grid item xs={12} sm={6} md={4}>
-        <Card className={classes.card}>       
+        <Card className={classes.card} key={brew._id}>       
             <CardContent className={classes.cardContent}>
             <Typography gutterBottom variant="h5" component="h2">
                 {brew.name}
@@ -39,9 +45,9 @@ const FavoriteCards = (props) => {
             </CardContent>
             <CardActions>
             <Button size="small" color="primary">
-                Website
+                <Link to={brew.website_url} style={newStyle}>Website</Link>
             </Button>
-            <Button size="small" color="primary">
+            <Button size="small" color="primary" data-id={brew._id} onClick={() => props.handleDelete(brew._id)}>
                 Delete
             </Button>
             </CardActions>

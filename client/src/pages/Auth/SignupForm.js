@@ -78,21 +78,11 @@ class SignupForm extends Component {
                   required
                 />
                 <Input
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                />
-                <Input
                   type="text"
                   name="username"
                   value={this.state.username}
                   onChange={this.handleChange}
-                  label="username"
+                  label="Username"
                   variant="outlined"
                   required
                 />

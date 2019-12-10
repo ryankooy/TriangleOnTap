@@ -4,10 +4,12 @@ import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import App from "./App";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
+
 const theme = createMuiTheme({
   palette: {
     primary: { main: "#d19a30", contrastText: "#000000" },
-    secondary: { main: "#37474f", contrastText: "#ffffff" }
+    secondary: { main: "#37474f", contrastText: "#ffffff" },
+    info: { main: "#7D3F20", contrastText: "#ffffff"}
 
   }
 });
