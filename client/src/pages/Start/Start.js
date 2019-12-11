@@ -33,7 +33,7 @@ const Start = () => {
     return (
     <Grid container component="main" className={classes.root}>
     <CssBaseline />
-    <Grid item xs={false} sm={4} md={5} lassName={classes.image} />
+    <Grid item xs={false} sm={4} md={5} className={classes.image} />
     <Grid 
     item
     spacing={7}
@@ -49,7 +49,7 @@ const Start = () => {
         }}
     >
         <Grid item xs>
-        <Typography variant="h2" component="h2" gutter Bottom color="primary">
+        <Typography variant="h2" component="h2" color="primary">
             Triangle On Tap
         </Typography>
         <Button className={classes.button} variant="contained" style={newStyle} space={8}><Link to = "/login" style={newStyle} >Login</Link></Button> 

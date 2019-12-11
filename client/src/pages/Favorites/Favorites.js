@@ -6,9 +6,11 @@ import Footer from "../../components/Footer/Footer";
 
 
 class Favorites extends Component {
+    
     state = {
         breweries: [],
-    };
+    };    
+    
 
     componentDidMount() {
         this.loadFavorites();
