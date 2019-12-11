@@ -1,0 +1,9 @@
+.MuiCard-root {
+    font-family: 'Fjalla One';
+    font-size: 18px;
+    margin-top: 25px;
+    border-style: solid;
+    background-color: #f9f1e4 !important;
+    border-color: #d19a30;
+    width: 66%;
+}

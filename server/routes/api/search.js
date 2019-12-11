@@ -1,3 +1,5 @@
+// Defining our API routes for search data
+
 const router = require("express").Router();
 const searchController = require("../../controllers/searchController");
 

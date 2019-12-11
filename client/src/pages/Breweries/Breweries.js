@@ -42,11 +42,10 @@ class Breweries extends Component {
 
   loadBreweries = () => {
     API.getBreweries()
-      .then(res => {
-        console.log(res.data.breweries)
-        this.setState({ breweries: res.data.breweries })
-      })
-      .catch(err => console.log(err));
+    .then(res => {
+      this.setState({ breweries: res.data.breweries })
+    })
+    .catch(err => console.log(err));
   };
 
   onMarkerClick = (props, marker, e) =>

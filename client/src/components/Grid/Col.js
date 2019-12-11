@@ -6,10 +6,3 @@ export const Col = ({sm, children}) => (
     {children}
   </Grid>
 );
-
-
-// export const Col = ({ size, children }) => (
-//   <div className={size.split(" ").map(size => "col-" + size).join(" ")}>
-//     {children}
-//   </div>
-// );

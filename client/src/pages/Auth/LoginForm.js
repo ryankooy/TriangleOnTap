@@ -8,24 +8,24 @@ import './Auth.css';
 
 const newStyle = {
 	color: "#7D3F20",
-}
+};
+
 class LoginForm extends Component {
   
-  constructor() {
-    super();
-    
-		this.state = {
+	constructor() {
+    	super();
+    	this.state = {
 			username: '',
 			password: '',
 			redirectTo: null
 		};
-	}
+	};
 
 	handleChange = (event) => {
 		this.setState({
 			[event.target.name]: event.target.value
 		});
-	}
+	};
 
 	handleSubmit = (event) => {
 		event.preventDefault();
@@ -33,43 +33,40 @@ class LoginForm extends Component {
 		this.setState({
 			redirectTo: '/'
 		});
-	}
+	};
 
 	render() {
 		if (this.state.redirectTo) {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
-			<Container>
-            <Col></Col>
-            <Col>
-
-              <Cards title="Welcome to Triangle on Tap!">
-
-                  <label htmlFor="username">Username: </label>
-                  <Input
-                    type="text"
-                    name="username"
-                    value={this.state.username}
-                    onChange={this.handleChange}
-                  />
-                  <label htmlFor="password">Password: </label>
-                  <Input
-                    type="password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                  />
-                  <Link style = {newStyle} to="/signup">Register</Link>
-                  <FormBtn onClick={this.handleSubmit}>Login</FormBtn>
-              </Cards>
-            </Col>
-            <Col size="md-3"></Col>
-
-		</Container>
+				<Container>
+            		<Col></Col>
+            		<Col>
+						<Cards title="Welcome to Triangle on Tap!">
+							<label htmlFor="username">Username: </label>
+                  			<Input
+                    			type="text"
+                    			name="username"
+                    			value={this.state.username}
+                    			onChange={this.handleChange}
+                  			/>
+                  			<label htmlFor="password">Password: </label>
+                  			<Input
+                    			type="password"
+								name="password"
+								value={this.state.password}
+								onChange={this.handleChange}
+                  			/>
+                  			<Link style = {newStyle} to="/signup">Register</Link>
+                  			<FormBtn onClick={this.handleSubmit}>Login</FormBtn>
+              			</Cards>
+            		</Col>
+            		<Col size="md-3"></Col>
+				</Container>
 			)
 		}
-	}
-}
+	};
+};
 
 export default LoginForm;

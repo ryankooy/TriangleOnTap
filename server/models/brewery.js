@@ -1,3 +1,5 @@
+// Defining our brewery data model
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -10,7 +12,6 @@ const brewerySchema = new Schema({
   latitude: { type: String },
   phone: { type: String },
   website_url: { type: String },
-  // location: { any: { type: String, coordinates: [Number] } },
   date: { type: Date, default: Date.now }
 });
 

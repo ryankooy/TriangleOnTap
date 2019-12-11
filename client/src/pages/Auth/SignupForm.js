@@ -36,7 +36,6 @@ class SignupForm extends Component {
       username: this.state.username,
       password: this.state.password
     }).then(response => {
-      // console.log(response);
       if (!response.data.errmsg) {
         this.setState({
           redirectTo: '/'
@@ -56,7 +55,7 @@ class SignupForm extends Component {
     
 		return (
       <Container>
-          <Col size="md-3"></Col>
+          <Col size="md-3" />
           <Col size="md-6">
             <Cards title="Sign Up, you'll be done in no time.">
                 <Input
@@ -110,8 +109,8 @@ class SignupForm extends Component {
           </Col>
           <Col size="md-3"></Col>
       </Container>
-		)
-	}
-}
+		);
+	};
+};
 
 export default SignupForm;

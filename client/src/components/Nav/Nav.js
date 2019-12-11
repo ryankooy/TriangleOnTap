@@ -6,17 +6,12 @@ import {Drawer, CssBaseline, AppBar, Toolbar, List, Typography, Divider, Button,
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronRight';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
-
 
 const newStyle = {
   color: 'black',
   fontFamily: "Fjalla One",
-}
-
+};
 const drawerWidth = 240;
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
@@ -60,20 +55,20 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
-  },
-
+  }
 }));
 
 function ListItemLink(props) {
   return <ListItem className={newStyle} button component="a" {...props} />;
-}
+};
 
 
 const Nav = (props) => {
+  
   let greeting;
 
   if (props.user === null) {
-		greeting = <p>Hello guest</p>
+	  greeting = <p>Hello guest</p>
 	} else if (props.user.firstName) {
 		greeting = (
 			<Fragment>
@@ -103,9 +98,9 @@ const Nav = (props) => {
   return (
     <div className={classes.root}>
       <CssBaseline />
-    <AppBar>
-      <Toolbar>
-      <IconButton
+      <AppBar>
+        <Toolbar>
+          <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -114,16 +109,21 @@ const Nav = (props) => {
           >
             <MenuIcon />
           </IconButton>
-        <Typography variant="h6" className={classes.title}>
-          <Link style={newStyle} to = "/">Triangle On Tap</Link>
-        </Typography>
-        <Typography className={classes.menuButton}>
-        {greeting}
-        </Typography>
-          <Button color="inherit" spacing={25}><Link to="#" className="logout" style = {newStyle} onClick={props.logout}>Logout</Link></Button>       
-      </Toolbar>
-    </AppBar>
-    <Drawer
+          <Typography variant="h6" className={classes.title}>
+            <Link style={newStyle} to = "/">Triangle On Tap</Link>
+          </Typography>
+          <Typography className={classes.menuButton}>
+            {greeting}
+          </Typography>
+          <Button 
+            color="inherit" 
+            spacing={25}
+          >
+            <Link to="#" className="logout" style = {newStyle} onClick={props.logout}>Logout</Link>
+          </Button>       
+        </Toolbar>
+      </AppBar>
+      <Drawer
         className={classes.drawer}
         variant="persistent"
         anchor="left"
@@ -140,23 +140,23 @@ const Nav = (props) => {
         </div>
         <Divider />
         <List>
-            <ListItemLink onClick={handleDrawerClose} href="/">
+          <ListItemLink onClick={handleDrawerClose} href="/">
             <ListItemText>Home</ListItemText>
-            </ListItemLink>
-            <ListItemLink onClick={handleDrawerClose} href="/favorites">
+          </ListItemLink>
+          <ListItemLink onClick={handleDrawerClose} href="/favorites">
             <ListItemText>Favorites</ListItemText>
-            </ListItemLink>
-            <ListItemLink onClick={handleDrawerClose} href="/myprofile">
+          </ListItemLink>
+          <ListItemLink onClick={handleDrawerClose} href="/myprofile">
             <ListItemText>My Profile</ListItemText>
-            </ListItemLink>
-            <ListItemLink onClick={props.logout} href="#">
+          </ListItemLink>
+          <ListItemLink onClick={props.logout} href="#">
             <ListItemText>Logout</ListItemText>
-            </ListItemLink>
+          </ListItemLink>
         </List>
         <Divider />
       </Drawer>
     </div>
-  )
+  );
 };
 
 export default Nav;
