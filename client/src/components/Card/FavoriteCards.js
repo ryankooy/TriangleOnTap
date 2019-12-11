@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const newStyle = {
-    color: '#7D3F20',
+    color: '#d19a30',
   }
 
 const FavoriteCards = (props) => {
@@ -61,5 +61,6 @@ const FavoriteCards = (props) => {
         </Grid>
     )
 }
+
 
 export default FavoriteCards;
