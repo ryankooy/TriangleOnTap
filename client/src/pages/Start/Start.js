@@ -33,18 +33,17 @@ const Start = () => {
     return (
     <Grid container component="main" className={classes.root}>
     <CssBaseline />
-    <Grid item xs={false} sm={4} md={5} lassName={classes.image} />
+    <Grid item xs={false} sm={4} md={5} className={classes.image} />
     <Grid 
     item
-    spacing={7}
     direction="column"
     alignItems="center"
     justify="center"
     style={{
-        minHeight: '100vh',
+        // minHeight: '100vh',
         position: 'absolute', 
-        left: '50%', 
-        top: '80%',
+        left: '66%', 
+        top: '15%',
         transform: 'translate(-50%, -50%)'
         }}
     >
