@@ -42,6 +42,7 @@ class Breweries extends Component {
   loadBreweries = () => {
     API.getBreweries()
       .then(res => {
+        console.log(res.data.breweries)
         this.setState({ breweries: res.data.breweries })
       })
       .catch(err => console.log(err));
@@ -106,11 +107,10 @@ class Breweries extends Component {
   handleSaveClick = event => {
     event.preventDefault();
     const selectedButton = event.target;
-    const updatedElement = selectedButton !== "button" ? selectedButton.closest("button") : selectedButton
+    const updatedElement = selectedButton !== "button" ? selectedButton.closest("button") : selectedButton;
     
     const selectedBreweryId = parseInt(updatedElement.getAttribute("data-id"));
     console.log(selectedBreweryId, updatedElement);
-    console.log(event.target);
     console.log(this.state.breweries);
 
     this.setState({ selected: true });
@@ -125,6 +125,10 @@ class Breweries extends Component {
       latitude: parseFloat(this.state.breweries[selectedBreweryId].latitude),
       longitude: parseFloat(this.state.breweries[selectedBreweryId].longitude)
     })
+    .catch(err => console.log(err))
+
+    this.loadBreweries();
+    console.log(this.state);
   };
 
   citySearch = thisCity => {

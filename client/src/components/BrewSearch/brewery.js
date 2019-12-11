@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box } from '@material-ui/core';
+import { Card } from '@material-ui/core';
 import { palette } from '@material-ui/system';
 import SaveBtn from '../BrewLists/SaveBtn';
 
@@ -39,11 +39,11 @@ function Brewery(props) {
       case 'regional':
       case 'large':
         // Changed text color to "dark"
-        bgColor = 'secondary.main'
+        bgColor = 'white'
         break
       case 'brewpub':
         // Changed text color to "dark"
-        bgColor = 'secondary.main'
+        bgColor = 'white'
         break
       default:
         bgColor = 'white'
@@ -54,7 +54,7 @@ function Brewery(props) {
     return (
       // Wrapped in a "div" tag
       // <Paper>
-      <Box className='p-4 mb-2 rounded text-light' 
+      <Card className='p-4 mb-2 rounded text-dark' 
             bgcolor={`${bgColor}`}>
         { (Object.keys(brewery).length !== 0) ?
           <div>
@@ -88,9 +88,9 @@ function Brewery(props) {
             } */}
           </div>
           :
-          <span>No brewery selected.</span>
+          <span className="font-bold">No brewery selected.</span>
         }
-      </Box>
+      </Card>
       // </Paper>
     )
   }

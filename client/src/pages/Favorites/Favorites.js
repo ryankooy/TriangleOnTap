@@ -24,11 +24,22 @@ class Favorites extends Component {
         .catch(err => console.log(err));
     };
 
-    handleDelete = id => {
-        API.deleteBrewery(id)
-        .then(res => this.componentDidMount())
-        .catch(err => console.log(err));
-    }
+    handleDelete = event => {
+        event.preventDefault();
+
+        const selectedButton = event.target;
+        const updatedElement = selectedButton !== "button" ? selectedButton.closest("button") : selectedButton;
+
+        const selectedBreweryId = updatedElement.getAttribute("data-id");
+
+        console.log(updatedElement, selectedBreweryId);
+        console.log(this.state.breweries);
+
+        API.deleteBrewery(selectedBreweryId)
+        .catch(err => console.log(err))
+
+        this.loadFavorites();
+  };
 
     render() {
         return (
@@ -37,7 +48,7 @@ class Favorites extends Component {
                 <Container>
                 <Col>
                 <h1 align="center">Favorite breweries</h1>
-                <h5 align="center">Keep track your favorite breweries</h5>
+                <h5 align="center">Keep track of your favorite breweries</h5>
                 </Col>
                 </Container>
 

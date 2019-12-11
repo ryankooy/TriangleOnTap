@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { List, ListItem, Collapse, ListItemText, Typography } from "@material-ui/core";
+import { List, ListItem, Collapse, ListItemText, Typography, ListSubheader } from "@material-ui/core";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import SaveBtn from '../BrewLists/SaveBtn';
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    maxWidth: 360,
+    maxWidth: 540,
     backgroundColor: theme.palette.background.paper,
   },
   nested: {
@@ -16,15 +16,13 @@ const useStyles = makeStyles(theme => ({
   
 }));
 
-const BrewLists = (props) => {
+export default function BrewLists(props) {
   const classes = useStyles();
-  const [open] = useState(true);
-  const [breweries] = useState([]);
+  const [open, setOpen] = React.useState(false);
 
-
-  // const handleClick = () => {
-  //   setOpen(!open);
-  // };
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
   console.log(props);
 
@@ -32,13 +30,19 @@ const BrewLists = (props) => {
         <List
         component="nav"
         aria-labelledby="nested-list-subheader"
+        subheader={
+          <ListSubheader component="div" id="nested-list-subheader">
+            Breweries List
+          </ListSubheader>
+        }
         className={classes.root}
-      >
+        >
         {props.breweries.map((brew, index) =>
           <div>
-            <ListItemText primary={brew.name}
-              {...open ? <ExpandLess /> : <ExpandMore />}
-            />
+            <ListItem button onClick={handleClick}>
+              <ListItemText primary={brew.name} />
+                {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
             <Collapse in={open} timeout="auto" unmountOnExit>      
             <List component="div" disablePadding>
             <ListItem button className={classes.nested} >
@@ -61,18 +65,16 @@ const BrewLists = (props) => {
                 } />
                 <SaveBtn onClick={props.onClick}
                           dataId={index}/>
-            </ListItem>
-            </List>
+                </ListItem>
+              </List>
             </Collapse>
-            </div>
+          </div>
         )}
 
         </List>
         
   );
 };
-
-export default BrewLists;
 
 // import React, { useState } from "react";
 // import { makeStyles } from '@material-ui/core/styles';
