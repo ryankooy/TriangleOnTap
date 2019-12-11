@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { Container, Col } from '../../components/Grid';
 import { Cards } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
+import Footer from "../../components/Footer/Footer";
 import AUTH from '../../utils/AUTH';
 
 class MyProfile extends Component {
@@ -119,7 +120,13 @@ class MyProfile extends Component {
           </Col>
           <Col size="md-3"></Col>
           </Container>
+
+      <Container>
+        <Footer />
       </Container>
+
+      </Container>
+
 		)
 	}
 }
