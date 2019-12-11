@@ -184,6 +184,8 @@ class Breweries extends Component {
             />
           </Col>
         </Container>
+
+        <Footer />
       </div>
     );
   }
