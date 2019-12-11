@@ -48,7 +48,7 @@ class Breweries extends Component {
       .catch(err => console.log(err));
   };
 
-  onMarkerHover = (props, marker) =>
+  onMarkerClick = (props, marker) =>
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -74,6 +74,7 @@ class Breweries extends Component {
           lng: element.longitude
         }}
         icon={beer}
+        onClick={this.onMarkerClick}
       />
     })
   }
