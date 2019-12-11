@@ -48,14 +48,14 @@ class Breweries extends Component {
       .catch(err => console.log(err));
   };
 
-  onMarkerHover = (props, marker) =>
+  onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
 
-  onClose = () => {
+  onClose = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -74,6 +74,8 @@ class Breweries extends Component {
           lng: element.longitude
         }}
         icon={beer}
+        onClick={this.onMarkerClick}
+        name={element.name}
       />
     })
   }
@@ -160,7 +162,7 @@ class Breweries extends Component {
               <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Cary")}>Cary</CardBtn>
               <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Apex")}>Apex</CardBtn>
               <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Holly Springs")}>Holly Springs</CardBtn>
-              <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Fuquay Varina")}>Fuquay Varina</CardBtn>
+              <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Fuquay Varina")}>Fuquay-Varina</CardBtn>
             </div>
             <Col>
             <div>
@@ -178,16 +180,19 @@ class Breweries extends Component {
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}
               onClose={this.onClose}
-            />
-          </MapContainer>            
+              name={this.state.breweries.name}
+            >
+              <div>
+                <h4>{this.state.selectedPlace.name}</h4>
+              </div>
+            </InfoWindow>
+          </MapContainer>          
         </Col>
 
         <Col>        
           <BrewLists
             breweries={this.state.breweries} 
             onClick={this.handleSaveClick}
-            onMouseover={this.onMarkerHover}
-            key={() => Math.floor(Math.random() * 0.5)}
           />
         </Col>
           
