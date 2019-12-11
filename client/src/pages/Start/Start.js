@@ -41,9 +41,9 @@ const Start = () => {
     justify="center"
     style={{
         // minHeight: '100vh',
-        position: 'absolute', 
-        left: '66%', 
-        top: '15%',
+        position: 'relative', 
+        left: '2%', 
+        top: '60%',
         transform: 'translate(-50%, -50%)'
         }}
     >

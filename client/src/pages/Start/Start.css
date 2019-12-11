@@ -7,22 +7,3 @@
     -o-background-size: cover;
     background-size: cover;
   }
-  
-<<<<<<< HEAD
-   */
-
-   .start {
-    /* The image used */
-    background-image: url(../../assets/images/brew.jpeg) no-repeat center center fixed;
-
-    /* Full height */
-    height: 100%; 
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-=======
-  
->>>>>>> 5b428dfd09035d682a31627a2127d264ed73b57f

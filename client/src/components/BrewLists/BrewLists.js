@@ -44,26 +44,26 @@ export default function BrewLists(props) {
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={open} timeout="auto" unmountOnExit>      
-              <List component="div" disablePadding>
-                <ListItem button className={classes.nested}>
-                  <ListItemText
-                    primary="Contact Info" 
-                    secondary={
-                      <React.Fragment>
-                        <Typography
-                        component="span"
-                        variant="body2"
-                        >
-                        {`Address: ${brew.street}, ${brew.city}, ${brew.state}`}
-                        <br></br>
-                        <a href={brew.website_url}>{`${brew.website_url}`}
-                        </a>
-                        <br></br>
-                        {"Phone: " + brew.phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")}
-                        </Typography>
-                      </React.Fragment>
-                    } />
-                      <SaveBtn onClick={props.onClick}
+            <List component="div" disablePadding>
+            <ListItem button className={classes.nested} >
+              <ListItemText
+                primary="Contact Info" 
+                secondary={
+                  <React.Fragment>
+                      <Typography
+                      component="span"
+                      variant="body2"
+                      >
+                      {`Address: ${brew.street}, ${brew.city}, ${brew.state}`}
+                      <br></br>
+                      <a href={brew.website_url} target="_blank">{`${brew.website_url}`}
+                      </a>
+                      <br></br>
+                      {"Phone: " + brew.phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")}
+                      </Typography>
+                  </React.Fragment>
+                } />
+                <SaveBtn onClick={props.onClick}
                           dataId={index}/>
                 </ListItem>
               </List>
