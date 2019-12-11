@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import MapContainer from '../../components/Map';
 import BrewLists from '../../components/BrewLists';
-import { Col, Container } from "../../components/Grid";
+import { Col, Container, Wrapper } from "../../components/Grid";
 import CardBtn from "../../components/CardBtn";
 import BrewerySearch from "../../components/BrewSearch";
 import { Marker, InfoWindow } from 'google-maps-react';
@@ -151,14 +151,16 @@ class Breweries extends Component {
         <div align="center">
           <img style={logoStyles} src={logo} />
         </div>
-        <Container>
+        <Wrapper>
           <Col>
-            <div align="center">Beer Search</div>
+            <h4 align="center">Search brewery by city</h4>
             <div align="center">
               <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Raleigh")}>Raleigh</CardBtn>
               <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Durham")}>Durham</CardBtn>
               <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Cary")}>Cary</CardBtn>
-              <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Chapel Hill")}>Chapel Hill</CardBtn>
+              <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Apex")}>Apex</CardBtn>
+              <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Holly Springs")}>Holly Springs</CardBtn>
+              <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Fuquay Varina")}>Fuquay Varina</CardBtn>
             </div>
             <Col>
             <div>
@@ -166,7 +168,7 @@ class Breweries extends Component {
             </div>
           </Col>
           </Col>
-      </Container>
+      </Wrapper>
 
       <Container>
         <Col>            
