@@ -4,6 +4,7 @@ import { Container, Col } from '../../components/Grid';
 import { Cards } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 import Nav from '../../components/Nav';
+import './Auth.css';
 
 const newStyle = {
 	color: "#7D3F20",
