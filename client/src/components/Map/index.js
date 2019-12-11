@@ -15,15 +15,15 @@ export class MapContainer extends Component {
   render() {
     return (
       <Map
-      google={this.props.google}
-      zoom={9.15}
-      style={mapStyles}
-      initialCenter={{
-        lat: 35.844198,
-        lng: -78.819389
-      }}
+        google={this.props.google}
+        zoom={9}
+        style={mapStyles}
+        initialCenter={{
+          lat: 35.833842,
+          lng: -78.806975
+        }}
       > 
-        { this.props.children }
+        {this.props.children}
       </Map>
     );
   }
