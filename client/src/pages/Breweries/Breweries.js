@@ -74,7 +74,6 @@ class Breweries extends Component {
           lng: element.longitude
         }}
         icon={beer}
-        // onClick={this.onMarkerHover}
       />
     })
   }
@@ -188,6 +187,7 @@ class Breweries extends Component {
             breweries={this.state.breweries} 
             onClick={this.handleSaveClick}
             onMouseover={this.onMarkerHover}
+            key={() => Math.floor(Math.random() * 0.5)}
           />
         </Col>
           
