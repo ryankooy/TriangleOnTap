@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -16,10 +17,10 @@ export default function SaveBtn(props) {
 
     return (
         <div className={classes.root}>
-            <Button variant="contained" color="primary" onClick={props.onClick}
+            <Fab variant="contained" color="primary" onClick={props.onClick}
                     data-id={props.dataId}>
-                Save
-            </Button>
+                <FavoriteTwoToneIcon />
+            </Fab>
         </div>
     );
 };

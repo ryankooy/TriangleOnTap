@@ -14,13 +14,6 @@ const brewerySeed = [
         name: "Marriott Bar",
         city: "Cary",
         state: "North Carolina",
-        // location: {
-        //     "type": "Point",
-        //     "coordinates": [
-        //         -78.89,
-        //         35.85
-        //     ]
-        // },
         street: "1229 Perry Rd Ste 101",
         latitude: "35.85",
         longitude: "-78.89",
@@ -31,13 +24,6 @@ const brewerySeed = [
         name: "Unknown",
         city: "Mammoth Lakes",
         state: "North Carolina",
-        // location: {
-        //     "type" : "Point",
-        //     "coordinates" : [
-        //         -118.9,
-        //         37.61
-        //     ]
-        // }
         street: "1234 Street Rd",
         latitude: "37.34",
         longitude: "-77.99",

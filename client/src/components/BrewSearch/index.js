@@ -14,9 +14,9 @@ function getSuggestionValue(suggestion) {
 
 function renderSuggestion(suggestion) {
   return (
-      <Button className="text-lg p-4">
+      <span className="text-lg p-4">
         {suggestion.name}
-      </Button>
+      </span>
   );
 };
 
@@ -53,7 +53,7 @@ class BrewerySearch extends Component {
       .catch(error => {
         this.setState({ suggestions: [] })
       })
-  }
+  };
 
   onChange = (event, { newValue }) => {
     this.setState({
@@ -107,10 +107,10 @@ class BrewerySearch extends Component {
     const { brewery, suggestions, value } = this.state
 
     const inputProps = {
-      placeholder: 'Type a brewery name',
+      placeholder: 'Search Breweries Here',
       value,
       onChange: this.onChange,
-      className: 'shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline mb-4'
+      // className: 'shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline mb-4'
     };
 
     return (
