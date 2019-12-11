@@ -1,3 +1,5 @@
+// Defining our API routes for brewery data
+
 const router = require("express").Router();
 const breweriesController = require("../../controllers/breweriesController");
 

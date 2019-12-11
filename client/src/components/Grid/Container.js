@@ -9,11 +9,3 @@ export const Container = ({children}) => (
     {children}
   </Grid>
 );
-
-
- 
-// export const Container = ({ fluid, children }) => (
-//   <div className={`container${fluid ? "-fluid" : ""}`}>
-//     {children}
-//   </div>
-// );

@@ -4,6 +4,7 @@ import MapContainer from '../../components/Map';
 import BrewLists from '../../components/BrewLists';
 import { Col, Container, Wrapper } from "../../components/Grid";
 import CardBtn from "../../components/CardBtn";
+import Footer from "../../components/Footer/Footer";
 import BrewerySearch from "../../components/BrewSearch";
 import { Marker, InfoWindow } from 'google-maps-react';
 import "./style.css";
@@ -40,10 +41,10 @@ class Breweries extends Component {
 
   loadBreweries = () => {
     API.getBreweries()
-      .then(res => {
-        this.setState({ breweries: res.data.breweries })
-      })
-      .catch(err => console.log(err));
+    .then(res => {
+      this.setState({ breweries: res.data.breweries })
+    })
+    .catch(err => console.log(err));
   };
 
   onMarkerClick = (props, marker, e) => {

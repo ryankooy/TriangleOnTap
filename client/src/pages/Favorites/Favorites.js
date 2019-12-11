@@ -17,10 +17,8 @@ class Favorites extends Component {
     }
 
     loadFavorites = () => {
-        console.log(this.state.breweries)
         API.getBreweries()
         .then(res => {
-            console.log(res.data.breweries);
             this.setState({ breweries: res.data.breweries })
         })
         .catch(err => console.log(err));
@@ -31,49 +29,39 @@ class Favorites extends Component {
 
         const selectedButton = event.target;
         const updatedElement = selectedButton !== "button" ? selectedButton.closest("button") : selectedButton;
-
         const selectedBreweryId = updatedElement.getAttribute("data-id");
 
-        console.log(updatedElement, selectedBreweryId);
-        console.log(this.state.breweries);
-
         API.deleteBrewery(selectedBreweryId)
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
 
         this.loadFavorites();
-  };
+
+        window.location.reload(false);
+    };
 
     render() {
         return (
             <Container>
-            
                 <Container>
-                <Col>
-                <h1 align="center">Favorite breweries</h1>
-                <h5 align="center">Keep track of your favorite breweries</h5>
-                </Col>
+                    <Col>
+                        <h1 align="center">Favorite breweries</h1>
+                        <h5 align="center">Keep track of your favorite breweries</h5>
+                    </Col>
                 </Container>
-
                 <Wrapper>
-                <Container>
-                
-                <FavoriteCards
-                breweries={this.state.breweries}
-                onClick={this.handleDelete}
-                >
-                </FavoriteCards>
-                
-                </Container>
+                    <Container>
+                        <FavoriteCards
+                            breweries={this.state.breweries}
+                            onClick={this.handleDelete}
+                        />
+                    </Container>
                 </Wrapper>
-
-                
-                <Footer />
-               
+                <Container>
+                    <Footer />
+                </Container>
             </Container>
-        )
-    }
-
-
-}
+        );
+    };
+};
 
 export default Favorites;

@@ -8,6 +8,7 @@
     "@material-ui/icons": "^4.5.1",
     "@material-ui/styles": "^4.7.1",
     "axios": "^0.18.1",
+    "clsx": "^1.0.4",
     "google-maps-react": "^2.0.2",
     "hoist-non-react-statics": "^3.3.0",
     "prop-types": "^15.7.2",

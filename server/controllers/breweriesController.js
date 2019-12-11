@@ -1,13 +1,12 @@
 const ObjectId = require("mongoose").Types.ObjectId;
 const db = require("../models");
 
-// Defining methods for the booksController
+// Defining methods for the breweriesController
 module.exports = {
+
+  // Finds and returns the user's saved breweries
   findAll: function(req, res) {
     db.Brewery
-      // .find({})
-      // .then(data => res.json(data))
-      // .catch(err => res.status(422).json(err))
     if (req.user) {
       db.User
         .find({ _id: req.user._id })
@@ -20,6 +19,8 @@ module.exports = {
       return res.json({ breweries: null });
     }
   },
+
+  // Finds and returns a brewery by its corresponding ID
   findById: function(req, res) {
     if (req.user) {
       db.User
@@ -34,6 +35,8 @@ module.exports = {
       return res.json({ brewery: null });
     }
   },
+
+  // Creates a brewery data entry and saves that entry to the user's breweries
   create: function(req, res) {
     console.log(req.body);
     console.log(req.user._id);
@@ -43,11 +46,13 @@ module.exports = {
         return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { breweries: dbBrewery._id } }, { new: true });
       })
       .then((dbUser) => {
+
         // If the User was updated successfully, send it back to the client
         res.json(dbUser);
       })
       .catch(err => res.status(422).json(err));
   },
+
   createCoordinates: function(req, res) {
     console.log(req.body);
     db.Coordinates
@@ -60,6 +65,8 @@ module.exports = {
       })
       .catch(err => res.status(422).json(err));
   },
+
+  // Updates the data of brewery with corresponding ID
   update: function(req, res) {
     db.Brewery
       .findOneAndUpdate({ _id: req.params.id }, req.body)
@@ -69,6 +76,8 @@ module.exports = {
       })
       .catch(err => res.status(422).json(err));
   },
+
+  // Removes a brewery from the user's saved breweries list
   remove: function(req, res) {
     db.User.findOneAndUpdate({ _id: req.user._id }, { $pull: { breweries: new ObjectId(req.params.id) } }, { new: true })
       .then(() => {

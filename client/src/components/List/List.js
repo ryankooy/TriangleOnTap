@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem, Collapse, ListItemText } from "@material-ui/core";
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import Dropdown from "./ListItem";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,13 +14,11 @@ const useStyles = makeStyles(theme => ({
   nested: {
     paddingLeft: theme.spacing(4),
   },
-  
 }));
 
 export const NestedList = (props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-
   const handleClick = () => {
     setOpen(!open);
   };
@@ -36,25 +33,13 @@ export const NestedList = (props) => {
         <ListItemText primary={props.children} />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-    <Collapse in={open} timeout="auto" unmountOnExit>      
-    <List component="div" disablePadding>
-        <ListItem button className={classes.nested}>
-          <ListItemText primary={props.children} />
-        </ListItem>
+      <Collapse in={open} timeout="auto" unmountOnExit>      
+        <List component="div" disablePadding>
+          <ListItem button className={classes.nested}>
+            <ListItemText primary={props.children} />
+          </ListItem>
+        </List>
+      </Collapse>
     </List>
-    </Collapse>
-    </List>
-  )
+  );
 };
-
-
-
-// export const List = ({ children }) => {
-//   return (
-//     <div className="list-overflow-container">
-//       <ul className="list-group">
-//         {children}
-//       </ul>
-//     </div>
-//   );
-// };

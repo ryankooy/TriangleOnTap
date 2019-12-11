@@ -1,43 +1,76 @@
 import React from "react";
-import {Typography, Link, Grid} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import {Typography, Link, Grid, AppBar, Toolbar, Slide, useScrollTrigger} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="#">
-          Triangle on Tap
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
-
-const useStyles = makeStyles(theme => ({
-    footer: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(6),
-    }
-}));
-
-export default function Footer() {
-    
-    const classes = useStyles();
-
-    return(
-    <Grid container alignItems="center" justify="center" >
-    <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Triangle On Tap
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Connect to your local triangle breweries
-        </Typography>
-        <Copyright />
-    </footer>
-    </Grid>
-    )
+const newStyle = {
+  color: '#ffffff',
 }
 
+const Copyright = () => {
+  return (
+    <Typography style={newStyle} variant="body2" align="center">
+      {'Copyright © '}
+      <Link style={newStyle} href="/">
+        Triangle on Tap
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+};
+
+const HideOnScroll = (props) => {
+  const { children, window } = props;
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({ target: window ? window() : undefined });
+  
+  return (
+    <Slide appear={false} direction="up" in={!trigger}>
+      {children}
+    </Slide>
+  );
+};
+  
+HideOnScroll.propTypes = {
+  children: PropTypes.element.isRequired,
+  window: PropTypes.func,
+};
+
+const useStyles = makeStyles(theme => ({
+  footer: {
+      backgroundColor: theme.palette.secondary,
+      padding: theme.spacing(6),
+  },
+  appBar: {
+    top: 'auto',
+    bottom: 0,
+    marginTop: theme.spacing(6),
+  },
+  grow: {
+    flexGrow: 1,
+  },
+}));
+
+export default function Footer(props) {
+    
+  const classes = useStyles();
+
+  return(
+    <footer className={classes.footer}>
+      <HideOnScroll {...props}>
+        <AppBar color="secondary" className={classes.appBar}>
+          <Toolbar>
+            {/* <div className={classes.grow} /> */}
+            <Grid container alignItems="center" justify="center">
+            <Copyright />
+            </Grid>
+          </Toolbar>
+        </AppBar>
+      </HideOnScroll>
+      {/* </React.Fragment> */}
+    </footer>
+  );
+};

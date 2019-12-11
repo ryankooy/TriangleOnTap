@@ -3,33 +3,31 @@ import { Redirect } from 'react-router-dom';
 import { Container, Col } from '../../components/Grid';
 import { Cards } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
+import Footer from "../../components/Footer/Footer";
 import AUTH from '../../utils/AUTH';
 
 class MyProfile extends Component {
 
 	constructor(props) {
     super(props);
-    
-		this.state = {
+    this.state = {
       id: this.props.user._id,
       firstName: this.props.user.firstName,
       lastName: this.props.user.lastName,
       username: this.props.user.username
       // password: this.props.user.password
 		};
-  }
+  };
 
   componentDidMount () {
-    console.log(this.state);
     if(!this.props.id) {
       this.loadProfile();
     }
-  }
+  };
 
   loadProfile = () => {
     AUTH.getUser()
     .then(res => {
-      console.log('res:', res);
       this.setState({
         id: res.data.user._id,
         firstName: res.data.user.firstName,
@@ -57,7 +55,6 @@ class MyProfile extends Component {
       };
       AUTH.update(this.state.id, profileData).then(response => {
         // this.loadProfile();
-        console.log(response);
       });
     }
   }
@@ -97,7 +94,6 @@ class MyProfile extends Component {
                   onChange={this.handleChange}
                   label="Username"
                   variant="outlined"
-                  
                 />
                 {/* <label htmlFor="password">Password: </label>
                 <Input
@@ -118,10 +114,13 @@ class MyProfile extends Component {
             </Cards>
           </Col>
           <Col size="md-3"></Col>
-          </Container>
+        </Container>
+        <Container>
+          <Footer />
+        </Container>
       </Container>
-		)
-	}
-}
+    );
+	};
+};
 
 export default MyProfile;
