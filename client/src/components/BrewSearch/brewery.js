@@ -1,78 +1,69 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from '@material-ui/core';
-import { palette } from '@material-ui/system';
 import SaveBtn from '../BrewLists/SaveBtn';
+import './Brewery.css';
 
 function Brewery(props) {
-// class Brewery extends PureComponent {
-  // render() {
-    // const { brewery } = this.props;
-    const { brewery } = props;
 
-    const {
-      name,
-      street,
-      city,
-      state,
-      phone,
-      latitude,
-      longitude,
-      brewery_type,
-      website_url
-    } = brewery
-    let bgColor;
-    let address;
+  const { brewery } = props;
 
-    if (city !== '') {
-      if (street === '')
-        address = encodeURIComponent(`${name}, ${city}, ${state}`)
-      else {
-        address = encodeURIComponent(`${name}, ${street}, ${city}, ${state}`)
-      }
-    } else {
-      address = null;
+  const {
+    name,
+    street,
+    city,
+    state,
+    brewery_type,
+    website_url
+  } = brewery
+  let bgColor;
+  let address;
+
+  if (city !== '') {
+    if (street === '')
+      address = encodeURIComponent(`${name}, ${city}, ${state}`)
+    else {
+      address = encodeURIComponent(`${name}, ${street}, ${city}, ${state}`)
     }
+  } else {
+    address = null;
+  }
 
-    switch(brewery.brewery_type) {
-      case 'micro':
-      case 'regional':
-      case 'large':
-        // Changed text color to "dark"
-        bgColor = 'white'
-        break
-      case 'brewpub':
-        // Changed text color to "dark"
-        bgColor = 'white'
-        break
-      default:
-        bgColor = 'white'
-    }
+    // switch(brewery.brewery_type) {
+    //   case 'micro':
+    //   case 'regional':
+    //   case 'large':
+    //     bgColor = 'white'
+    //     break
+    //   case 'brewpub':
+    //     bgColor = 'white'
+    //     break
+    //   default:
+    //     bgColor = 'white'
+    // }
 
-    console.log(props.brewery);
-
-    return (
-      // Wrapped in a "div" tag
-      // <Paper>
-      <Card className='p-4 mb-2 rounded text-dark' 
-            bgcolor={`${bgColor}`}>
-        { (Object.keys(brewery).length !== 0) ?
-          <div>
-            <address className="roman">
-              <div className="text-lg mb-2">
-                <span className="font-bold">{name}</span>
-                <span> ({brewery_type})</span>
-              </div>
+  return (
+    <Card className='p-4 mb-2 rounded text-dark' 
+          bgcolor={`${bgColor}`}
+    >
+      { (Object.keys(brewery).length !== 0) ?
+        <div>
+          <address className="roman">
+            <div className="text-lg mb-2">
+              <span className="font-bold">{name}</span>
+              <span> ({brewery_type})</span>
+            </div>
               { street !== '' ? <div>{street}</div> : '' }
-              <div>
-                { city !== '' ? <span>{city}, {state} </span> : '' }
-              </div>
-              <div>
-                { website_url != '' ? <a href={website_url}>{website_url}</a> : '' }
-              </div>
-              <SaveBtn onClick={props.onClick}
-                       dataId={props.brewery.id}/>
-            </address>
+            <div>
+              { city !== '' ? <span>{city}, {state} </span> : '' }
+            </div>
+            <div>
+              { website_url !== '' ? <a href={website_url}>{website_url}</a> : '' }
+            </div>
+            <SaveBtn onClick={props.onClick}
+                      dataId={props.brewery.id}
+            />
+          </address>
             {/* { address ?
               <div>
                 <a
@@ -86,15 +77,13 @@ function Brewery(props) {
               </div>
               : ''
             } */}
-          </div>
+        </div>
           :
-          <span className="font-bold">No brewery selected.</span>
-        }
-      </Card>
-      // </Paper>
-    )
-  }
-// }
+        <span className="font-bold">No brewery selected.</span>
+      }
+    </Card>
+  )
+};
 
 Brewery.propTypes = {
   brewery: PropTypes.object.isRequired

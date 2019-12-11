@@ -3,7 +3,6 @@ import axios from 'axios';
 import { debounce } from 'throttle-debounce';
 import Autosuggest from 'react-autosuggest';
 import Brewery from './brewery';
-import { Button } from '@material-ui/core';
 import API from '../../utils/API';
 
 const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST || "https://api.openbrewerydb.org";
@@ -23,36 +22,30 @@ function renderSuggestion(suggestion) {
 class BrewerySearch extends Component {
   constructor() {
     super();
-
-    this.debouncedGetSuggestions = debounce(500, this.getSuggestions)
-
+    this.debouncedGetSuggestions = debounce(500, this.getSuggestions);
     this.state = {
       value: '',
       brewery: {},
       suggestions: []
     }
-  }
+  };
 
   getSuggestions = value => {
     const params = { query: value }
-    
     axios.get(`${API_SERVER_HOST}/breweries/search?query=`, { params: params })
       .then(res => {
-        console.log(res.data);
-        const filtered = res.data.filter(
-          res =>
-                    res.name &&
-                    res.city &&
-                    res.longitude &&
-                    res.latitude &&
-                    res.state === "North Carolina"
+        const filtered = res.data.filter(res =>
+          res.name &&
+          res.city &&
+          res.longitude &&
+          res.latitude &&
+          res.state === "North Carolina"
         );
-        
         this.setState({ suggestions: filtered });
       })
-      .catch(error => {
-        this.setState({ suggestions: [] })
-      })
+        .catch(error => {
+          this.setState({ suggestions: [] })
+        })
   };
 
   onChange = (event, { newValue }) => {
@@ -73,23 +66,18 @@ class BrewerySearch extends Component {
 
   onSuggestionSelected = (event, { suggestion }) => {
     const brewery = suggestion;
-
     axios.get(`${API_SERVER_HOST}/breweries/${brewery.id}`)
       .then(res => {
         this.setState({ brewery: res.data })
       })
-      .catch(error => {})
+        .catch(error => {})
   };
 
   handleSaveClick = event => {
     event.preventDefault();
     const selectedButton = event.target;
-    const updatedElement = selectedButton !== "button" ? selectedButton.closest("button") : selectedButton
-    
+    const updatedElement = selectedButton !== "button" ? selectedButton.closest("button") : selectedButton;
     const selectedBreweryId = parseInt(updatedElement.getAttribute("data-id"));
-    console.log(selectedBreweryId, updatedElement);
-    console.log(event.target);
-    console.log(this.state.brewery);
     
     API.saveBrewery({
       name: this.state.brewery.name,
@@ -104,13 +92,12 @@ class BrewerySearch extends Component {
   };
 
   render() {
-    const { brewery, suggestions, value } = this.state
 
+    const { brewery, suggestions, value } = this.state;
     const inputProps = {
       placeholder: 'Search Breweries Here',
       value,
       onChange: this.onChange,
-      // className: 'shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline mb-4'
     };
 
     return (
@@ -125,10 +112,11 @@ class BrewerySearch extends Component {
           onSuggestionSelected={this.onSuggestionSelected}
         />
         <Brewery brewery={this.state.brewery}
-                 onClick={this.handleSaveClick} />
+                 onClick={this.handleSaveClick}
+        />
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default BrewerySearch;

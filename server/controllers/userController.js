@@ -2,6 +2,7 @@ const db = require("../models");
 
 // Defining methods for the userController
 module.exports = {
+
   getUser: (req, res, next) => {
     if (req.user) {
       db.User.findOne({_id: req.user._id}).then(user => {
@@ -12,6 +13,7 @@ module.exports = {
       return res.json({ user: null });
     }
   },
+
   register: (req, res) => {
     const { firstName, lastName, username, password } = req.body;
     // ADD VALIDATION
@@ -33,6 +35,7 @@ module.exports = {
       });
     });
   },
+
   logout: (req, res) => {
     if (req.user) {
       req.session.destroy();
@@ -42,6 +45,7 @@ module.exports = {
       return res.json({ msg: 'no user to log out!' });
     }
   },
+
   update: function(req, res) {
     console.log(req.params.id);
     db.User
@@ -55,15 +59,15 @@ module.exports = {
     .catch(err => res.status(422).json(err));
     
   },
+
   auth: function(req, res, next) {
-		// console.log(req.body);
 		next();
   },
+
   authenticate: (req, res) => {
 		const user = JSON.parse(JSON.stringify(req.user)); // hack
 		const cleanUser = Object.assign({}, user);
 		if (cleanUser) {
-			// console.log(`Deleting ${cleanUser.password}`);
 			delete cleanUser.password;
 		}
 		res.json({ user: cleanUser });

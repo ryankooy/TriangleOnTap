@@ -1,4 +1,3 @@
-// DEPENDENCIES =====================
 const mongoose = require("mongoose");
 const db = require("../models");
 
@@ -8,6 +7,7 @@ mongoose.connect(
     'mongodb://user:admin1@ds037155.mlab.com:37155/heroku_trz1rz2v'    
 );
 
+// Seed data
 const userSeed = [
     {
         firstName: "Miran",
@@ -47,13 +47,13 @@ const userSeed = [
 ];
 
 db.User
-    .remove({})
-    .then(() => db.User.collection.insertMany(userSeed))
-    .then(data => {
-        console.log(data.result.n + " records inserted");
-        process.exit(0);
-    })
-    .catch(err => {
-        console.err(err);
-        process.exit(1);
-    });
+.remove({})
+.then(() => db.User.collection.insertMany(userSeed))
+.then(data => {
+    console.log(data.result.n + " records inserted");
+    process.exit(0);
+})
+.catch(err => {
+    console.err(err);
+    process.exit(1);
+});
