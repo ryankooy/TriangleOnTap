@@ -41,14 +41,14 @@ const Start = () => {
     justify="center"
     style={{
         // minHeight: '100vh',
-        position: 'absolute', 
-        left: '66%', 
-        top: '15%',
+        position: 'relative', 
+        left: '2%', 
+        top: '60%',
         transform: 'translate(-50%, -50%)'
         }}
     >
         <Grid item xs>
-        <Typography variant="h2" component="h2" gutter Bottom color="primary">
+        <Typography variant="h2" component="h2" color="primary">
             Triangle On Tap
         </Typography>
         <Button className={classes.button} variant="contained" style={newStyle} space={8}><Link to = "/login" style={newStyle} >Login</Link></Button> 
