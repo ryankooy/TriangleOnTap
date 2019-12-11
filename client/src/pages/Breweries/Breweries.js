@@ -8,7 +8,16 @@ import BrewerySearch from "../../components/BrewSearch";
 import { Marker, InfoWindow } from 'google-maps-react';
 import "./style.css";
 import beer from '../../assets/images/beer.svg';
+import logo from '../../assets/images/TriangleOnTap_Logo_Transparent.png';
 
+const logoStyles = {
+  display: 'flex',
+  height: '15vw',
+  width: '15vw', 
+  textAlign: 'center',
+  marginTop: '20px',
+  marginBottom: '0px'
+}
 
 class Breweries extends Component {
   state = {
@@ -135,9 +144,12 @@ class Breweries extends Component {
 
     return (
       <div className="Breweries" style={{margin: 30, padding: 30}}>
-      <Container>
+        <div align="center">
+          <img style={logoStyles} src={logo} />
+        </div>
+        <Container>
           <Col>
-            <h1 align="center">Beer Search</h1>
+            <div align="center">Beer Search</div>
             <div align="center">
               <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Raleigh")}>Raleigh</CardBtn>
               <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Durham")}>Durham</CardBtn>
@@ -153,82 +165,26 @@ class Breweries extends Component {
       </Container>
 
       <Container>
-          <Col>            
-            <MapContainer>
-              {this.displayMarkers()}
-              <InfoWindow
-                marker={this.state.activeMarker}
-                visible={this.state.showingInfoWindow}
-                onClose={this.onClose}
-              />
-            </MapContainer>            
-          </Col>
+        <Col>            
+          <MapContainer>
+            {this.displayMarkers()}
+            <InfoWindow
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}
+              onClose={this.onClose}
+            />
+          </MapContainer>            
+        </Col>
 
-          <Col>        
-          <BrewLists breweries={this.state.breweries} 
-                     onClick={this.handleSaveClick} />
-      </Col>
+        <Col>        
+          <BrewLists
+            breweries={this.state.breweries} 
+            onClick={this.handleSaveClick}
+          />
+        </Col>
           
       </Container>
       </div>
-
-
-      // {/* // <Container fluid>
-      // //   <Row>
-      // //     <Col size="md-6">
-      // //       <Jumbotron>
-      // //         <h1>Breweries</h1>
-      // //       </Jumbotron>
-      // //       <form>
-      // //         <Input
-      // //           value={this.state.name}
-      // //           onChange={this.handleInputChange}
-      // //           name="name"
-      // //           placeholder="Name (required)"
-      // //         />
-      // //         <Input
-      // //           value={this.state.city}
-      // //           onChange={this.handleInputChange}
-      // //           name="city"
-      // //           placeholder="City (required)"
-      // //         />
-      // //         <TextArea
-      // //           value={this.state.date}
-      // //           onChange={this.handleInputChange}
-      // //           name="date"
-      // //           placeholder="Date (Optional)"
-      // //         />
-      // //         <FormBtn
-      // //           disabled={!(this.state.name && this.state.city)}
-      // //           onClick={this.handleFormSubmit}
-      // //         >
-      // //           Submit Brewery
-      // //         </FormBtn>
-      // //       </form>
-      // //     </Col>
-      // //     <Col size="md-6 sm-12">
-      // //       <Jumbotron>
-      // //         <h1>Breweries On My List</h1>
-      // //       </Jumbotron>
-      // //       {this.state.breweries.length ? (
-      // //         <List>
-      // //           {this.state.breweries.map(brewery => (
-      // //             <ListItem key={brewery._id}>
-      // //               <Link to={"/breweries/" + brewery._id}>
-      // //                 <strong>
-      // //                   {brewery.name} by {brewery.city}
-      // //                 </strong>
-      // //               </Link>
-      // //               <DeleteBtn onClick={() => this.deleteBrewery(brewery._id)} />
-      // //             </ListItem>
-      // //           ))}
-      // //         </List>
-      // //       ) : (
-      // //         <h3>No Results to Display</h3>
-      // //       )}
-      // //     </Col>
-      // //   </Row>
-      // // </Container> */}
     );
   }
 }
