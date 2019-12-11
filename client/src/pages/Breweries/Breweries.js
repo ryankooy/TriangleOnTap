@@ -31,8 +31,7 @@ class Breweries extends Component {
     phone: "",
     showingInfoWindow: false,  //Hides or the shows the infoWindow
     activeMarker: {},          //Shows the active marker upon click
-    selectedPlace: {},
-    selected: false
+    selectedPlace: {}
   };
 
   componentDidMount() {
@@ -42,18 +41,18 @@ class Breweries extends Component {
   loadBreweries = () => {
     API.getBreweries()
       .then(res => {
-        console.log(res.data.breweries)
         this.setState({ breweries: res.data.breweries })
       })
       .catch(err => console.log(err));
   };
 
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
+  };
 
   onClose = props => {
     if (this.state.showingInfoWindow) {
@@ -88,7 +87,6 @@ class Breweries extends Component {
 
   handleInputChange = event => {
     const { name, value } = event.target;
-    console.log(value);
     this.setState({
       [name]: value
     });
@@ -99,8 +97,6 @@ class Breweries extends Component {
 
     API.searchBreweries({ city: this.state.search })
       .then(res => {
-        console.log(res);
-        
         this.loadBreweries();
       })
       .catch(err => console.log(err));
@@ -108,15 +104,11 @@ class Breweries extends Component {
 
   handleSaveClick = event => {
     event.preventDefault();
+
     const selectedButton = event.target;
     const updatedElement = selectedButton !== "button" ? selectedButton.closest("button") : selectedButton;
-    
     const selectedBreweryId = parseInt(updatedElement.getAttribute("data-id"));
-    console.log(selectedBreweryId, updatedElement);
-    console.log(this.state.breweries);
 
-    this.setState({ selected: true });
-    
     API.saveBrewery({
       name: this.state.breweries[selectedBreweryId].name,
       street: this.state.breweries[selectedBreweryId].street,
@@ -130,14 +122,11 @@ class Breweries extends Component {
     .catch(err => console.log(err))
 
     this.loadBreweries();
-    console.log(this.state);
   };
 
   citySearch = thisCity => {
-    console.log(thisCity);
     API.searchBreweries({ city: thisCity })
       .then(res => {
-        console.log(res.data);
         this.setState({
           breweries: res.data
         });
@@ -146,8 +135,6 @@ class Breweries extends Component {
   }
 
   render() {
-    console.log(this.state);
-
     return (
       <div className="Breweries" style={{margin: 30, padding: 30}}>
         <div align="center">
@@ -165,38 +152,37 @@ class Breweries extends Component {
               <CardBtn style={{margin: 10}} onClick={() => this.citySearch("Fuquay Varina")}>Fuquay-Varina</CardBtn>
             </div>
             <Col>
-            <div>
-              <BrewerySearch onClick={this.handleSaveClick}/>
-            </div>
-          </Col>
-          </Col>
-      </Wrapper>
-
-      <Container>
-        <Col>            
-          <MapContainer>
-            {this.displayMarkers()}
-            <InfoWindow
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}
-              onClose={this.onClose}
-              name={this.state.breweries.name}
-            >
               <div>
-                <h4>{this.state.selectedPlace.name}</h4>
+                <BrewerySearch onClick={this.handleSaveClick}/>
               </div>
-            </InfoWindow>
-          </MapContainer>          
-        </Col>
+            </Col>
+          </Col>
+        </Wrapper>
 
-        <Col>        
-          <BrewLists
-            breweries={this.state.breweries} 
-            onClick={this.handleSaveClick}
-          />
-        </Col>
-          
-      </Container>
+        <Container>
+          <Col>            
+            <MapContainer>
+              {this.displayMarkers()}
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+                name={this.state.breweries.name}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+            </MapContainer>          
+          </Col>
+
+          <Col>        
+            <BrewLists
+              breweries={this.state.breweries} 
+              onClick={this.handleSaveClick}
+            />
+          </Col>
+        </Container>
       </div>
     );
   }
