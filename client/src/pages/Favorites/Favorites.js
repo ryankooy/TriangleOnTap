@@ -41,6 +41,7 @@ class Favorites extends Component {
         .catch(err => console.log(err))
 
         this.loadFavorites();
+        window.location.reload(false);
   };
 
     render() {
@@ -65,10 +66,9 @@ class Favorites extends Component {
                 
                 </Container>
                 </Wrapper>
-
-                
+                <Container>
                 <Footer />
-               
+                </Container>
             </Container>
         )
     }
