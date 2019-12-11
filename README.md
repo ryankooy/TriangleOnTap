@@ -14,7 +14,7 @@ are tailored to your interests. Triangle OnTap makes finding the location of you
 
 ## Screenshots
 
-To be added. 
+![](brew.gif)
 
 ## Technologies Used
 * **React** - [https://reactjs.org/]
