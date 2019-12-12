@@ -24,12 +24,6 @@ class Breweries extends Component {
   state = {
     breweries: [],
     search: "",
-    name: "",
-    street: "",
-    city: "",
-    latitude: "",
-    longitude: "",
-    phone: "",
     showingInfoWindow: false,  //Hides or the shows the infoWindow
     activeMarker: {},          //Shows the active marker upon click
     selectedPlace: {}
@@ -96,7 +90,7 @@ class Breweries extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    API.searchBreweries({ city: this.state.search })
+    API.searchBreweries({ search: this.state.search })
       .then(res => {
         this.loadBreweries();
       })
@@ -126,7 +120,7 @@ class Breweries extends Component {
   };
 
   citySearch = thisCity => {
-    API.searchBreweries({ city: thisCity })
+    API.searchBreweries({ search: thisCity })
       .then(res => {
         this.setState({
           breweries: res.data
