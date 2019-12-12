@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card } from '@material-ui/core';
+import { Card, Link } from '@material-ui/core';
 import SaveBtn from '../BrewLists/SaveBtn';
 import './Brewery.css';
 
@@ -29,19 +29,6 @@ function Brewery(props) {
     address = null;
   }
 
-    // switch(brewery.brewery_type) {
-    //   case 'micro':
-    //   case 'regional':
-    //   case 'large':
-    //     bgColor = 'white'
-    //     break
-    //   case 'brewpub':
-    //     bgColor = 'white'
-    //     break
-    //   default:
-    //     bgColor = 'white'
-    // }
-
   return (
     <Card className='p-4 mb-2 rounded text-dark' 
           bgcolor={`${bgColor}`}
@@ -58,25 +45,12 @@ function Brewery(props) {
               { city !== '' ? <span>{city}, {state} </span> : '' }
             </div>
             <div>
-              { website_url !== '' ? <a href={website_url}>{website_url}</a> : '' }
+              { website_url !== '' ? <Link href={website_url} target="_blank">{website_url}</Link> : '' }
             </div>
             <SaveBtn onClick={props.onClick}
                       dataId={props.brewery.id}
             />
           </address>
-            {/* { address ?
-              <div>
-                <a
-                  className="text-white"
-                  href={`https://www.google.com/maps/search/?api=1&query=${address}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Google Map
-                </a>
-              </div>
-              : ''
-            } */}
         </div>
           :
         <span className="font-bold">No brewery selected.</span>

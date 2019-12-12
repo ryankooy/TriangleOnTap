@@ -34,13 +34,23 @@ class BrewerySearch extends Component {
     const params = { query: value }
     axios.get(`${API_SERVER_HOST}/breweries/search?query=`, { params: params })
       .then(res => {
-        const filtered = res.data.filter(res =>
-          res.name &&
-          res.city &&
-          res.longitude &&
-          res.latitude &&
-          res.state === "North Carolina"
-        );
+        const filteredByState = res.data.filter(result => {
+          return result.state === "North Carolina" &&
+                 result.latitude &&
+                 result.longitude
+        });
+        const filtered = filteredByState.filter(item => {
+          return item.city === "Raleigh" ||
+                 item.city === "Durham" ||
+                 item.city === "Cary" ||
+                 item.city === "Apex" ||
+                 item.city === "Holly Springs" ||
+                 item.city === "Fuquay Varina" ||
+                 item.city === "Chapel Hill" ||
+                 item.city === "Wake Forest" ||
+                 item.city === "Hillsborough"
+        });
+        console.log(filteredByState, filtered);
         this.setState({ suggestions: filtered });
       })
         .catch(error => {

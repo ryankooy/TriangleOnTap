@@ -36,7 +36,7 @@ class Favorites extends Component {
 
         this.loadFavorites();
 
-        window.location.reload(false);
+        window.location.reload();
     };
 
     render() {

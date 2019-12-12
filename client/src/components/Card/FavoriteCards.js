@@ -21,12 +21,14 @@ const newStyle = {
   }
 
 const FavoriteCards = (props) => {
+
+    console.log(props);
     
     const classes = useStyles();
     
     return (
         <Grid container spacing={8}> 
-            {props.breweries.map(brew =>    
+            {props.breweries.map(brew =>  
             <Grid item xs={12} sm={6} md={4}>
                 <Card className={classes.card} key={brew._id}>       
                     <CardContent className={classes.cardContent}>
@@ -42,10 +44,12 @@ const FavoriteCards = (props) => {
                         </Typography>
                     </CardContent>
                     <CardActions>
+                    <Link href={brew.website_url} target="_blank" style={newStyle}>
                         <Button size="small" color="primary">
                             <NavigationTwoToneIcon />
-                            <Link to={brew.website_url} style={newStyle}>Website</Link>
+                            Website
                         </Button>
+                    </Link>
                         <Button color="primary" aria-label="delete" onClick={props.onClick} data-id={brew._id}>
                             <DeleteTwoToneIcon />
                             Delete
