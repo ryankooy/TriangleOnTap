@@ -4,14 +4,12 @@ import { Map, GoogleApiWrapper } from 'google-maps-react';
 const mapStyles = {
   width: '42%',
   height: '50%',
+  borderRadius: '4px',
+  border: '2px solid #d19a30',
   boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
 };
 
 export class MapContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Map
