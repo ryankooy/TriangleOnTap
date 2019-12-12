@@ -183,6 +183,8 @@ class Breweries extends Component {
               onClick={this.handleSaveClick}
             />
           </Col>
+
+          <Footer />
         </Container>
       </div>
     );
