@@ -44,17 +44,19 @@ class LoginForm extends Component {
             		<Col></Col>
             		<Col>
 						<Cards title="Welcome to Triangle on Tap!">
-							<label htmlFor="username">Username: </label>
                   			<Input
                     			type="text"
-                    			name="username"
+								name="username"
+								label="UserName"
+                 				variant="outlined"
                     			value={this.state.username}
                     			onChange={this.handleChange}
                   			/>
-                  			<label htmlFor="password">Password: </label>
                   			<Input
                     			type="password"
 								name="password"
+								label="Password"
+                  				variant="outlined"
 								value={this.state.password}
 								onChange={this.handleChange}
                   			/>

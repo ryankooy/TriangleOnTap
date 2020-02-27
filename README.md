@@ -13,7 +13,7 @@ are tailored to your interests. Triangle OnTap makes finding the location of you
 ![TriangleOnTap Logo_Transparent](https://user-images.githubusercontent.com/50469825/69683479-faef4880-1082-11ea-9f1d-ccf5cb5b99fb.png)
 
 ## Screenshots
-![TriangleOnTap GIF](ezgif.com-optimize (1).gif)
+![TriangleOnTap GIF](/ezgif.com-optimize (1).gif)
 
 ## Technologies Used
 * **React** - [https://reactjs.org/]

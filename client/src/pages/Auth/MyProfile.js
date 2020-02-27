@@ -86,6 +86,7 @@ class MyProfile extends Component {
                   onChange={this.handleChange}
                   label="Last Name"
                   variant="outlined"
+                  required
                 />
                 <Input
                   type="text"
@@ -94,6 +95,7 @@ class MyProfile extends Component {
                   onChange={this.handleChange}
                   label="Username"
                   variant="outlined"
+                  required
                 />
                 {/* <label htmlFor="password">Password: </label>
                 <Input
