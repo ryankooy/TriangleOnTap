@@ -32,7 +32,7 @@ Our interactive map will allow you to quickly see how far away each brewery is f
 OpenBreweryDB (https://www.openbrewerydb.org/)
 
 ## How to use?
-Sign in and create a profile! Afterwards, search for the Triangle's hidden brewery gems!
+Sign in and create a profile! Afterwards, search for the Triangle's hidden brewery gems! If you're in a hurry, you can log in with "rkooy" as the username and "admin" as the password.
 
 ## Contribute
 If you would like to contribute to the project please reach out via GitHub!
